@@ -1,12 +1,8 @@
-# elhabian_lab.github.io
-
-Elhabian Lab website
-
-## Development
+# Content v2 Minimal Starter
 
 Look at the [Content documentation](https://content.nuxt.com/) to learn more.
 
-### Setup
+## Setup
 
 Make sure to install the dependencies:
 
@@ -21,7 +17,7 @@ npm install
 pnpm install
 ```
 
-### Development Server
+## Development Server
 
 Start the development server on http://localhost:3000
 
@@ -29,7 +25,7 @@ Start the development server on http://localhost:3000
 npm run dev
 ```
 
-### Production
+## Production
 
 Build the application for production:
 
@@ -42,3 +38,5 @@ Locally preview production build:
 ```bash
 npm run preview
 ```
+
+Checkout the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --green-dark: #344e41;
+    --green-secondary: #3A5A40;
+    --green: #588157;
+    --green-light: #a3b18a;
+    --light: #DAD7CD;
+}
+
+
+/* Add custom styles here */

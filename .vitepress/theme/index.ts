@@ -1,12 +1,19 @@
-// https://vitepress.dev/guide/custom-theme
-import Layout from './Layout.vue'
-import type { Theme } from 'vitepress'
-import './style.css'
+import DefaultTheme from 'vitepress/theme'
+
+// Dynamically import all Vue components from the layouts directory
+const layouts = import.meta.glob('../../layouts/*.vue')
 
 export default {
-  Layout,
-  enhanceApp({ app, router, siteData }) {
-    // ...
+  extends: DefaultTheme,
+  enhanceApp({ app }) {
+    // Register each layout component
+    for (const path in layouts) {
+      layouts[path]().then((module) => {
+        const componentName = path.split('/').pop()?.replace('.vue', '')
+        if (componentName) {
+          app.component(componentName, module.default)
+        }
+      })
+    }
   }
-} satisfies Theme
-
+}

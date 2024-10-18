@@ -4,7 +4,7 @@ MedVIC Lab website
 
 ## Development
 
-Look at the [Content documentation](https://content.nuxt.com/) to learn more.
+Look at the official [VitePress documentation](https://vitepress.dev/) to learn more.
 
 ### Setup
 
@@ -17,7 +17,7 @@ yarn install
 
 ### Development Server
 
-Start the development server on localhost:3000
+Start the development server on localhost:5173
 
 ```bash
 yarn dev
@@ -31,7 +31,7 @@ Build the application for production:
 yarn build
 ```
 
-Locally preview production build:
+Locally preview production build: (port 4173)
 
 ```bash
 yarn preview
@@ -89,15 +89,8 @@ To add yourself to the MedVIC Lab website, follow these steps:
      git push origin [branch name]
      ```
 
-5. **Generate the members list:**
-   - Run the build command to generate the `members.json` file and build the VitePress site.
-
-     ```bash
-     yarn build
-     ```
-
-6. **Preview your changes:**
-   - Locally preview the production build to ensure your profile appears correctly.
+5. **Preview your changes:**
+   - Locally preview the production build to ensure your profile appears correctly. You can also use `yarn dev` for active development.
 
      ```bash
      yarn preview
@@ -133,7 +126,7 @@ To add a publication to the MedVIC Lab website, follow these steps:
    - Below the frontmatter, add any additional information about the publication.
 
      ```markdown
-     # Publication Title
+     ## Publication Information
 
      Abstract or additional information about the publication.
      ```
@@ -147,15 +140,8 @@ To add a publication to the MedVIC Lab website, follow these steps:
      git push origin [branch name]
      ```
 
-5. **Generate the publications list:**
-   - Run the build command to generate the `publications.json` file and build the VitePress site.
-
-     ```bash
-     yarn build
-     ```
-
-6. **Preview your changes:**
-   - Locally preview the production build to ensure your publication appears correctly.
+5. **Preview your changes:**
+   - Locally preview the production build to ensure your publication appears correctly. You can also use `yarn dev` for active development.
 
      ```bash
      yarn preview
@@ -211,18 +197,17 @@ To add a project to the MedVIC Lab website, follow these steps:
      git push origin [branch name]
      ```
 
-5. **Generate the projects list:**
-   - Run the build command to generate the `projects.json` file and build the VitePress site.
-
-     ```bash
-     yarn build
-     ```
-
-6. **Preview your changes:**
-   - Locally preview the production build to ensure your project appears correctly.
+5. **Preview your changes:**
+   - Locally preview the production build to ensure your project appears correctly. You can also use `yarn dev` for active development.
 
      ```bash
      yarn preview
      ```
 
-By following these steps, you can add yourself, publications, and projects to the MedVIC Lab website and ensure they are displayed correctly.
+### Adding new pages
+
+To add any page, simply put a markdown file in the `pages` directory. You can reference this as you would any other file. Reference the [VitePress documentation](https://vitepress.dev/) for specific details about layouts, styling, etc.
+
+### Adding custom components
+
+Reference the [official component documentation](https://vitepress.dev/guide/using-vue#using-components) for adding custom Vue components to the repository and files.

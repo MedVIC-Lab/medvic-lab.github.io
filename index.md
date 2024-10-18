@@ -3,12 +3,11 @@
 layout: home
 
 hero:
-  name: "ELHABIAN Lab"
-  text: "Description of the lab website!"
-  tagline: A tagline for the entire lab!
+  name: "MedVIC Lab"
+  tagline: "Medical Vision and Intelligent Computing Lab"
   image:
     src: "assets/images/home/banner.png"
-    alt: Shireen
+    alt: MedVIC Lab Banner
 ---
 
 ## About

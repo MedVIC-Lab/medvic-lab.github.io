@@ -1,0 +1,20 @@
+[
+  {
+    "avatar": "https://avatars.githubusercontent.com/u/35744963?v=4",
+    "name": "Jake Wagoner",
+    "title": "Software Developer/MS Student",
+    "bio": "",
+    "role": "Staff",
+    "links": [
+      {
+        "icon": "github",
+        "link": "https://github.com/JakeWags"
+      },
+      {
+        "icon": "linkedin",
+        "link": "https://www.linkedin.com/in/jake-wagoner-92123522b/"
+      }
+    ],
+    "link": "/pages/people/wagoner"
+  }
+]

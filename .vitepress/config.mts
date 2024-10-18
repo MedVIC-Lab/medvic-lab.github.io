@@ -1,11 +1,14 @@
 import { defineConfig } from 'vitepress'
+import generateMembersPlugin from '../scripts/generateMembers';
+import generatePublicationsPlugin from '../scripts/generatePublications';
+import generateProjectsPlugin from '../scripts/generateProjects';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "ELHABIAN Lab",
-  description: "ELHABIAN Lab's Website",
+  title: "MedVIC Lab",
+  description: "MedVIC Lab's Website",
+  appearance: false,  // disable dark mode
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/pages/about' },
@@ -13,5 +16,12 @@ export default defineConfig({
       { text: 'Projects', link: '/pages/projects' },
       { text: 'Publications', link: '/pages/publications' },
     ],
+  },
+  vite: {
+    plugins: [
+      generateMembersPlugin(),
+      generatePublicationsPlugin(),
+      generateProjectsPlugin(),
+    ]
   }
 })

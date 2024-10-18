@@ -1,4 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
+import './custom.css'
 
 // Dynamically import all Vue components from the layouts directory
 const layouts = import.meta.glob('../../layouts/*.vue')

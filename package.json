@@ -1,14 +1,16 @@
 {
   "devDependencies": {
+    "ts-node": "^10.9.2",
+    "vite": "^5.4.8",
     "vitepress": "^1.4.0",
     "vue": "^3.5.12"
   },
   "scripts": {
-    "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
-    "docs:preview": "vitepress preview"
+    "build": "vitepress build",
+    "dev": "vitepress build && vitepress dev",
+    "preview": "vitepress build && vitepress preview"
   },
   "dependencies": {
-    "vite": "^5.4.8"
+    "front-matter": "^4.0.2"
   }
 }

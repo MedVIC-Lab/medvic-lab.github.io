@@ -22,8 +22,6 @@ onMounted(async () => {
   const response = await fetch('/assets/members.json')
   const data = await response.json()
 
-  console.log(data)
-
   data.forEach(member => {
     switch (member.role.toLowerCase()) {
       case 'researcher':

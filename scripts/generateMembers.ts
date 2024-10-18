@@ -1,7 +1,7 @@
 import { Plugin } from 'vite';
 import * as fs from 'fs';
 import * as path from 'path';
-import fm, { FrontMatterResult } from 'front-matter';
+import fm from 'front-matter';
 
 const generateMembersPlugin = (): Plugin => {
   return {
@@ -23,7 +23,7 @@ const generateMembersPlugin = (): Plugin => {
         }));
 
         members.push({
-          avatar: data.attributes.avatar || '',
+          avatar: `../assets/images/people/${data.attributes.avatar}` || '',
           name: data.attributes.name || '',
           title: data.attributes.title || '',
           bio: data.attributes.bio || '',

@@ -1,5 +1,27 @@
 [
   {
+    "avatar": "../assets/images/people/iyerkrithika.jpg",
+    "name": "Krithika Iyer",
+    "title": "PhD Candidate",
+    "bio": "",
+    "role": "PhD Student",
+    "links": [
+      {
+        "icon": "github",
+        "link": "https://github.com/iyerkrithika21"
+      },
+      {
+        "icon": "twitter",
+        "link": "https://twitter.com/iyerkrithika21"
+      },
+      {
+        "icon": "website",
+        "link": "https://www.sci.utah.edu/~iyerkrithika/"
+      }
+    ],
+    "link": "/pages/people/iyerkrithika"
+  },
+  {
     "avatar": "../assets/images/people/wagoner.jpg",
     "name": "Jake Wagoner",
     "title": "Software Developer/MS Student",

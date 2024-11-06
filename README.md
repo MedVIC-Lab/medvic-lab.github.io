@@ -56,7 +56,8 @@ To add yourself to the MedVIC Lab website, follow these steps:
      ---
      layout: person
      name: "Your Name"
-     title: "Your Title" # e.g., "PhD Student", "MS Student", "Staff", "Researcher", "Alumni"
+     role: "PhD Student", "MS Student", "Staff", "Researcher", "Alumni"
+     title: "Your Title"
      bio: "A brief bio about yourself."
      avatar: "your-avatar.png" # Replace with the URL to your avatar image
      links:

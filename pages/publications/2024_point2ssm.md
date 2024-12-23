@@ -5,7 +5,7 @@ conference: "ICLR"
 year: "2024"
 link: "https://arxiv.org/abs/2305.14486"
 image:
-  src: "point2ssm.png"
+  src: "2024_point2ssm.png"
   alt: Results Highlight
 ---
 

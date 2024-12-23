@@ -5,6 +5,7 @@ import './custom.css'
 const layouts = import.meta.glob('../../layouts/*.vue')
 
 export default {
+  Layout: DefaultTheme.Layout,
   extends: DefaultTheme,
   enhanceApp({ app }) {
     // Register each layout component

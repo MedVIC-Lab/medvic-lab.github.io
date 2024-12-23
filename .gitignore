@@ -59,9 +59,6 @@ typings/
 .env
 .env.test
 
-# Nuxt build directory
-.nuxt
-
 # Nuxt generate directory
 dist
 
@@ -79,3 +76,11 @@ static
 *.njsproj
 *.sln
 *.sw?
+
+# publication, projects, and members JSON
+/public/assets/publications.json
+/public/assets/projects.json
+/public/assets/members.json
+
+# OS generated files
+.DS_Store

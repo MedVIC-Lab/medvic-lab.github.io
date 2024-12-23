@@ -1,5 +1,5 @@
 <template>
-  <div class="project-layout">
+  <div class="project-layout vp-doc">
     <div class="project-content">
       <h1>{{ frontmatter.name }}</h1>
       <Content />
@@ -28,8 +28,9 @@
 </template>
 
 <script setup>
-import { Content, useData } from 'vitepress'
-const { frontmatter } = useData()
+import { Content, useData } from 'vitepress';
+
+const { frontmatter } = useData();
 </script>
 
 <style>

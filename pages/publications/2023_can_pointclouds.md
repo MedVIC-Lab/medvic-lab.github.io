@@ -5,7 +5,7 @@ conference: "MICCAI"
 year: "2023"
 link: "https://arxiv.org/abs/2305.05610"
 image:
-  src: "can_pointclouds.png"
+  src: "2023_can_pointclouds.png"
   alt: Results Highlight
 ---
 

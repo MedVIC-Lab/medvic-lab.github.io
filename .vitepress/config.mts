@@ -13,7 +13,8 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'About', link: '/pages/about' },
       { text: 'People', link: '/pages/people' },
-      { text: 'Projects', link: '/pages/projects' },
+      // Uncommnet when projects are added
+      // { text: 'Projects', link: '/pages/projects' },
       { text: 'Publications', link: '/pages/publications' },
     ],
   },

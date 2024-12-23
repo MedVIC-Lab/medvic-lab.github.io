@@ -5,7 +5,7 @@ conference: "Medical Image Analysis"
 year: "2021"
 link: "https://www.sciencedirect.com/science/article/pii/S1361841521003169"
 image:
-  src: "benchmarking.jpg"
+  src: "2021_benchmarking.jpg"
   alt: Benchmarking FrameWork
 ---
 

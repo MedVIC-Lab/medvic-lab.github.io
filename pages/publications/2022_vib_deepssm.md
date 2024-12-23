@@ -5,7 +5,7 @@ conference: "MICCAI"
 year: "2022"
 link: "https://arxiv.org/abs/2205.06862"
 image:
-  src: "vib_deepssm.png"
+  src: "2022_vib_deepssm.png"
   alt: Results Highlight
 ---
 

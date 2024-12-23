@@ -5,7 +5,7 @@ conference: "Unsure Workshop at MICCAI"
 year: "2023"
 link: "https://arxiv.org/abs/2308.07506"
 image:
-  src: "benchmarking_segmentation.png"
+  src: "2023_benchmarking_segmentation.png"
   alt: Results Highlight
 ---
 

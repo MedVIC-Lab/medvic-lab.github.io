@@ -5,7 +5,7 @@ conference: "Medical Image Understanding and Analysis (MIUA)"
 year: "2024"
 link: "https://arxiv.org/abs/2404.17967"
 image:
-  src: "scorp.jpg"
+  src: "2024_scorp.jpg"
   alt: Results Highlight
 ---
 

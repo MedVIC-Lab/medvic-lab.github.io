@@ -9,7 +9,22 @@ const publications = ref([])
 
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
-  publications.value = await response.json()
+  const pubs = await response.json()
+
+  // TODO: update with better sorting when functionality added to UI
+  // sort by year, then by first author (alphabetical)
+  publications.value = pubs.sort((a, b) => {
+    if (a.year !== b.year) {
+      return b.year - a.year; // Sort by year in descending order
+    }
+    // Sort by first author alphabetically (last name)
+    const aFirstAuthor = a.authors.split(',')[0]
+    const bFirstAuthor = b.authors.split(',')[0]
+    const aLastName = aFirstAuthor.split(' ').pop()
+    const bLastName = bFirstAuthor.split(' ').pop()
+
+    return aLastName.localeCompare(bLastName);
+  })
 })
 </script>
 

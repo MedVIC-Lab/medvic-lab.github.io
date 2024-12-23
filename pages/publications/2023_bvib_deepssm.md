@@ -5,7 +5,7 @@ conference: "MICCAI"
 year: "2023"
 link: "https://arxiv.org/pdf/2305.05797.pdf"
 image:
-  src: "bvib_deepssm.png"
+  src: "2023_bvib_deepssm.png"
   alt: Results Highlight
 ---
 

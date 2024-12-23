@@ -5,7 +5,7 @@ conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2023"
 link: "https://arxiv.org/abs/2307.03273"
 image:
-  src: "adassm.png"
+  src: "2023_ADASSM.png"
   alt: Results Highlight
 ---
 

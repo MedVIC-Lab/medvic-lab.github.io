@@ -43,7 +43,7 @@ Testing in an h6
 
 ## Testing a code block
 
-```
+```js
 const jake = "is cool";
 console.log(jake.replace("cool", "uncool"));
 ```

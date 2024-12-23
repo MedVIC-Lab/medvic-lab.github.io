@@ -5,7 +5,7 @@ conference: "MICCAI 2023"
 year: "2023"
 link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=MN0NWL0AAAAJ&citation_for_view=MN0NWL0AAAAJ:W7OEmFMy1HYC"
 image:
-  src: "mesh2ssm.png"
+  src: "2023_mesh2ssm.png"
   alt: Mesh2SSM Model
 ---
 

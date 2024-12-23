@@ -5,7 +5,7 @@ conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2024"
 link: "https://arxiv.org/abs/2405.09697"
 image:
-  src: "weaklydeepssm.png"
+  src: "2024_weaklydeepssm.png"
   alt: Results Highlight
 ---
 

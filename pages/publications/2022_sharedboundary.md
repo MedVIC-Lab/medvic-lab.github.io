@@ -5,7 +5,7 @@ conference: "Statistical Atlases and Computational Models of the Heart (STACOM) 
 year: "2022"
 link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10103081/"
 image:
-  src: "stacom_shared.jpg"
+  src: "2022_stacom_shared.jpg"
   alt: Results Highlight
 ---
 

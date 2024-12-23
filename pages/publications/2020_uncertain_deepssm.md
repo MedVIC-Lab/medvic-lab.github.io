@@ -5,7 +5,7 @@ conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2020"
 link: "https://arxiv.org/abs/2007.06516"
 image:
-  src: "uncertain_deepssm.png"
+  src: "2020_uncertain_deepssm.png"
   alt: Results Highlight
 ---
 

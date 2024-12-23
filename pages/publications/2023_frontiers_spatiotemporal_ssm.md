@@ -5,7 +5,7 @@ conference: "Frontiers in Bioengineering and Biotechnology"
 year: "2023"
 link: "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2023.1086234/full"
 image:
-  src: "frontiers_spatiotemporal_ssm.jpg"
+  src: "2023_frontiers_spatiotemporal_ssm.jpg"
   alt: Results Highlight
 ---
 

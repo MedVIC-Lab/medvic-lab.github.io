@@ -5,7 +5,7 @@ conference: "Statistical Atlases and Computational Models of the Heart (STACOM) 
 year: "2022"
 link: "https://arxiv.org/abs/2209.02736"
 image:
-  src: "spatiotemporal_ssm.png"
+  src: "2022_spatiotemporal_ssm.png"
   alt: Results Highlight
 ---
 

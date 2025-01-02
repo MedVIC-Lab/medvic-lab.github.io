@@ -7,14 +7,14 @@ import { ref, onMounted, computed } from 'vue'
 
 const SORT_OPTIONS = {
   sort: ["year", "author", "title", "conference"],
-  order: ["ascending", "descending"]
+  ascending: false  // boolean for ascending/descending order, true = ascending
 }
 
 const publications = ref([])
 
 const sorting = ref({
-  sort: "year",
-  order: "descending"
+  sort: "author",
+  ascending: false
 })
 
 // helper
@@ -29,13 +29,13 @@ function sortByAuthor(a, b, order) {
 const sortedPublications = computed(() => {
   return [...publications.value].sort((a, b) => {
     const sortKey = sorting.value.sort
-    const order = sorting.value.order === "ascending" ? 1 : -1
+    const order = sorting.value.ascending ? 1 : -1
 
     if (sortKey === "year") {
       if (a.year !== b.year) {
-        return (b.year - a.year)
+        return (b.year - a.year) * order
       }
-      return sortByAuthor(a, b, order)
+      return sortByAuthor(a, b, 1)
     }
 
     if (sortKey === "author") {
@@ -54,6 +54,20 @@ const sortedPublications = computed(() => {
   })
 })
 
+function handleSortToggle(v) {
+  // console.log(sorting.value.sort, v)
+  // if (sorting.value.sort == v) {
+  //   sorting.value.ascending = !sorting.value.ascending
+  // }
+  // else {
+  //   sorting.value.ascending = false
+  // }
+}
+
+function handleSortOptionChange(v, e) {
+  console.log(v,e)
+}
+
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
   publications.value = await response.json()
@@ -68,9 +82,9 @@ onMounted(async () => {
 }
 
 .publication img {
-  max-width: 200px;
+  max-width: 150px;
   height: auto; /* Maintain aspect ratio */
-  margin-left: 20px;
+  margin-right: 20px;
   object-fit: contain; /* Ensure the image fits within the container while maintaining aspect ratio */
 }
 
@@ -84,21 +98,53 @@ onMounted(async () => {
   }
 
   .publication img {
-    margin-left: 0;
+    margin-right: 0;
     margin-bottom: 10px;
   }
 }
 </style>
 
+<v-row
+  justify="space-between"
+  class="mb-4"
+>
+
 # Publications
+
+  <v-btn-toggle
+    :value="sorting.sort"
+    @change="handleSortOptionChange(sorting, $event)"
+    mandatory
+    group
+  >
+    <v-btn value="year" @click="() => handleSortToggle('year')">
+      Year
+      <v-icon v-if="sorting.sort === 'year'" class="opacity-60">
+        {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
+      </v-icon>
+    </v-btn>
+    <v-btn value="author" @click="() => handleSortToggle('author')">
+      Author
+      <v-icon v-if="sorting.sort === 'author'" class="opacity-60">
+        {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
+      </v-icon>
+    </v-btn>
+    <v-btn value="title" @click="() => handleSortToggle('title')">
+      Title
+      <v-icon v-if="sorting.sort === 'title'" class="opacity-60">
+        {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
+      </v-icon>
+    </v-btn>
+  </v-btn-toggle>
+</v-row>
 
 <div class="container">
   <div v-for="publication in sortedPublications" :key="publication.title" class="publication">
+    <img v-if="publication.image" :src="`../assets/images/publications/${publication.image.src}`" :alt="publication.image.alt">
     <div class="publication-info">
-      <a :href="publication.link" target="_blank">{{ publication.title }}</a>
       <p>{{ publication.authors }}</p>
+      <a :href="publication.link" target="_blank">{{ publication.title }}</a>
       <p>{{ publication.conference }} ({{ publication.year }})</p>
     </div>
-    <img v-if="publication.image" :src="`../assets/images/publications/${publication.image.src}`" :alt="publication.image.alt">
   </div>
 </div>

@@ -3,28 +3,60 @@ aside: false
 ---
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+
+const SORT_OPTIONS = {
+  sort: ["year", "author", "title", "conference"],
+  order: ["ascending", "descending"]
+}
 
 const publications = ref([])
 
+const sorting = ref({
+  sort: "year",
+  order: "descending"
+})
+
+// helper
+function sortByAuthor(a, b, order) {
+  const aFirstAuthor = a.authors.split(',')[0]
+  const bFirstAuthor = b.authors.split(',')[0]
+  const aLastName = aFirstAuthor.split(' ').pop()
+  const bLastName = bFirstAuthor.split(' ').pop()
+  return aLastName.localeCompare(bLastName) * order
+}
+
+const sortedPublications = computed(() => {
+  return [...publications.value].sort((a, b) => {
+    const sortKey = sorting.value.sort
+    const order = sorting.value.order === "ascending" ? 1 : -1
+
+    if (sortKey === "year") {
+      if (a.year !== b.year) {
+        return (b.year - a.year)
+      }
+      return sortByAuthor(a, b, order)
+    }
+
+    if (sortKey === "author") {
+      return sortByAuthor(a, b, order)
+    }
+
+    if (sortKey === "title") {
+      return a.title.localeCompare(b.title) * order
+    }
+
+    if (sortKey === "conference") {
+      return a.conference.localeCompare(b.conference) * order
+    }
+
+    return 0
+  })
+})
+
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
-  const pubs = await response.json()
-
-  // TODO: update with better sorting when functionality added to UI
-  // sort by year, then by first author (alphabetical)
-  publications.value = pubs.sort((a, b) => {
-    if (a.year !== b.year) {
-      return b.year - a.year; // Sort by year in descending order
-    }
-    // Sort by first author alphabetically (last name)
-    const aFirstAuthor = a.authors.split(',')[0]
-    const bFirstAuthor = b.authors.split(',')[0]
-    const aLastName = aFirstAuthor.split(' ').pop()
-    const bLastName = bFirstAuthor.split(' ').pop()
-
-    return aLastName.localeCompare(bLastName);
-  })
+  publications.value = await response.json()
 })
 </script>
 
@@ -61,7 +93,7 @@ onMounted(async () => {
 # Publications
 
 <div class="container">
-  <div v-for="publication in publications" :key="publication.title" class="publication">
+  <div v-for="publication in sortedPublications" :key="publication.title" class="publication">
     <div class="publication-info">
       <a :href="publication.link" target="_blank">{{ publication.title }}</a>
       <p>{{ publication.authors }}</p>

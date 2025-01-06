@@ -3,7 +3,8 @@ aside: false
 ---
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
+import debounce from 'lodash.debounce'
 
 const SORT_OPTIONS = {
   sort: ["year", "author", "title", "conference"],
@@ -19,6 +20,9 @@ const sorting = ref({
 
 const previousSort = ref("author")
 
+const search = ref("")
+const searchOpen = ref(false)
+
 // helper
 function sortByAuthor(a, b, order) {
   const aFirstAuthor = a.authors.split(',')[0]
@@ -29,7 +33,13 @@ function sortByAuthor(a, b, order) {
 }
 
 const sortedPublications = computed(() => {
-  return [...publications.value].sort((a, b) => {
+  // filter search string first
+  let filteredPubs = [...publications.value]
+  if (search.value !== "") {
+    filteredPubs = filteredPubs.filter((p) => p.title.toLowerCase().includes(search.value.toLowerCase()))
+  }
+
+  return filteredPubs.sort((a, b) => {
     const sortKey = sorting.value.sort
     const order = sorting.value.ascending ? 1 : -1
 
@@ -65,10 +75,18 @@ function handleSortToggle(v) {
   }
 }
 
+function openSearchBar() {
+  searchOpen.value = true
+}
+
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
   publications.value = await response.json()
 })
+
+watch(search, debounce(() => {
+  
+}, 500))
 </script>
 
 <style>
@@ -140,6 +158,26 @@ onMounted(async () => {
       </v-icon>
       <span v-else class="v-icon-placeholder"></span>
     </v-btn>
+      <v-menu 
+        :close-on-content-click="false"
+        location="bottom"
+      >
+        <template v-slot:activator="{ props }">
+          <v-btn v-bind="props" icon="mdi-magnify" @click="() => {
+            sorting.sort = previousSort  // reset sorting to previous to ignore the click action
+            openSearchBar()
+          }">
+          </v-btn>
+        </template>
+        <v-card min-width="300">
+          <v-text-field
+            v-model="search"
+            hide-details
+            label="Search"
+          >
+          </v-text-field>
+        </v-card>
+      </v-menu>
   </v-btn-toggle>
 </v-row>
 

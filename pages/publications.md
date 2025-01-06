@@ -4,7 +4,6 @@ aside: false
 
 <script setup>
 import { ref, onMounted, computed, watch } from 'vue'
-import debounce from 'lodash.debounce'
 
 const SORT_OPTIONS = {
   sort: ["year", "author", "title", "conference"],
@@ -83,10 +82,6 @@ onMounted(async () => {
   const response = await fetch('/assets/publications.json')
   publications.value = await response.json()
 })
-
-watch(search, debounce(() => {
-  
-}, 500))
 </script>
 
 <style>

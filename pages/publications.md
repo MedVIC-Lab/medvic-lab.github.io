@@ -40,7 +40,7 @@ const sortedPublications = computed(() => {
 
   return filteredPubs.sort((a, b) => {
     const sortKey = sorting.value.sort
-    const order = sorting.value.ascending ? 1 : -1
+    const order = sorting.value.ascending ? -1 : 1
 
     if (sortKey === "year") {
       if (a.year !== b.year) {

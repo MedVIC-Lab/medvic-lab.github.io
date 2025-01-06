@@ -17,6 +17,8 @@ const sorting = ref({
   ascending: false
 })
 
+const previousSort = ref("author")
+
 // helper
 function sortByAuthor(a, b, order) {
   const aFirstAuthor = a.authors.split(',')[0]
@@ -55,17 +57,12 @@ const sortedPublications = computed(() => {
 })
 
 function handleSortToggle(v) {
-  // console.log(sorting.value.sort, v)
-  // if (sorting.value.sort == v) {
-  //   sorting.value.ascending = !sorting.value.ascending
-  // }
-  // else {
-  //   sorting.value.ascending = false
-  // }
-}
-
-function handleSortOptionChange(v, e) {
-  console.log(v,e)
+  if (previousSort.value === v) {
+    sorting.value.ascending = !sorting.value.ascending
+  } else {
+    previousSort.value = v
+    sorting.value.ascending = false
+  }
 }
 
 onMounted(async () => {
@@ -102,6 +99,12 @@ onMounted(async () => {
     margin-bottom: 10px;
   }
 }
+
+.v-icon-placeholder {
+  width: 16px; /* Width of the icon */
+  height: 16px; /* Height of the icon */
+  display: inline-block;
+}
 </style>
 
 <v-row
@@ -112,28 +115,30 @@ onMounted(async () => {
 # Publications
 
   <v-btn-toggle
-    :value="sorting.sort"
-    @change="handleSortOptionChange(sorting, $event)"
+    v-model="sorting.sort"
     mandatory
     group
   >
-    <v-btn value="year" @click="() => handleSortToggle('year')">
+    <v-btn value="year" @click="() => sorting.sort === 'year' && handleSortToggle('year')">
       Year
       <v-icon v-if="sorting.sort === 'year'" class="opacity-60">
         {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
       </v-icon>
+      <span v-else class="v-icon-placeholder"></span>
     </v-btn>
-    <v-btn value="author" @click="() => handleSortToggle('author')">
+    <v-btn value="author" @click="handleSortToggle('author')">
       Author
       <v-icon v-if="sorting.sort === 'author'" class="opacity-60">
         {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
       </v-icon>
+      <span v-else class="v-icon-placeholder"></span>
     </v-btn>
-    <v-btn value="title" @click="() => handleSortToggle('title')">
+    <v-btn value="title" @click="handleSortToggle('title')">
       Title
       <v-icon v-if="sorting.sort === 'title'" class="opacity-60">
         {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
       </v-icon>
+      <span v-else class="v-icon-placeholder"></span>
     </v-btn>
   </v-btn-toggle>
 </v-row>

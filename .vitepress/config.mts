@@ -23,6 +23,9 @@ export default defineConfig({
       generateMembersPlugin(),
       generatePublicationsPlugin(),
       generateProjectsPlugin(),
-    ]
-  }
+    ],
+    ssr: {
+      noExternal: [/\.css$/, /\?vue&type=style/, /^vuetify/],
+    }
+  },
 })

@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "@mdi/font": "^7.4.47",
     "ts-node": "^10.9.2",
     "vite": "^5.4.8",
     "vitepress": "^1.4.0",
@@ -11,6 +12,7 @@
     "preview": "vitepress build && vitepress preview"
   },
   "dependencies": {
-    "front-matter": "^4.0.2"
+    "front-matter": "^4.0.2",
+    "vuetify": "^3.7.6"
   }
 }

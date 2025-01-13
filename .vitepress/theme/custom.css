@@ -21,6 +21,15 @@
     - **Often, !important is required to override the default styles.
 */
 
+/* Header */
+.VPNavBarTitle .title {
+  font-size: 1.75em !important;
+}
+
+.VPNavBarMenuLink {
+  font-size: 1.05em !important;
+}
+
 /* Container widths */
 @media (min-width: 1440px) {
   .VPDoc:not(.has-sidebar) .content {

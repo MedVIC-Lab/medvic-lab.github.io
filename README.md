@@ -71,6 +71,7 @@ To add yourself to the MedVIC Lab website, follow these steps:
      ```
 
      Note: images should be added to `/public/assets/images/people/`
+     Additional note: the image should be a SQUARE aspect ratio, or else it may appear warped.
 
 3. **Add content to your Markdown file:** (WORK IN PROGRESS)
    - Below the frontmatter, add any additional information about yourself, such as your research interests, publications, and projects.
@@ -121,7 +122,7 @@ To add a publication to the MedVIC Lab website, follow these steps:
      ---
      ```
 
-     Note: images should be added to `/public/assets/images/publications/`
+     Note: images should be added to `/public/assets/images/publications/`. These should be *graphical abstracts* and should not contain captions.
 
 3. **Add content to your Markdown file:** (WORK IN PROGRESS)
    - Below the frontmatter, add any additional information about the publication.

@@ -21,16 +21,20 @@ const generateMembersPlugin = (): Plugin => {
         const data = fm(fileContent);
 
         const links = (data.attributes.links || []).map((link: { icon?: string | {}; link?: string }) => {
-          if (link.icon === "website") {
-            link.icon = {
-              svg: WEB_SVG_STRING
-            }
+          
+          const retVal = {
+            icon: link.icon || '',
+            link: link.link || '',
           }
 
-          return {
-            icon: link.icon || '',
-            link: link.link || ''
+          if (link.icon === "website") {
+            retVal.icon = {
+              svg: WEB_SVG_STRING,
+            }
+            retVal['ariaLabel'] = "Personal Website"
           }
+
+          return retVal;
         });
 
         members.push({

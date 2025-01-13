@@ -1,9 +1,12 @@
 ---
+layout: publication
 title: "Fully Bayesian VIB DeepSSM"
 authors: "Jadie Adams, Shireen Elhabian"
 conference: "MICCAI"
 year: "2023"
-link: "https://arxiv.org/pdf/2305.05797.pdf"
+links: 
+  code: "https://github.com/MedVIC-Lab/BVIB-DeepSSM"
+  archive: "https://arxiv.org/pdf/2305.05797.pdf"
 image:
   src: "2023_bvib_deepssm.png"
   alt: Results Highlight

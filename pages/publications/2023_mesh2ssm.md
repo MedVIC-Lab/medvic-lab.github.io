@@ -1,9 +1,12 @@
 ---
+layout: publication
 title: "Mesh2SSM: From Surface Meshes to Statistical Shape Models of Anatomy"
 authors: "Krithika Iyer  and Shireen Elhabian"
 conference: "MICCAI 2023"
 year: "2023"
-link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=MN0NWL0AAAAJ&citation_for_view=MN0NWL0AAAAJ:W7OEmFMy1HYC"
+links: 
+  code: "https://github.com/MedVIC-Lab/mesh2SSM_2023"
+  archive: "https://arxiv.org/abs/2305.07805"
 image:
   src: "2023_mesh2ssm.png"
   alt: Mesh2SSM Model

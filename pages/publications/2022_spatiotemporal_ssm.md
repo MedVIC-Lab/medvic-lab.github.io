@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Spatiotemporal Cardiac Statistical Shape Modeling: A Data-Driven Approach"
 authors: "Jadie Adams, Nawazish Khan, Alan Morris, Shireen Elhabian"
 conference: "Statistical Atlases and Computational Models of the Heart (STACOM) at MICCAI"
 year: "2022"
-link: "https://arxiv.org/abs/2209.02736"
+links: 
+  archive: "https://arxiv.org/abs/2209.02736"
 image:
   src: "2022_spatiotemporal_ssm.png"
   alt: Results Highlight

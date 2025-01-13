@@ -89,6 +89,13 @@ onMounted(async () => {
   display: flex;
   flex-direction: row;
   margin-bottom: 20px;
+  text-decoration: none !important;
+  border-radius: 10px;
+}
+
+.publication:hover {
+  background-color:rgb(245, 245, 245);
+  color: #000!important;
 }
 
 .publication img {
@@ -119,7 +126,7 @@ onMounted(async () => {
   display: inline-block;
 }
 </style>
-
+<span></span>
 <v-row
   justify="space-between"
   class="mb-4"
@@ -177,12 +184,12 @@ onMounted(async () => {
 </v-row>
 
 <div class="container">
-  <div v-for="publication in sortedPublications" :key="publication.title" class="publication">
+  <a v-for="publication in sortedPublications" :key="publication.title" :href="publication.link" class="publication">
     <img v-if="publication.image" :src="`../assets/images/publications/${publication.image.src}`" :alt="publication.image.alt">
     <div class="publication-info">
       <p>{{ publication.authors }}</p>
-      <a :href="publication.link" target="_blank">{{ publication.title }}</a>
+      <p>{{ publication.title }}</p>
       <p>{{ publication.conference }} ({{ publication.year }})</p>
     </div>
-  </div>
+  </a>
 </div>

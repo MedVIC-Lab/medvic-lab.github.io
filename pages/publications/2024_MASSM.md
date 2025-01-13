@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "MASSM: An End-to-End Deep Learning Framework for Multi Anatomy Statistical Shape Modeling Directly From Images"
 authors: "Janmesh Ukey, Tushar Kataria, Shireen Y Elhabian"
 conference: "International Workshop on Shape in Medical Imaging"
 year: "2024"
-link: "https://link.springer.com/chapter/10.1007/978-3-031-75291-9_12"
+links:
+  publisher: "https://link.springer.com/chapter/10.1007/978-3-031-75291-9_12"
 image:
   src: "2024_MASSM.png"
   alt: Automated Annotation

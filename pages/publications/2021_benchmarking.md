@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Benchmarking Off-the-shelf Statistical Shape Modeling Tools in Clinical Applications"
 authors: "Anupama Goparaju, Krithika Iyer, Alexandre Bône, Nan Hu, Heath B. Henninger, Andrew E. Anderson, Stanley Durrleman, Matthijs Jacxsens, Alan Morris, Ibolya Csecs, Nassir Marrouche, Shireen Y. Elhabian"
 conference: "Medical Image Analysis"
 year: "2021"
-link: "https://www.sciencedirect.com/science/article/pii/S1361841521003169"
+links:
+ publisher: "https://www.sciencedirect.com/science/article/pii/S1361841521003169"
 image:
   src: "2021_benchmarking.jpg"
   alt: Benchmarking FrameWork

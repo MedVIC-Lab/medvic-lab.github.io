@@ -1,9 +1,12 @@
 ---
+layout: publication
 title: "EfficientMorph: Parameter-Efficient Transformer-Based Architecture for 3D Image Registration"
 authors: "Abu Zahid Bin Aziz*, Mokshagna Sai Teja Karanam*, Tushar Kataria, Shireen Y Elhabian"
 conference: "Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision"
 year: "2025"
-link: "https://arxiv.org/abs/2403.11026"
+links:
+  code: "https://github.com/MedVIC-Lab/Efficient_Morph_Registration"
+  archive: "https://arxiv.org/abs/2403.11026"
 image:
   src: "2025_EfficientMorph.png"
   alt: Efficient Architectures

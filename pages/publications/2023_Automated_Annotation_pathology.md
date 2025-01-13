@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Automating ground truth annotations for gland segmentation through immunohistochemistry"
 authors: "Tushar Kataria, Saradha Rajamani, Abdul Bari Ayubi, Mary Bronner, Jolanta Jedrzkiewicz, Beatrice S Knudsen, Shireen Y Elhabian"
 conference: "Modern Pathology, Volume 36, Issue 12"
 year: "2023"
-link: "https://www.sciencedirect.com/science/article/pii/S0893395223002363"
+links: 
+  publisher: "https://www.sciencedirect.com/science/article/pii/S0893395223002363"
 image:
   src: "2023_Automated_Annotation_pathology.png"
   alt: Automated Annotation

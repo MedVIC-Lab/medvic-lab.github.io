@@ -1,7 +1,7 @@
 ---
 layout: publication
 title: "SCorP: Statistics-Informed Dense Correspondence Prediction Directly from Unsegmented Medical Images"
-authors: "Krithika Iyer, Jadie Adams, Shireen Elhabian. "
+authors: "Krithika Iyer, Jadie Adams, Shireen Elhabian"
 conference: "Medical Image Understanding and Analysis (MIUA)"
 year: "2024"
 links:

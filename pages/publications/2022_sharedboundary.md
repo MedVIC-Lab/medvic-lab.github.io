@@ -1,7 +1,7 @@
 ---
 layout: publication
 title: "Statistical Shape Modeling of Biventricular Anatomy with Shared Boundaries"
-authors: "Krithika Iyer, Alan Morris, Brian Zenger, Karthik Karnath, Benjamin A. Orkild, Oleksandre Korshak, Shireen Elhabian. "
+authors: "Krithika Iyer, Alan Morris, Brian Zenger, Karthik Karnath, Benjamin A. Orkild, Oleksandre Korshak, Shireen Elhabian"
 conference: "Statistical Atlases and Computational Models of the Heart (STACOM) at MICCAI"
 year: "2022"
 links: 

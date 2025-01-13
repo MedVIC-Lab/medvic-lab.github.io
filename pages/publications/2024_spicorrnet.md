@@ -1,7 +1,7 @@
 ---
 layout: publication
 title: "Probabilistic 3D Correspondence Prediction from Sparse Unsegmented Images"
-authors: "Krithika Iyer, Shireen Elhabian. "
+authors: "Krithika Iyer, Shireen Elhabian"
 conference: "Machine Learning in Medical Imaging Workshop (MLMI) at MICCAI"
 year: "2024"
 links:

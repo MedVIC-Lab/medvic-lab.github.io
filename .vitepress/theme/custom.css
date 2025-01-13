@@ -1,0 +1,41 @@
+:root {
+  --darkblue: #272260;
+  --lightblue: #4E7FE3;
+  --orange: #C16D27;
+}
+
+:root {
+  --vp-c-brand-1: var(--darkblue);
+  --vp-c-brand-2: var(--lightblue);
+  --vp-c-brand-3: var(--orange);
+
+  --vp-c-text-1: var(--darkblue);
+}
+
+/********** Custom styles **********/
+
+/* NOTE:
+    - You can add your own custom styles here.
+    - It is recommended to use this file to override the default styles.
+
+    - **Often, !important is required to override the default styles.
+*/
+
+/* Container widths */
+@media (min-width: 1440px) {
+  .VPDoc:not(.has-sidebar) .content {
+    max-width: 1200px !important;
+  }
+  .VPDoc:not(.has-sidebar) .container {
+    max-width: 1200px !important;
+  }
+}
+
+/* Team page */
+.VPTeamPage {
+  margin: 0 !important;
+}
+
+vpi-social-website {
+  display: none !important;
+}

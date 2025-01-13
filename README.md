@@ -134,10 +134,21 @@ To add a publication to the MedVIC Lab website, follow these steps:
 3. **Add content to your Markdown file:** (WORK IN PROGRESS)
    - Below the frontmatter, add any additional information about the publication.
 
+    For example:
      ```markdown
-     ## Publication Information
+     # Paper title
 
-     Abstract or additional information about the publication.
+     ## Abstract
+
+     Blah Blah this is the abstract.
+
+     ## Citation
+
+     Instructions/code block for citation
+
+     ## Acknowledgements
+
+     This work is funded by blah blah organization
      ```
 
 4. **Commit and push your changes:**

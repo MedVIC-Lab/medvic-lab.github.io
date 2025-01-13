@@ -15,6 +15,14 @@
           <li v-if="frontmatter.links.publisher"><a :href="frontmatter.links.publisher" target="_blank"><v-icon size="16" icon="mdi-earth"/>Link to Publisher</a></li>
         </ul>
       </div>
+      <div class="author-list">
+        <h2>Authors</h2>
+        <ul>
+          <li v-if="frontmatter.authors" v-for="author in frontmatter.authors.split(',')" :key="author">
+            <span>{{ author.trim() }}</span>
+          </li>
+        </ul>
+      </div>
     </aside>
   </div>
 </template>
@@ -23,6 +31,11 @@
 import { Content, useData } from 'vitepress';
 
 const { frontmatter } = useData();
+
+function getAuthorsList() {
+  console.log(frontmatter.authors)
+  return frontmatter.authors
+}
 </script>
 
 <style>
@@ -69,4 +82,12 @@ const { frontmatter } = useData();
   margin-bottom: 10px;
 }
 
+.author-list {
+  margin-top: 20px;
+}
+
+.author-list ul {
+  list-style-type: none;
+  padding: 0;
+}
 </style>

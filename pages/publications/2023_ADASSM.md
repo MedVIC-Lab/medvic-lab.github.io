@@ -1,7 +1,7 @@
 ---
 layout: publication
 title: "ADASSM: Adversarial Data Augmentation in Statistical Shape Models From Images"
-authors: "Mokshagna Sai Teja Karanam, Tushar Kataria, , Krithika Iyer, Shireen Elhabian. "
+authors: "Mokshagna Sai Teja Karanam, Tushar Kataria, , Krithika Iyer, Shireen Elhabian"
 conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2023"
 links: 

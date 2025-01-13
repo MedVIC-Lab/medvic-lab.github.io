@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Unsupervised Domain Adaptation for Semantic Segmentation Under Target Data Scarcity"
 authors: "Tushar Kataria, Beatrice S Knudsen, Shireen Y Elhabian"
 conference: "2024 IEEE International Symposium on Biomedical Imaging (ISBI)"
 year: "2024"
-link: "https://ieeexplore.ieee.org/abstract/document/10635646"
+links:
+  publisher: "https://ieeexplore.ieee.org/abstract/document/10635646"
 image:
   src: "2024_UDA_Density_Matching.png"
   alt: UDA Density Matching

@@ -1,9 +1,12 @@
 ---
+layout: publication
 title: "Point2SSM: Learning Morphological Variations of Anatomies from Point Cloud"
 authors: "Jadie Adams, Shireen Elhabian"
 conference: "ICLR"
 year: "2024"
-link: "https://arxiv.org/abs/2305.14486"
+links: 
+  code: "https://github.com/MedVIC-Lab/Point2SSM"
+  archive: "https://arxiv.org/abs/2305.14486"
 image:
   src: "2024_point2ssm.png"
   alt: Results Highlight

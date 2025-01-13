@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Benchmarking Scalable Epistemic Uncertainty Quantification in Organ Segmentation"
 authors: "Jadie Adams, Shireen Elhabian"
 conference: "Unsure Workshop at MICCAI"
 year: "2023"
-link: "https://arxiv.org/abs/2308.07506"
+links: 
+  archive: "https://arxiv.org/abs/2308.07506"
 image:
   src: "2023_benchmarking_segmentation.png"
   alt: Results Highlight

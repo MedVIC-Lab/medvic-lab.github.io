@@ -111,18 +111,25 @@ To add a publication to the MedVIC Lab website, follow these steps:
 
      ```markdown
      ---
+     layout: publication
      title: "Publication Title"
      authors: "Author1, Author2"
      conference: "Conference Name"
      year: "Year"
-     link: "https://example.com/publication-link" # Optional: Replace with the URL to the publication
+     links:
+      archive: "example.com" (optional)
+      code: "example.com" (optional)
+      publisher: "example.com" (optional)
+      pdf: "example.com" (optional)
+      video: "example.com" (optional)
      image:
        src: "example.png"
        alt: "Example Alt Text"
      ---
      ```
 
-     Note: images should be added to `/public/assets/images/publications/`. These should be *graphical abstracts* and should not contain captions.
+     Note: images should be added to `/public/assets/images/publications/`.
+     Additional note: Images should be *graphical abstracts* and should not contain captions.
 
 3. **Add content to your Markdown file:** (WORK IN PROGRESS)
    - Below the frontmatter, add any additional information about the publication.

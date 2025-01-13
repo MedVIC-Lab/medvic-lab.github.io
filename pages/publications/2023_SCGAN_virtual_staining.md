@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Structural cycle gan for virtual immunohistochemistry staining of gland markers in the colon"
 authors: "Shikha Dubey,Tushar Kataria, Beatrice S Knudsen, Shireen Y. Elhabian"
 conference: "International Workshop on Machine Learning in Medical Imaging"
 year: "2023"
-link: "https://link.springer.com/chapter/10.1007/978-3-031-45676-3_45"
+links: 
+  publisher: "https://link.springer.com/chapter/10.1007/978-3-031-45676-3_45"
 image:
   src: "2023_SCGAN_virtual_staining.png"
   alt: Structural CycleGAN

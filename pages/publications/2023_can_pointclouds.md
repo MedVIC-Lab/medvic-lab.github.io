@@ -1,9 +1,12 @@
 ---
+layout: publication
 title: "Can point cloud networks learn statistical shape models of anatomies?"
 authors: "Jadie Adams, Shireen Elhabian"
 conference: "MICCAI"
 year: "2023"
-link: "https://arxiv.org/abs/2305.05610"
+links: 
+  code: "https://github.com/MedVIC-Lab/PointCompletionSSM"
+  archive: "https://arxiv.org/abs/2305.05610"
 image:
   src: "2023_can_pointclouds.png"
   alt: Results Highlight

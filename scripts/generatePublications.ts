@@ -10,7 +10,7 @@ type Publication = {
   year: string;
   image: string;
   link: string; // local file link
-  links?: {
+  links: {
     code?: string;
     publisher?: string;
     video?: string;
@@ -32,8 +32,6 @@ const generatePublicationsPlugin = (): Plugin => {
         const filePath = path.join(publicationsDir, file);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const data = fm(fileContent);
-
-        data.attributes['links'] = data.attributes['links'] || {};
 
         publications.push({
           title: data.attributes.title || '',

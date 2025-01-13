@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Estimation and Analysis of Slice Propagation Uncertainty in 3D Anatomy Segmentation"
 authors: "Rachaell Nihalaani, Tushar Kataria, Jadie Adams, Shireen Y Elhabian"
 conference: "International Conference on Medical Image Computing and Computer-Assisted Intervention"
 year: "2024"
-link: "https://link.springer.com/chapter/10.1007/978-3-031-72117-5_26"
+links:
+  publisher: "https://link.springer.com/chapter/10.1007/978-3-031-72117-5_26"
 ---
 
 # Uncertainty Quantification for Slice Propagation Models

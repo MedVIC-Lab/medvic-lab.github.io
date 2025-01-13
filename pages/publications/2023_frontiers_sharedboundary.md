@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Statistical Shape Modeling of Multi-Organ Anatomies with Shared Boundaries: A Data-Driven Approach"
 authors: "Krithika Iyer, Alan Morris, Brian Zenger, Karthik Karnath, Nawazish Khan, Benjamin A. Orkild, Oleksandre Korshak, Shireen Elhabian"
 conference: "Frontiers in Bioengineering and Biotechnology"
 year: "2023"
-link: "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2022.1078800/full"
+links:
+  publisher: "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2022.1078800/full"
 image:
   src: "2023_frontiers_shared.jpg"
   alt: Results Highlight

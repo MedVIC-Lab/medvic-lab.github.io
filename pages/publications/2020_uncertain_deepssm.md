@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Uncertain-DeepSSM: From Images to Probabilistic Shape Models"
 authors: "Jadie Adams, Riddhish Bhalodia, Shireen Elhabian. "
 conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2020"
-link: "https://arxiv.org/abs/2007.06516"
+links:
+  archive: "https://arxiv.org/abs/2007.06516"
 image:
   src: "2020_uncertain_deepssm.png"
   alt: Results Highlight

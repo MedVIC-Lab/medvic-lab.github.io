@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Learning Spatiotemporal Statistical Shape Models for Non-Linear Dynamic Anatomies"
 authors: "Jadie Adams, Nawazish Khan, Alan Morris, Shireen Elhabian"
 conference: "Frontiers in Bioengineering and Biotechnology"
 year: "2023"
-link: "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2023.1086234/full"
+links: 
+  publisher: "https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2023.1086234/full"
 image:
   src: "2023_frontiers_spatiotemporal_ssm.jpg"
   alt: Results Highlight

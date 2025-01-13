@@ -1,9 +1,11 @@
 ---
+layout: publication
 title: "Weakly Supervised Bayesian Shape Modeling from Medical Images"
 authors: "Jadie Adams, Krithika Iyer, Shireen Elhabian. "
 conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2024"
-link: "https://arxiv.org/abs/2405.09697"
+links:
+  archive: "https://arxiv.org/abs/2405.09697"
 image:
   src: "2024_weaklydeepssm.png"
   alt: Results Highlight

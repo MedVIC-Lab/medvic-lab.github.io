@@ -1,9 +1,12 @@
 ---
+layout: publication
 title: "From Images to Probabilistic Anatomical Shapes: A Deep Variational Bottleneck Approach"
 authors: "Jadie Adams, Shireen Elhabian"
 conference: "MICCAI"
 year: "2022"
-link: "https://arxiv.org/abs/2205.06862"
+links: 
+  code: "https://github.com/MedVIC-Lab/VIB-DeepSSM"
+  archive: "https://arxiv.org/abs/2205.06862"
 image:
   src: "2022_vib_deepssm.png"
   alt: Results Highlight

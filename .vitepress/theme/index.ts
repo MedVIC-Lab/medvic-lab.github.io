@@ -1,10 +1,10 @@
 import DefaultTheme from 'vitepress/theme'
-import './custom.css'
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { createVuetify } from 'vuetify'
+import './custom.css'
 
 const vuetify = createVuetify({ components, directives })
 

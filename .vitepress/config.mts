@@ -9,6 +9,14 @@ export default defineConfig({
   description: "MedVIC Lab's Website",
   appearance: false,  // disable dark mode
   themeConfig: {
+    logo: "/logo.png",
+    lastUpdated: {
+      text: 'Updated at',
+      formatOptions: {
+        dateStyle: 'short',
+        timeStyle: 'short'
+      }
+    },
     nav: [
       { text: 'Home', link: '/' },
       { text: 'About', link: '/pages/about' },

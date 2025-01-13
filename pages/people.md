@@ -64,7 +64,7 @@ onMounted(async () => {
   </VPTeamPageSection>
 
   <VPTeamPageSection v-if="members.phdStudents.length">
-    <template #title>PhD Students</template>
+    <template #title>PhD Candidates/Students</template>
     <template #members>
       <VPTeamMembers :members="members.phdStudents" size="small" />
     </template>

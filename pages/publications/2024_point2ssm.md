@@ -10,6 +10,7 @@ links:
 image:
   src: "2024_point2ssm.png"
   alt: Results Highlight
+tags: ['Deep Learning', 'SSM']
 ---
 
 # Point2SSM: Learning Morphological Variations of Anatomies from Point Cloud

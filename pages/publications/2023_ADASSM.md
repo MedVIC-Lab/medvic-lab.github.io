@@ -9,6 +9,7 @@ links:
 image:
   src: "2023_ADASSM.png"
   alt: Results Highlight
+tags: ["SSM"]
 ---
 
 # ADASSM: Adversarial Data Augmentation in Statistical Shape Models From Images

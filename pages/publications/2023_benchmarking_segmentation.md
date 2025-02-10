@@ -9,6 +9,7 @@ links:
 image:
   src: "2023_benchmarking_segmentation.png"
   alt: Results Highlight
+tags: ['Segmentation']
 ---
 
 # Benchmarking Scalable Epistemic Uncertainty Quantification in Organ Segmentation

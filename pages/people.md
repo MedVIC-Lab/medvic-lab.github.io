@@ -14,6 +14,7 @@ const members = ref({
   researchers: [],
   phdStudents: [],
   msStudents: [],
+  undergradStudents: [],
   staff: [],
   alumni: []
 })
@@ -72,6 +73,13 @@ onMounted(async () => {
 
   <VPTeamPageSection v-if="members.msStudents.length">
     <template #title>MS Students</template>
+    <template #members>
+      <VPTeamMembers :members="members.msStudents" size="small" />
+    </template>
+  </VPTeamPageSection>
+
+  <VPTeamPageSection v-if="members.undergradStudents.length">
+      <template #title>Undergrad Students</template>
     <template #members>
       <VPTeamMembers :members="members.msStudents" size="small" />
     </template>

@@ -6,6 +6,7 @@ conference: "International Conference on Medical Image Computing and Computer-As
 year: "2024"
 links:
   publisher: "https://link.springer.com/chapter/10.1007/978-3-031-72117-5_26"
+tags: ['Segmentation', 'Image Processing']
 ---
 
 # Uncertainty Quantification for Slice Propagation Models

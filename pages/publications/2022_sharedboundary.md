@@ -9,6 +9,7 @@ links:
 image:
   src: "2022_stacom_shared.jpg"
   alt: Results Highlight
+tags: ["SSM", "Anatomy"]
 ---
 
 # Statistical Shape Modeling of Biventricular Anatomy with Shared Boundaries

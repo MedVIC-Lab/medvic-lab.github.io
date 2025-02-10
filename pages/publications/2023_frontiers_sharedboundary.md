@@ -9,6 +9,7 @@ links:
 image:
   src: "2023_frontiers_shared.jpg"
   alt: Results Highlight
+tags: ['SSM', 'Anatomy']
 ---
 
 # Statistical Shape Modeling of Multi-Organ Anatomies with Shared Boundaries: A Data-Driven Approach

@@ -10,6 +10,7 @@ links:
 image:
   src: "2022_vib_deepssm.png"
   alt: Results Highlight
+tags: ["DeepSSM", "SSM"]
 ---
 
 # From Images to Probabilistic Anatomical Shapes: A Deep Variational Bottleneck Approach

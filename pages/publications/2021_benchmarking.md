@@ -9,6 +9,7 @@ links:
 image:
   src: "2021_benchmarking.jpg"
   alt: Benchmarking FrameWork
+tags: ["SSM"]
 ---
 
 # Benchmarking Off-the-shelf Statistical Shape Modeling Tools in Clinical Applications

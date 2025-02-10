@@ -9,6 +9,7 @@ links:
 image:
   src: "2024_UDA_Density_Matching.png"
   alt: UDA Density Matching
+tags: ['Deep Learning', 'Segmentation']
 ---
 
 # Method for Unsupervised Domain Adaptation using Target Density Matching

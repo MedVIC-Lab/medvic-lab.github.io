@@ -10,6 +10,7 @@ links:
 image:
   src: "2023_mesh2ssm.png"
   alt: Mesh2SSM Model
+tags: ['Deep Learning', 'SSM']
 ---
 
 # Mesh2SSM: From Surface Meshes to Statistical Shape Models of Anatomy

@@ -9,6 +9,7 @@ links:
 image:
   src: "2024_spicorrnet.jpg"
   alt: Results Highlight
+tags: ['SSM', 'Deep Learning']
 ---
 
 # Probabilistic 3D Correspondence Prediction from Sparse Unsegmented Images

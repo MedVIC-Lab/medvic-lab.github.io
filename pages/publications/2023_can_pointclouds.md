@@ -10,6 +10,7 @@ links:
 image:
   src: "2023_can_pointclouds.png"
   alt: Results Highlight
+tags: ['SSM', 'Anatomy']
 ---
 
 # Can point cloud networks learn statistical shape models of anatomies?

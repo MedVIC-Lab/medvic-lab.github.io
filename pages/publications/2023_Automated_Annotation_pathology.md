@@ -9,6 +9,7 @@ links:
 image:
   src: "2023_Automated_Annotation_pathology.png"
   alt: Automated Annotation
+tags: ['Deep Learning', 'Image Processing']
 ---
 
 # End to End processing Pipeline for Automated Annotation using Immunohistochemistry.

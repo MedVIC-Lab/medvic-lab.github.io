@@ -9,6 +9,7 @@ links:
 image:
   src: "2023_SCGAN_virtual_staining.png"
   alt: Structural CycleGAN
+tags: ['Deep Learning']
 ---
 
 # Propose a new architecture for Virtual Staining regularizing the learning via structural consistency.

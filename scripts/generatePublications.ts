@@ -17,6 +17,7 @@ type Publication = {
     pdf?: string;
     archive?: string;
   };
+  tags?: string[];
 };
 
 const generatePublicationsPlugin = (): Plugin => {
@@ -33,6 +34,11 @@ const generatePublicationsPlugin = (): Plugin => {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const data = fm(fileContent);
 
+        function convertArrToLower(arr: string[]) {
+          if (!arr) return [];
+          return arr.map((item) => item.toLowerCase());
+        }
+
         publications.push({
           title: data.attributes.title || '',
           authors: data.attributes.authors || '',
@@ -46,7 +52,8 @@ const generatePublicationsPlugin = (): Plugin => {
             pdf: data.attributes.links.pdf || '',
             archive: data.attributes.links.archive || ''
           },
-          image: data.attributes.image || ''
+          image: data.attributes.image || '',
+          tags: convertArrToLower(data.attributes.tags) || ''
         });
       });
 

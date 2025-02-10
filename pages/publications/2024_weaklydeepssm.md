@@ -9,6 +9,7 @@ links:
 image:
   src: "2024_weaklydeepssm.png"
   alt: Results Highlight
+tags: ['SSM', 'Deep Learning']
 ---
 
 # Weakly Supervised Bayesian Shape Modeling from Medical Images

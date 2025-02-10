@@ -9,6 +9,7 @@ links:
 image:
   src: "2022_spatiotemporal_ssm.png"
   alt: Results Highlight
+tags: ["SSM", "Anatomy", "Cardiac"]
 ---
 
 # Spatiotemporal Cardiac Statistical Shape Modeling: A Data-Driven Approach

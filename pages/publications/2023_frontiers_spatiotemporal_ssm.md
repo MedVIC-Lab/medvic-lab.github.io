@@ -9,6 +9,7 @@ links:
 image:
   src: "2023_frontiers_spatiotemporal_ssm.jpg"
   alt: Results Highlight
+tags: ['SSM']
 ---
 
 # Learning Spatiotemporal Statistical Shape Models for Non-Linear Dynamic Anatomies

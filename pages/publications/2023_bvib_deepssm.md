@@ -10,6 +10,7 @@ links:
 image:
   src: "2023_bvib_deepssm.png"
   alt: Results Highlight
+tags: ['DeepSSM', 'SSM']
 ---
 
 # Fully Bayesian VIB DeepSSM

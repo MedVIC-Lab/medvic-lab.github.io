@@ -10,6 +10,7 @@ links:
 image:
   src: "2024_scorp.jpg"
   alt: Results Highlight
+tags: ['Image Processing', 'Deep Learning']
 ---
 
 # SCorP: Statistics-Informed Dense Correspondence Prediction Directly from Unsegmented Medical Images

@@ -10,6 +10,7 @@ links:
 image:
   src: "2023_benchmarking_pathology_pretraining.png"
   alt: Benchmarking Semantic Segmentation
+tags: ['Image Processing', 'Segmentation']
 ---
 
 # Benchmarking Whether Domain Specific pretraining helps in better gland and cell segmentation in histopathology

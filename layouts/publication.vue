@@ -33,7 +33,6 @@ import { Content, useData } from 'vitepress';
 const { frontmatter } = useData();
 
 function getAuthorsList() {
-  console.log(frontmatter.authors)
   return frontmatter.authors
 }
 </script>

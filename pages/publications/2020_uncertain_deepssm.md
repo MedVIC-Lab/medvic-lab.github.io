@@ -4,6 +4,7 @@ title: "Uncertain-DeepSSM: From Images to Probabilistic Shape Models"
 authors: "Jadie Adams, Riddhish Bhalodia, Shireen Elhabian"
 conference: "Shape in Medical Imaging (ShapeMI) at MICCAI"
 year: "2020"
+tags: ["Deep Learning", "DeepSSM", "SSM"]
 links:
   archive: "https://arxiv.org/abs/2007.06516"
 image:

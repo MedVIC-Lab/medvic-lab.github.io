@@ -10,6 +10,7 @@ links:
 image:
   src: "2025_EfficientMorph.png"
   alt: Efficient Architectures
+tags: ['Image Processing', 'Image Registration']
 ---
 
 # A parameter efficient model for transformer based 3D registation 

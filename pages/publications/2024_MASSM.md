@@ -9,6 +9,7 @@ links:
 image:
   src: "2024_MASSM.png"
   alt: Automated Annotation
+tags: ['Deep learning', 'SSM']
 ---
 
 # A method for multi-anatomy SSM directly from Images.

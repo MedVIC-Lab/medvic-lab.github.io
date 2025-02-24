@@ -9,7 +9,7 @@ export default defineConfig({
   description: "MedVIC Lab's Website",
   appearance: false,  // disable dark mode
   themeConfig: {
-    logo: "/logo.png",
+    logo: "assets/images/medvic.svg",
     lastUpdated: {
       text: 'Updated at',
       formatOptions: {

@@ -129,11 +129,6 @@ onMounted(async () => {
   border-radius: 10px;
 }
 
-.publication:hover {
-  background-color:rgb(245, 245, 245);
-  color: #000!important;
-}
-
 .publication img {
   max-width: 150px;
   height: auto; /* Maintain aspect ratio */

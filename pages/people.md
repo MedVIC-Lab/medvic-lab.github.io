@@ -7,7 +7,8 @@ pageDescription: "This is our team!"
 
 <script setup>
   // TODO: consider replacing the team member elements with custom components
-import { VPTeamMembers, VPTeamPage, VPTeamPageTitle, VPTeamPageSection } from 'vitepress/theme'
+import { VPTeamPage, VPTeamPageTitle, VPTeamPageSection } from 'vitepress/theme'
+import VPTeamMembersWrapper from './VPTeamMembersWrapper.vue'
 import { ref, onMounted } from 'vue'
 
 const members = ref({
@@ -18,6 +19,10 @@ const members = ref({
   staff: [],
   alumni: []
 })
+
+function handleMemberClick() {
+  console.log("TEST")
+}
 
 onMounted(async () => {
   const response = await fetch('/assets/members.json')
@@ -60,42 +65,42 @@ onMounted(async () => {
   <VPTeamPageSection v-if="members.researchers.length">
     <template #title>Researchers</template>
     <template #members>
-      <VPTeamMembers :members="members.researchers" size="small" />
+      <VPTeamMembersWrapper :members="members.researchers"  @member-clicked="handleMemberClick"/>
     </template>
   </VPTeamPageSection>
 
   <VPTeamPageSection v-if="members.phdStudents.length">
     <template #title>PhD Candidates/Students</template>
     <template #members>
-      <VPTeamMembers :members="members.phdStudents" size="small" />
+      <VPTeamMembersWrapper :members="members.phdStudents" size="small" @member-clicked="handleMemberClick"/>
     </template>
   </VPTeamPageSection>
 
   <VPTeamPageSection v-if="members.msStudents.length">
     <template #title>MS Students</template>
     <template #members>
-      <VPTeamMembers :members="members.msStudents" size="small" />
+      <VPTeamMembersWrapper :members="members.msStudents" size="small" @member-clicked="handleMemberClick" />
     </template>
   </VPTeamPageSection>
 
   <VPTeamPageSection v-if="members.undergradStudents.length">
       <template #title>Undergrad Students</template>
     <template #members>
-      <VPTeamMembers :members="members.msStudents" size="small" />
+      <VPTeamMembersWrapper :members="members.msStudents" size="small" @member-clicked="handleMemberClick" />
     </template>
   </VPTeamPageSection>
 
   <VPTeamPageSection v-if="members.staff.length">
     <template #title>Staff</template>
     <template #members>
-      <VPTeamMembers :members="members.staff" size="small" />
+      <VPTeamMembersWrapper :members="members.staff" size="small" @member-clicked="handleMemberClick" />
     </template>
   </VPTeamPageSection>
 
   <VPTeamPageSection v-if="members.alumni.length">
     <template #title>Alumni</template>
     <template #members>
-      <VPTeamMembers :members="members.alumni" size="small" />
+      <VPTeamMembersWrapper :members="members.alumni" size="small" @member-clicked="handleMemberClick" />
     </template>
   </VPTeamPageSection>
 </VPTeamPage>

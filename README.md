@@ -47,7 +47,8 @@ To add yourself to the MedVIC Lab website, follow these steps:
 
 1. **Create a Markdown file:**
    - Navigate to the `pages/people` directory.
-   - Create a new Markdown file named after yourself, e.g., `john-doe.md`.
+   - Create a new Markdown file named after yourself, e.g., `doe_john.md`.
+     - Ensure that this is in the format: `lastname_firstname`.
 
 2. **Add frontmatter to your Markdown file:**
    - Include the following frontmatter at the top of your file:
@@ -59,7 +60,7 @@ To add yourself to the MedVIC Lab website, follow these steps:
      role: "PhD Student", "MS Student", "Staff", "Researcher", "Alumni"
      title: "Your Title"
      bio: "A brief bio about yourself."
-     avatar: "your-avatar.png" # Replace with the URL to your avatar image
+     avatar: "lastname_firstname.png" # Replace with the URL to your avatar image
      links:
        - icon: "github"
          link: "https://github.com/yourusername" # Replace with your GitHub profile link
@@ -72,6 +73,8 @@ To add yourself to the MedVIC Lab website, follow these steps:
 
      Note: images should be added to `/public/assets/images/people/`
      Additional note: the image should be a SQUARE aspect ratio, or else it may appear warped.
+
+     Please use the format lastname_firstname.md when creating your markdown file.
 
 3. **Add content to your Markdown file:** (WORK IN PROGRESS)
    - Below the frontmatter, add any additional information about yourself, such as your research interests, publications, and projects.
@@ -167,7 +170,7 @@ To add a publication to the MedVIC Lab website, follow these steps:
      yarn preview
      ```
 
-### Add Projects
+### Add Projects (WORK IN PROGRESS)
 
 To add a project to the MedVIC Lab website, follow these steps:
 

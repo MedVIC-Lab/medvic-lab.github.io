@@ -19,7 +19,8 @@
         <h2>Authors</h2>
         <ul>
           <li v-if="frontmatter.authors" v-for="author in frontmatter.authors.split(',')" :key="author">
-            <span>{{ author.trim() }}</span>
+            <span v-if="!inMembers(author)">{{ author.trim() }}</span>
+            <a v-else :href="getMemberByName(author).link">{{ author.trim().replaceAll('*', '') }}</a>
           </li>
         </ul>
       </div>
@@ -29,11 +30,24 @@
 
 <script setup>
 import { Content, useData } from 'vitepress';
+import { getMembers, isAuthorInMembers, getMemberByName } from '../scripts/utils';
+import { onMounted } from 'vue';
 
 const { frontmatter } = useData();
 
-function getAuthorsList() {
-  return frontmatter.authors
+onMounted(async () => {
+  getMembers();
+});
+
+/**
+ * Checks if the given author is in the members list.
+ *
+ * @param {string} author - The name of the author, possibly containing extra characters like asterisks.
+ * @returns {boolean} - Returns true if the author is in the members list, false otherwise.
+ */
+function inMembers(author) {
+  const authorName = author.trim().replaceAll("*", "");
+  return isAuthorInMembers(authorName);
 }
 </script>
 

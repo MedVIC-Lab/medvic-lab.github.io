@@ -18,3 +18,15 @@ Recent advances in imaging data acquisition and the momentum in modern machine i
  My research is at the intersection of image analysis and statistical machine learning, with an emphasis on probabilistic modeling and deep learning and a focus on clinical and biomedical applications of image-based computational methods.
 
 As well, I am fascinated with the implications of advances in these fields for society and industry. Meanwhile, I enjoy collaborating with scientists and domain experts of different disciplines and backgrounds to conduct interdisciplinary research projects.
+
+
+<script setup>
+
+import { onMounted } from 'vue';
+import { loadPeopleJSON } from './scripts/utils.ts';
+
+onMounted(() => {
+  loadPeopleJSON();
+});
+
+</script>

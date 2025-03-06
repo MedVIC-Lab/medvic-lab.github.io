@@ -4,7 +4,7 @@ name: "Jake Wagoner"
 role: "Staff"
 title: "Software Developer/MS Student"
 org: "University of Utah, SCI Institute"
-avatar: "wagoner.jpg"
+avatar: "wagoner_jake.jpg"
 links:
   - icon: "github"
     link: "https://github.com/JakeWags"

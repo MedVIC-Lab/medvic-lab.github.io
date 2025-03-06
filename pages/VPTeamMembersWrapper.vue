@@ -1,133 +1,49 @@
 <template>
-  <div class="members-grid">
-    <div v-for="member in members" :key="member.id" class="item" @click="handleClick(member)">
-      <article class="VPTeamMembersItem small">
-        <div class="profile">
-          <figure class="avatar">
-            <img class="avatar-img" :src="member.avatar" :alt="member.name" />
-          </figure>
-          <div class="data">
-            <h1 class="name">{{ member.name }}</h1>
-            <p class="affiliation">
-              <span class="title">{{ member.title }}</span>
-            </p>
-            <div class="links">
-              <div class="VPSocialLinks">
-                <a v-for="link in member.links" :key="link.href" class="VPSocialLink no-icon" :href="link.href" :aria-label="link.label" target="_blank" rel="noopener">
-                  <span :class="getSocialLinkClass(link.icon)"></span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
+  <v-container>
+    <v-row class="justify-center">
+      <v-col
+        v-for="member in members"
+        :key="member.id"
+        cols="12"
+        sm="6"
+        md="4"
+        lg="3"
+      >
+        <v-card class="mx-auto" max-width="344" outlined :href="member.link">
+          <v-img :src="member.avatar" :alt="member.name" class="white--text align-end">
+          </v-img>
+          <v-card-title>{{ member.name }}</v-card-title>
+          <v-card-subtitle>{{ member.title }}</v-card-subtitle>
+          <v-card-actions>
+            <v-btn v-for="link in member.links" :key="link.link" :href="link.link" target="_blank" rel="noopener" icon @click.stop>
+              <v-icon><span :class="getSocialLinkClass(link.icon)"></span></v-icon>
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import { VPTeamMembers } from 'vitepress/theme'
-
 export default {
-  components: {
-    VPTeamMembers
-  },
   props: {
     members: Array,
     size: String
   },
   methods: {
-    handleClick(member) {
-      console.log('Member clicked:', member)
-      this.$emit('member-clicked', member)
-    },
     getSocialLinkClass(icon) {
       if (typeof icon === 'object' && icon !== null) {
-        console.log('website')
         return 'vpi-social-website'
       }
       return `vpi-social-${icon}`
     }
   },
-  mounted() {
-    console.log(this.members)
-    this.$nextTick(() => {
-      const memberElements = this.$el.querySelectorAll('.vp-team-member')
-      memberElements.forEach((el, index) => {
-        el.addEventListener('click', () => this.handleClick(this.members[index]))
-      })
-    })
-  }
 }
 </script>
 
 <style scoped>
-.members-grid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-.item {
-  margin-bottom: 20px;
-}
-
-.profile {
-  display: flex;
-  flex-direction: row;
-  background: #f5f5f5;
-  border-radius: 20px;
-  padding: 20px;
-}
-
-.profile:hover {
-  background: #f1f1f1;
-  cursor: pointer;
-}
-
-.avatar {
-  margin-right: 20px;
-}
-
-.avatar-img {
-  max-width: 80px;
-  border-radius: 50px;
-  height: auto;
-  object-fit: contain;
-}
-
-.data {
-  flex: 1;
-}
-
-.name {
-  font-size: 1.5em;
-  margin: 0;
-}
-
-.affiliation {
-  margin: 0;
-}
-
-.links {
-  margin-top: 10px;
-}
-
-.VPSocialLinks {
-  display: flex;
-  gap: 10px;
-}
-
-.VPSocialLink span {
-  display: inline-block;
-  text-decoration: none;
-  height: 16px;
-  width: 16px;
-}
-
+/* ICONS */
 .vpi-social-github::before {
   content: "\f09b"; /* FontAwesome GitHub icon */
 }
@@ -153,5 +69,48 @@ export default {
   mask-repeat: no-repeat;
   -webkit-mask-size: 100% 100%;
   mask-size: 100% 100%;
+}
+
+/* Customized vuetify styles */
+.v-card {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  padding-top: 15px;
+  border-radius: 40px;
+}
+
+.v-card:hover {
+  background-color: #f1f1f1;
+}
+
+.v-img {
+  margin: 0 auto;
+  border-radius: 100%;
+  height: 80px;
+  width: 80px;
+}
+
+.v-card-title {
+  font-size: 1.2em;
+}
+
+.v-card-subtitle {
+  font-size: 1em;
+  color: #757575;
+}
+
+.v-card-actions {
+  justify-content: center;
+}
+
+.v-btn {
+  margin: 0 5px;
+}
+
+@media (min-width: 1280px) {
+  .v-col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 15%;
+  }
 }
 </style>

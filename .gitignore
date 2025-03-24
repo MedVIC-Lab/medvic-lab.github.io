@@ -84,3 +84,6 @@ static
 
 # OS generated files
 .DS_Store
+
+# remove cache files
+.vitepress/*cache*

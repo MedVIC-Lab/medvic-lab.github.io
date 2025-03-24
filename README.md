@@ -128,6 +128,7 @@ To add a publication to the MedVIC Lab website, follow these steps:
      image:
        src: "example.png"
        alt: "Example Alt Text"
+      tags: ['Tag1', 'Tag2']
      ---
      ```
 

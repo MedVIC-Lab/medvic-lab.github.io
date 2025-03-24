@@ -14,7 +14,7 @@ links:
     link: "https://tushaarkataria.github.io" # Replace with your personal website link
 ---
 
-# About Krithika Iyer
+# About Tushar Kataria
 
 I am Tushar Kataria, a PhD candidate at University of Utah, Utah in School of Computing. I am in Scientific Computing and Imaging Institute advised by Prof. Shireen Elhabian.
 

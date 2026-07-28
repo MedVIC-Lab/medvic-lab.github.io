@@ -6,7 +6,7 @@ year: "2024"
 venue: "MICCAI Workshop on Machine Learning in Medical Imaging (MLMI"
 tags: ["modeling-patient-state", "probabilistic", "segmentation", "workshop"]
 image:
-  src: ""
+  src: "2024_spicorrnet.jpg"
   alt: "Probabilistic 3D Correspondence Prediction from Sparse Unsegmented Images"
 links:
   arxiv: "https://arxiv.org/abs/2407.01931"

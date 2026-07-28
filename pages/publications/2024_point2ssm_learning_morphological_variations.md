@@ -7,7 +7,7 @@ venue: "International Conference on Learning Representations (ICLR)"
 tags: ["conference", "featured", "modeling-patient-state", "shape-modeling"]
 featured: true
 image:
-  src: ""
+  src: "2024_point2ssm.png"
   alt: "Point2SSM: Learning Morphological Variations of Anatomies from Point Cloud"
 links:
   arxiv: "https://arxiv.org/abs/2305.14486"

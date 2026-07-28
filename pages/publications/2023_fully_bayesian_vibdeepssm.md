@@ -7,7 +7,7 @@ venue: "Medical Image Computing and Computer-Assisted Intervention ("
 tags: ["conference", "featured", "modeling-patient-state", "probabilistic"]
 featured: true
 image:
-  src: ""
+  src: "2023_bvib_deepssm.png"
   alt: "Fully Bayesian VIB-DeepSSM"
 links:
   arxiv: "https://arxiv.org/abs/2305.05797"

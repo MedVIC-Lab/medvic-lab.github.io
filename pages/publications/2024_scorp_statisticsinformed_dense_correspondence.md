@@ -6,7 +6,7 @@ year: "2024"
 venue: "UK Conference on Medical Image Understanding and Analysis (M"
 tags: ["conference", "modeling-patient-state", "segmentation"]
 image:
-  src: ""
+  src: "2024_scorp.jpg"
   alt: "SCorP: Statistics-Informed Dense Correspondence Prediction Directly from Unsegmented Medical Images"
 links:
   arxiv: "https://arxiv.org/abs/2404.17967"

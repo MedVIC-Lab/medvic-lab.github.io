@@ -7,7 +7,7 @@ venue: "Medical Image Analysis"
 tags: ["featured", "journal", "modeling-patient-state", "shape-modeling"]
 featured: true
 image:
-  src: ""
+  src: "2021_benchmarking.jpg"
   alt: "Benchmarking Off-the-Shelf Statistical Shape Modeling Tools in Clinical Applications"
 links:
   doi: "https://doi.org/10.1016/j.media.2021.102271"

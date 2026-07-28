@@ -6,7 +6,7 @@ year: "2024"
 venue: "MICCAI Workshop on Shape in Medical Imaging (ShapeMI)"
 tags: ["deep-learning", "modeling-patient-state", "shape-modeling", "workshop"]
 image:
-  src: ""
+  src: "2024_MASSM.png"
   alt: "MASSM: An End-to-End Deep Learning Framework for Multi-Anatomy Statistical Shape Modeling Directly From Images"
 links:
   arxiv: "https://arxiv.org/abs/2403.11008"

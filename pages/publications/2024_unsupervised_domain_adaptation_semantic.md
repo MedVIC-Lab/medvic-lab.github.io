@@ -6,7 +6,7 @@ year: "2024"
 venue: "IEEE International Symposium on Biomedical Imaging (ISBI)"
 tags: ["conference", "domain-adaptation", "learning-under-constraints", "segmentation"]
 image:
-  src: ""
+  src: "2024_UDA_Density_Matching.png"
   alt: "Unsupervised Domain Adaptation for Semantic Segmentation Under Target Data Scarcity"
 
 bibtex_key: "Kataria2024_DomainAdaptation"

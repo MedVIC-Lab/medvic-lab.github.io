@@ -6,7 +6,7 @@ year: "2025"
 venue: "IEEE/CVF Winter Conference on Applications of Computer Visio"
 tags: ["conference", "deep-learning", "registration"]
 image:
-  src: ""
+  src: "2025_EfficientMorph.png"
   alt: "EfficientMorph: Parameter-Efficient Transformer-based Architecture for 3D Image Registration"
 links:
   arxiv: "https://arxiv.org/abs/2403.11026"

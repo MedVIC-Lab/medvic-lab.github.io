@@ -6,7 +6,7 @@ year: "2022"
 venue: "Machine Learning"
 tags: ["journal"]
 image:
-  src: ""
+  src: "2022_gens_generative_encoding_networks.png"
   alt: "GENs: Generative Encoding Networks"
 links:
   doi: "https://doi.org/10.1007/s10994-022-06264-y"

@@ -6,7 +6,7 @@ year: "2012"
 venue: "IEEE CVPR Workshop on Biomedical Image Analysis"
 tags: ["computational-pathology", "segmentation", "workshop"]
 image:
-  src: ""
+  src: "2012_fully_automated_3d_colon.png"
   alt: "Fully Automated 3D Colon Segmentation for Early Detection of Colorectal Cancer Based on Convex Formulation of the Active Contour Model"
 
 bibtex_key: "Ismail2012_ColonCVPRWorkshop"

@@ -6,7 +6,7 @@ year: "2007"
 venue: "IEEE International Symposium on Signal Processing and Inform"
 tags: ["deep-learning", "journal"]
 image:
-  src: ""
+  src: "2007_experiments_sensitivity_template_matching.png"
   alt: "Experiments on Sensitivity of Template Matching for Lung Nodule Detection in Low Dose CT Scans"
 
 bibtex_key: "Elhabian2007_LungNoduleISSPIT"

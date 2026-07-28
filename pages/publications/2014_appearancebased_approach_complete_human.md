@@ -6,7 +6,7 @@ year: "2014"
 venue: "IET Computer Vision"
 tags: ["journal", "reconstruction"]
 image:
-  src: ""
+  src: "2014_appearancebased_approach_complete_human.png"
   alt: "Appearance-Based Approach for Complete Human Jaw Shape Reconstruction"
 links:
   doi: "https://doi.org/10.1049/iet-cvi.2012.0204"

@@ -6,7 +6,7 @@ year: "2012"
 venue: "Canadian Conference on Computer and Robot Vision (CRV)"
 tags: ["conference", "foundation-models"]
 image:
-  src: ""
+  src: "2012_nonlambertian_modelbased_facial_shape.png"
   alt: "Non-Lambertian Model-Based Facial Shape Recovery from Single Image Under Unknown General Illumination"
 
 bibtex_key: "Elhabian2012_NonLambertianCRV"

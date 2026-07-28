@@ -6,7 +6,7 @@ year: "2012"
 venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal"]
 image:
-  src: ""
+  src: "2012_modeling_image_irradiance_under.png"
   alt: "Modeling Image Irradiance under Natural Illumination and Isotropic Surface Reflectance"
 
 bibtex_key: "Elhabian2012_NaturalIlluminationICIP"

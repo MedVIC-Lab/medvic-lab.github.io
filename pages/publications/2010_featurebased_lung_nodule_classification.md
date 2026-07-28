@@ -6,7 +6,7 @@ year: "2010"
 venue: "International Symposium on Visual Computing (ISVC)"
 tags: ["conference"]
 image:
-  src: ""
+  src: "2010_featurebased_lung_nodule_classification.png"
   alt: "Feature-Based Lung Nodule Classification"
 
 bibtex_key: "Farag2010_LungNoduleISVC"

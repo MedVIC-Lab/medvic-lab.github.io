@@ -6,7 +6,7 @@ year: "2023"
 venue: "MICCAI Workshop on Machine Learning in Medical Imaging (MLMI"
 tags: ["computational-pathology", "generative", "virtual-staining", "workshop"]
 image:
-  src: ""
+  src: "2023_structural_cycle_gan_virtual.png"
   alt: "Structural Cycle GAN for Virtual Immunohistochemistry Staining of Gland Markers in the Colon"
 links:
   arxiv: "https://arxiv.org/abs/2308.13182"

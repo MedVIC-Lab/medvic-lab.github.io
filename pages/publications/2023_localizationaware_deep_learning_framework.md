@@ -6,7 +6,7 @@ year: "2023"
 venue: "Medical Imaging with Deep Learning (MIDL)"
 tags: ["conference", "deep-learning", "modeling-patient-state", "shape-modeling"]
 image:
-  src: ""
+  src: "2023_localizationaware_deep_learning_framework.png"
   alt: "Localization-aware Deep Learning Framework for Statistical Shape Modeling Directly from Images"
 
 bibtex_key: "Ukey2023_LocalizationSSM"

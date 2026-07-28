@@ -6,7 +6,7 @@ year: "2019"
 venue: "IEEE Computing in Cardiology (CinC)"
 tags: ["cardiac", "conference", "modeling-patient-state", "shape-modeling"]
 image:
-  src: ""
+  src: "2019_does_alignment_statistical_shape.png"
   alt: "Does Alignment in Statistical Shape Modeling of Left Atrium Appendage Impact Stroke Prediction?"
 
 bibtex_key: "Bhalodia2019_AFRecurrence"

@@ -6,7 +6,7 @@ year: "2022"
 venue: "IEEE Computing in Cardiology (CinC)"
 tags: ["cardiac", "clinically-trustworthy", "conference", "probabilistic", "segmentation"]
 image:
-  src: ""
+  src: "2022_segmentation_uncertainty_quantification_cardiac.png"
   alt: "Segmentation Uncertainty Quantification in Cardiac Propagation Models"
 
 bibtex_key: "Tate2022_CardiacSegUQ"

@@ -6,7 +6,7 @@ year: "2024"
 venue: "MICCAI Workshop on Shape in Medical Imaging (ShapeMI)"
 tags: ["modeling-patient-state", "orthopedics", "registration", "shape-modeling", "workshop"]
 image:
-  src: ""
+  src: "2024_deformable_vertebra_3d2d_registration.png"
   alt: "Deformable Vertebra 3D/2D Registration from Biplanar X-rays Using Particle-Based Shape Modelling"
 
 bibtex_key: "Aubert2024_VertebraRegistration"

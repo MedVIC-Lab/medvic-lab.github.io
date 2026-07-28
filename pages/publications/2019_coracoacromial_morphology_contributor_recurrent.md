@@ -6,7 +6,7 @@ year: "2019"
 venue: "Journal of Shoulder and Elbow Surgery"
 tags: ["journal", "modeling-patient-state", "orthopedics", "probabilistic"]
 image:
-  src: ""
+  src: "2019_coracoacromial_morphology_contributor_recurrent.png"
   alt: "Coracoacromial Morphology: A Contributor to Recurrent Traumatic Anterior Glenohumeral Instability?"
 links:
   doi: "https://doi.org/10.1016/j.jse.2019.01.015"

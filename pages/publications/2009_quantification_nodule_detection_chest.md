@@ -6,7 +6,7 @@ year: "2009"
 venue: "2nd International Workshop on Pulmonary Image Processing (MI"
 tags: ["workshop"]
 image:
-  src: ""
+  src: "2009_quantification_nodule_detection_chest.png"
   alt: "Quantification of Nodule Detection in Chest CT: A Clinical Investigation Based on the ELCAP Study"
 
 bibtex_key: "Farag2009_LungNoduleWorkshop"

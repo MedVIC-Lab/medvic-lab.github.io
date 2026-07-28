@@ -6,7 +6,7 @@ year: "2010"
 venue: "IEEE Engineering in Medicine and Biology Society (EMBC)"
 tags: ["journal", "modeling-patient-state"]
 image:
-  src: ""
+  src: "2010_shape_modeling_corpus_callosum.png"
   alt: "Shape Modeling of the Corpus Callosum"
 
 bibtex_key: "Farag2010_CorpusCallosumEMBC"

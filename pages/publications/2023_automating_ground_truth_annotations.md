@@ -6,7 +6,7 @@ year: "2023"
 venue: "Modern Pathology"
 tags: ["computational-pathology", "journal", "learning-under-constraints", "segmentation", "virtual-staining"]
 image:
-  src: ""
+  src: "2023_automating_ground_truth_annotations.png"
   alt: "Automating Ground Truth Annotations For Gland Segmentation Through Immunohistochemistry"
 links:
   doi: "https://doi.org/10.1016/j.modpat.2023.100331"

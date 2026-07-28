@@ -6,7 +6,7 @@ year: "2010"
 venue: "International Symposium on Visual Computing (ISVC)"
 tags: ["conference"]
 image:
-  src: ""
+  src: "2010_surface_modeling_corpus_callosum.png"
   alt: "Surface Modeling of the Corpus Callosum from MRI Scans"
 
 bibtex_key: "Farag2010_CorpusCallosumISVC"

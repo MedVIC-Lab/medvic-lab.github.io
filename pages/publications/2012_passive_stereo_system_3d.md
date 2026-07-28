@@ -6,7 +6,7 @@ year: "2012"
 venue: "IEEE CVPR Workshop on Biometrics"
 tags: ["reconstruction", "workshop"]
 image:
-  src: ""
+  src: "2012_passive_stereo_system_3d.png"
   alt: "A Passive Stereo System for 3D Human Face Reconstruction and Recognition at a Distance"
 
 bibtex_key: "Abdelrahman2012_FaceStereo3D"

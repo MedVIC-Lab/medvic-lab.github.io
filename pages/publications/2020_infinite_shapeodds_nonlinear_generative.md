@@ -6,7 +6,7 @@ year: "2020"
 venue: "AAAI Conference on Artificial Intelligence (AAAI)"
 tags: ["conference", "generative"]
 image:
-  src: ""
+  src: "2020_infinite_shapeodds_nonlinear_generative.png"
   alt: "Infinite ShapeOdds: A Nonlinear Generative Model for Grid-Structured Shapes"
 
 bibtex_key: "Xing2020_InfiniteShapeOdds"

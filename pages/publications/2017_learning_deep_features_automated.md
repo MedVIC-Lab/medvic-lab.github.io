@@ -6,7 +6,7 @@ year: "2017"
 venue: "Medical Image Computing and Computer-Assisted Intervention ("
 tags: ["conference", "modeling-patient-state"]
 image:
-  src: ""
+  src: "2017_learning_deep_features_automated.png"
   alt: "Learning Deep Features for Automated Placement of Correspondence Points on Ensembles of Complex Shapes"
 
 bibtex_key: "Agrawal2017_DeepFeatures"

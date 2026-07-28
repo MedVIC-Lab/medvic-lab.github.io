@@ -6,7 +6,7 @@ year: "2012"
 venue: "University of Louisville, Louisville, KY, USA"
 tags: ["foundation-models", "preprint"]
 image:
-  src: ""
+  src: "2012_phenomenological_modeling_image_irradiance.png"
   alt: "Phenomenological Modeling of Image Irradiance for Non-Lambertian Surfaces under Natural Illumination"
 
 bibtex_key: "Elhabian2012_PhD"

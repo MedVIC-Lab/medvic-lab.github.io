@@ -6,7 +6,7 @@ year: "2022"
 venue: "Frontiers in Physiology"
 tags: ["journal"]
 image:
-  src: ""
+  src: "2022_all_roads_lead_rome.png"
   alt: "All Roads Lead to Rome: Diverse Etiologies of Tricuspid Regurgitation Create a Predictable Constellation of Right Ventricular Shape Changes"
 links:
   doi: "https://doi.org/10.3389/fphys.2022.908552"

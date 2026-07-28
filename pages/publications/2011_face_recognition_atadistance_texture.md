@@ -6,7 +6,7 @@ year: "2011"
 venue: "IEEE CVPR Workshop on Biometrics"
 tags: ["workshop"]
 image:
-  src: ""
+  src: "2011_face_recognition_atadistance_texture.png"
   alt: "Face Recognition at-a-Distance Using Texture, Dense-Stereo, Sparse-Stereo"
 
 bibtex_key: "Abdelrahman2011_FaceDistanceCVPR"

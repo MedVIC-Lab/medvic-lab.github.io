@@ -6,7 +6,7 @@ year: "2009"
 venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal", "reconstruction"]
 image:
-  src: ""
+  src: "2009_distant_face_recognition_based.png"
   alt: "Distant Face Recognition Based on Sparse Stereo Reconstruction"
 
 bibtex_key: "Rara2009_FaceDistantICIP"

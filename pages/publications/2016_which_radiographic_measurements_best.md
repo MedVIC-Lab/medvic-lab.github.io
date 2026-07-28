@@ -6,7 +6,7 @@ year: "2016"
 venue: "Journal of Hip Preservation Surgery"
 tags: ["journal", "modeling-patient-state", "orthopedics", "shape-modeling"]
 image:
-  src: ""
+  src: "2016_which_radiographic_measurements_best.png"
   alt: "Which Radiographic Measurements Best Identify Anatomical Variation in Femoral Head Anatomy? Analysis Using 3D Computed Tomography and Statistical Shape Modeling"
 links:
   doi: "https://doi.org/10.1093/jhps/hnv077"

@@ -6,7 +6,7 @@ year: "2010"
 venue: "IEEE International Conference on Biometrics: Theory, Applica"
 tags: ["journal", "reconstruction"]
 image:
-  src: ""
+  src: "2010_face_recognition_atadistance_texture.png"
   alt: "Face Recognition at-a-Distance Using Texture and Sparse-Stereo Reconstruction"
 
 bibtex_key: "Rara2010_FaceTextureStereo"

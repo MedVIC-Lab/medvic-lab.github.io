@@ -6,7 +6,7 @@ year: "2012"
 venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal", "reconstruction"]
 image:
-  src: ""
+  src: "2012_occlusal_surface_reconstruction_human.png"
   alt: "Occlusal Surface Reconstruction of Human Teeth from a Single Image Based on Object and Sensor Physical Characteristics"
 
 bibtex_key: "Abdelrahim2012_TeethOcclusal"

@@ -6,7 +6,7 @@ year: "2019"
 venue: "Clinical Orthopaedics and Related Research"
 tags: ["journal", "orthopedics"]
 image:
-  src: ""
+  src: "2019_which_twodimensional_radiographic_measurements.png"
   alt: "Which Two-dimensional Radiographic Measurements of Cam Femoroacetabular Impingement Best Describe the Three-Dimensional Shape of the Proximal Femur?"
 links:
   doi: "https://doi.org/10.1097/CORR.0000000000000614"

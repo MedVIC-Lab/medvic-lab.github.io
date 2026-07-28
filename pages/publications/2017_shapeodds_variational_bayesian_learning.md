@@ -6,7 +6,7 @@ year: "2017"
 venue: "IEEE Conference on Computer Vision and Pattern Recognition ("
 tags: ["conference", "modeling-patient-state", "probabilistic"]
 image:
-  src: ""
+  src: "2017_shapeodds_variational_bayesian_learning.png"
   alt: "ShapeOdds: Variational Bayesian Learning of Generative Shape Models"
 links:
   doi: "https://doi.org/10.1109/CVPR.2017.240"

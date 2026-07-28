@@ -6,7 +6,7 @@ year: "2008"
 venue: "4th International Symposium on Visual Computing (ISVC)"
 tags: ["conference"]
 image:
-  src: ""
+  src: "2008_noise_analysis_sfs_algorithm.png"
   alt: "Noise Analysis of a SFS Algorithm Formulated under Various Imaging Conditions"
 
 bibtex_key: "Farag2008_SFSNoise"

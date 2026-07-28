@@ -6,7 +6,7 @@ year: "2011"
 venue: "7th International Symposium on Visual Computing (ISVC)"
 tags: ["conference", "registration"]
 image:
-  src: ""
+  src: "2011_solving_geometric_coregistration_problem.png"
   alt: "Solving Geometric Co-Registration Problem of Multi-Spectral Remote Sensing Imagery Using SIFT-Based Features Toward Precise Change Detection"
 
 bibtex_key: "Abdelrahman2011_RemoteSensingISVC"

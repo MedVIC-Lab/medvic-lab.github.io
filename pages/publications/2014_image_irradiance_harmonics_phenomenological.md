@@ -6,7 +6,7 @@ year: "2014"
 venue: "IET Computer Vision"
 tags: ["journal"]
 image:
-  src: ""
+  src: "2014_image_irradiance_harmonics_phenomenological.png"
   alt: "Image Irradiance Harmonics: A Phenomenological Model of Image Irradiance of Arbitrary Surface Reflectance"
 links:
   doi: "https://doi.org/10.1049/iet-cvi.2012.0263"

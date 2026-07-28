@@ -6,7 +6,7 @@ year: "2022"
 venue: "Medical Image Computing and Computer-Assisted Intervention ("
 tags: ["conference", "modeling-patient-state", "probabilistic"]
 image:
-  src: ""
+  src: "2022_images_probabilistic_anatomical_shapes.png"
   alt: "From Images to Probabilistic Anatomical Shapes: A Deep Variational Bottleneck Approach"
 links:
   arxiv: "https://arxiv.org/abs/2205.06862"

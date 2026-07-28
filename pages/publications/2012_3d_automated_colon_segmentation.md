@@ -6,7 +6,7 @@ year: "2012"
 venue: "Cairo International Biomedical Engineering Conference (CIBEC"
 tags: ["conference", "segmentation"]
 image:
-  src: ""
+  src: "2012_3d_automated_colon_segmentation.png"
   alt: "3D Automated Colon Segmentation for Efficient Polyp Detection"
 
 bibtex_key: "Ismail2012_ColonCIBEC"

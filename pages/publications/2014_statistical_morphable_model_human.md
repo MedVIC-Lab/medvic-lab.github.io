@@ -6,7 +6,7 @@ year: "2014"
 venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal"]
 image:
-  src: ""
+  src: "2014_statistical_morphable_model_human.png"
   alt: "Statistical Morphable Model for Human Teeth Restoration"
 
 bibtex_key: "Mostafa2014_TeethSSM"

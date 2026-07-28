@@ -108,6 +108,7 @@ export async function loadPeopleJSON() {
 
   data.forEach(member => {
     switch (member.role.toLowerCase()) {
+      case 'faculty':
       case 'researcher':
         tempMembers.researchers.push(member)
         break

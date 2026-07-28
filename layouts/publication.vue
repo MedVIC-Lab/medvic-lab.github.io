@@ -1,106 +1,308 @@
 <template>
-  <div class="publication-layout vp-doc">
-    <div class="publication-content">
-      <img v-if="frontmatter.image" :src="`../../assets/images/publications/${frontmatter.image.src}`" :alt="frontmatter.image.alt" class="publication-image" />
-      <Content />
+  <article class="publication-layout vp-doc">
+    <a href="/pages/publications" class="publication-back-link">Back to Publications</a>
+
+    <header class="publication-hero">
+      <div>
+        <h1>{{ frontmatter.title }}</h1>
+        <p class="publication-authors">{{ frontmatter.authors }}</p>
+        <p class="publication-meta">
+          <span>{{ venue }}</span>
+          <span v-if="frontmatter.year">{{ frontmatter.year }}</span>
+          <span v-if="frontmatter.acceptance_rate">Acceptance rate: {{ frontmatter.acceptance_rate }}</span>
+        </p>
+        <div v-if="frontmatter.award" class="publication-award">
+          {{ frontmatter.award }}
+        </div>
+      </div>
+    </header>
+
+    <nav v-if="resourceLinks.length" class="publication-resource-row" aria-label="Publication resources">
+      <a
+        v-for="link in resourceLinks"
+        :key="link.href"
+        :href="link.href"
+        target="_blank"
+        rel="noopener"
+        class="publication-resource-button"
+      >
+        <v-icon size="18" :icon="link.icon" />
+        {{ link.label }}
+      </a>
+      <button
+        v-if="hasCitation"
+        type="button"
+        class="publication-resource-button"
+        @click="copyCitation"
+      >
+        <v-icon size="18" icon="mdi-content-copy" />
+        {{ copied ? 'Copied' : 'Copy BibTeX' }}
+      </button>
+    </nav>
+
+    <div class="publication-main-grid">
+      <main class="publication-body">
+        <img
+          v-if="frontmatter.image?.src"
+          :src="`../../assets/images/publications/${frontmatter.image.src}`"
+          :alt="frontmatter.image?.alt || frontmatter.title"
+          class="publication-image"
+        />
+        <div v-else class="publication-image-placeholder">
+          Graphical abstract image slot
+        </div>
+
+        <Content />
+      </main>
+
+      <aside class="publication-sidebar">
+        <section v-if="frontmatter.authors" class="publication-sidebar-section">
+          <h2>Authors</h2>
+          <ul class="publication-author-list">
+            <li v-for="author in authorNames" :key="author">
+              <a v-if="getMemberByName(author)" :href="getMemberByName(author).link">
+                {{ author }}
+              </a>
+              <span v-else>{{ author }}</span>
+            </li>
+          </ul>
+        </section>
+
+        <section v-if="frontmatter.tags && frontmatter.tags.length" class="publication-sidebar-section">
+          <h2>Tags</h2>
+          <div class="publication-tag-list">
+            <a
+              v-for="tag in frontmatter.tags"
+              :key="tag"
+              :href="`/pages/publications?tag=${encodeURIComponent(tag)}`"
+              class="medvic-pub-tag"
+            >
+              {{ tag }}
+            </a>
+          </div>
+        </section>
+      </aside>
     </div>
-    <aside class="publication-sidebar">
-      <div class="publication-links">
-        <h2>Resources</h2>
-        <ul>
-          <li v-if="frontmatter.links.code"><a :href="frontmatter.links.code" target="_blank"><v-icon size="16" icon="mdi-code-braces"/>Link to Code</a></li>
-          <li v-if="frontmatter.links.pdf"><a :href="frontmatter.links.pdf" target="_blank"><v-icon size="16" icon="mdi-file-document-outline"/>Publication (PDF)</a></li>
-          <li v-if="frontmatter.links.archive"><a :href="frontmatter.links.archive" target="_blank"><v-icon size="16" icon="mdi-archive"/>Archive</a></li>
-          <li v-if="frontmatter.links.video"><a :href="frontmatter.links.video" target="_blank"><v-icon size="16" icon="mdi-video-box"/>Link to Video</a></li>
-          <li v-if="frontmatter.links.publisher"><a :href="frontmatter.links.publisher" target="_blank"><v-icon size="16" icon="mdi-earth"/>Link to Publisher</a></li>
-        </ul>
-      </div>
-      <div class="author-list">
-        <h2>Authors</h2>
-        <ul>
-          <li v-if="frontmatter.authors" v-for="author in frontmatter.authors.split(',')" :key="author">
-            <span v-if="!inMembers(author)">{{ author.trim() }}</span>
-            <a v-else :href="getMemberByName(author).link">{{ author.trim().replaceAll('*', '') }}</a>
-          </li>
-        </ul>
-      </div>
-    </aside>
-  </div>
+  </article>
 </template>
 
 <script setup>
-import { Content, useData } from 'vitepress';
-import { getMembers, isAuthorInMembers, getMemberByName } from '../scripts/utils';
-import { onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import { useData } from 'vitepress';
+import { Content } from 'vitepress/dist/client/app/components/Content.js';
+import { getMembers, getMemberByName } from '../scripts/utils';
 
 const { frontmatter } = useData();
+const copied = ref(false);
 
 onMounted(async () => {
-  getMembers();
+  await getMembers();
 });
 
-/**
- * Checks if the given author is in the members list.
- *
- * @param {string} author - The name of the author, possibly containing extra characters like asterisks.
- * @returns {boolean} - Returns true if the author is in the members list, false otherwise.
- */
-function inMembers(author) {
-  const authorName = author.trim().replaceAll("*", "");
-  return isAuthorInMembers(authorName);
+const venue = computed(() => frontmatter.value.venue || frontmatter.value.conference || '');
+
+const authorNames = computed(() => String(frontmatter.value.authors || '')
+  .split(',')
+  .map((author) => author.trim().replace(/\*/g, ''))
+  .filter(Boolean)
+);
+
+const resourceLinks = computed(() => {
+  const links = frontmatter.value.links || {};
+  const candidates = [
+    { key: 'arxiv', label: 'arXiv', icon: 'mdi-archive' },
+    { key: 'archive', label: 'Archive', icon: 'mdi-archive' },
+    { key: 'code', label: 'Code', icon: 'mdi-code-braces' },
+    { key: 'publisher', label: 'Publisher', icon: 'mdi-earth' },
+    { key: 'doi', label: 'DOI', icon: 'mdi-earth' },
+    { key: 'pdf', label: 'PDF', icon: 'mdi-file-document-outline' },
+    { key: 'video', label: 'Video', icon: 'mdi-video-box' },
+  ];
+
+  const seen = new Set();
+
+  return candidates
+    .map((item) => ({ ...item, href: links[item.key] }))
+    .filter((item) => {
+      if (!item.href || seen.has(item.href)) return false;
+      seen.add(item.href);
+      return true;
+    });
+});
+
+const hasCitation = computed(() => true);
+
+async function copyCitation() {
+  const citation = document.querySelector('.publication-body pre code')?.textContent || '';
+  if (!citation) return;
+
+  await navigator.clipboard.writeText(citation);
+  copied.value = true;
+  window.setTimeout(() => {
+    copied.value = false;
+  }, 1600);
 }
 </script>
 
-<style>
+<style scoped>
 .publication-layout {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  max-width: 1200px; /* Adjust to match the default layout container width */
   margin: 0 auto;
-  padding: 20px;
-  min-height: 100vh; /* Ensure the layout stretches to the full height of the screen */
+  max-width: 1200px;
+  padding: 24px;
 }
 
-.publication-content {
-  flex: 1;
-  padding-right: 20px;
+.publication-back-link {
+  color: var(--medvic-teal, #0d6e7e);
+  display: inline-flex;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  text-decoration: none;
 }
 
-.publication-sidebar {
-  width: 300px;
-  padding-left: 20px;
+.publication-hero {
+  border-bottom: 1px solid var(--medvic-border, #d4dde8);
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+.publication-hero h1 {
+  color: var(--medvic-navy, #1b3a6b) !important;
+  font-family: Inter, sans-serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0;
+  line-height: 1.05;
+  margin: 0 0 0.75rem;
+}
+
+.publication-authors {
+  color: var(--medvic-text, #1c2b3a);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  margin: 0 0 0.45rem;
+}
+
+.publication-meta {
+  color: var(--medvic-muted, #5a6e82);
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.publication-sidebar h2 {
-  border-top: 0 !important;
-  padding: 0;
+  flex-wrap: wrap;
+  font-family: Inter, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  gap: 0.75rem;
   margin: 0;
 }
 
+.publication-award {
+  background: #fdf2d0;
+  border: 1px solid #e5bd51;
+  border-radius: 6px;
+  color: #7a5300;
+  display: inline-flex;
+  font-family: Inter, sans-serif;
+  font-size: 0.86rem;
+  font-weight: 800;
+  margin-top: 0.8rem;
+  padding: 0.35rem 0.6rem;
+}
+
+.publication-resource-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 1.5rem;
+}
+
+.publication-resource-button {
+  align-items: center;
+  background: var(--medvic-navy, #1b3a6b);
+  border: 1px solid var(--medvic-navy, #1b3a6b);
+  border-radius: 6px;
+  color: #fff !important;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Inter, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  gap: 0.35rem;
+  min-height: 38px;
+  padding: 0.45rem 0.8rem;
+  text-decoration: none;
+}
+
+.publication-resource-button:hover {
+  background: var(--medvic-teal, #0d6e7e);
+  border-color: var(--medvic-teal, #0d6e7e);
+}
+
+.publication-main-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 1fr) 280px;
+}
+
 .publication-image {
+  border: 1px solid var(--medvic-border, #d4dde8);
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
   max-width: 100%;
-  margin-bottom: 20px;
 }
 
-.publication-links ul {
-  list-style-type: none;
+.publication-image-placeholder {
+  align-items: center;
+  aspect-ratio: 16 / 9;
+  background: var(--medvic-light-bg, #f4f7fb);
+  border: 1px dashed var(--medvic-border, #d4dde8);
+  border-radius: 8px;
+  color: var(--medvic-muted, #5a6e82);
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-weight: 800;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.publication-sidebar {
+  display: grid;
+  gap: 1.25rem;
+  height: fit-content;
+}
+
+.publication-sidebar-section {
+  border: 1px solid var(--medvic-border, #d4dde8);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.publication-sidebar-section h2 {
+  border: 0 !important;
+  color: var(--medvic-navy, #1b3a6b) !important;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.publication-author-list {
+  display: grid;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
   padding: 0;
 }
 
-.publication-links li {
-  margin-bottom: 10px;
+.publication-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
 }
 
-.author-list {
-  margin-top: 20px;
-}
-
-.author-list ul {
-  list-style-type: none;
-  padding: 0;
+@media (max-width: 900px) {
+  .publication-main-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -2,70 +2,39 @@
 layout: page
 aside: false
 pageTitle: "Our Team"
-pageDescription: "This is our team!"
+pageDescription: "Current members and alumni of the Medical Vision and Intelligent Computing Lab."
 ---
 
 <script setup>
-import { VPTeamPage, VPTeamPageTitle, VPTeamPageSection } from 'vitepress/theme'
 import VPTeamMembersWrapper from './VPTeamMembersWrapper.vue'
-import { ref, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { getMembers } from '../scripts/utils.ts'
 import { members } from '../scripts/store.ts'
 
 onMounted(async () => {
   await getMembers();
 })
+
+const teamSections = computed(() => [
+  { title: 'Professors', people: members.value.researchers },
+  { title: 'PhD Candidates/Students', people: members.value.phdStudents },
+  { title: 'MS Students', people: members.value.msStudents },
+  { title: 'Undergrad Students', people: members.value.undergradStudents },
+  { title: 'Staff', people: members.value.staff },
+  { title: 'Alumni', people: members.value.alumni },
+].filter((section) => section.people.length))
 </script>
 
-<VPTeamPage>
-  <VPTeamPageTitle>
-    <template #title>
-      {{$frontmatter.pageTitle}}
-    </template>
-    <template #lead>
-      {{$frontmatter.pageDescription}}
-    </template>
-  </VPTeamPageTitle>
+<div class="medvic-page-heading">
+  <h1>{{$frontmatter.pageTitle}}</h1>
+  <p>{{$frontmatter.pageDescription}}</p>
+</div>
 
-  <VPTeamPageSection v-if="members.researchers.length">
-    <template #title>Researchers</template>
-    <template #members>
-      <VPTeamMembersWrapper :members="members.researchers" />
-    </template>
-  </VPTeamPageSection>
-
-  <VPTeamPageSection v-if="members.phdStudents.length">
-    <template #title>PhD Candidates/Students</template>
-    <template #members>
-      <VPTeamMembersWrapper :members="members.phdStudents" size="small" />
-    </template>
-  </VPTeamPageSection>
-
-  <VPTeamPageSection v-if="members.msStudents.length">
-    <template #title>MS Students</template>
-    <template #members>
-      <VPTeamMembersWrapper :members="members.msStudents" size="small" />
-    </template>
-  </VPTeamPageSection>
-
-  <VPTeamPageSection v-if="members.undergradStudents.length">
-      <template #title>Undergrad Students</template>
-    <template #members>
-      <VPTeamMembersWrapper :members="members.msStudents" size="small" />
-    </template>
-  </VPTeamPageSection>
-
-  <VPTeamPageSection v-if="members.staff.length">
-    <template #title>Staff</template>
-    <template #members>
-      <VPTeamMembersWrapper :members="members.staff" size="small" />
-    </template>
-  </VPTeamPageSection>
-
-  <VPTeamPageSection v-if="members.alumni.length">
-    <template #title>Alumni</template>
-    <template #members>
-      <VPTeamMembersWrapper :members="members.alumni" size="small" />
-    </template>
-  </VPTeamPageSection>
-</VPTeamPage>
+<section
+  v-for="section in teamSections"
+  :key="section.title"
+  class="medvic-people-section"
+>
+  <h2>{{ section.title }}</h2>
+  <VPTeamMembersWrapper :members="section.people" />
+</section>

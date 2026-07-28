@@ -4,7 +4,8 @@ name: "Krithika Iyer"
 role: "Alumni" 
 title: "Alumni" # e.g., "PhD Student", "MS Student", "Staff", "Researcher", "Alumni"
 org: "University of Utah, SCI Institute"
-avatar: "iyer_krithika.jpg" # Replace with the URL to your avatar image
+avatar: "krithika.jpg"
+name_in_pubs: "Krithika Iyer"
 links:
   - icon: "github"
     link: "https://github.com/iyerkrithika21" # Replace with your GitHub profile link

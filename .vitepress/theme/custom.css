@@ -1,84 +1,1391 @@
-:root {
-  --darkblue: #272260;
-  --lightblue: #4E7FE3;
-  --orange: #C16D27;
-}
+/* =====================================================
+   MedVIC Lab — Design System
+   Deep blue #282264 · Bright blue #3D80EA · Orange #CE6700
+   Typography: Inter (UI) / Source Sans Pro (body)
+   ===================================================== */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
-  --vp-c-brand-1: var(--darkblue);
-  --vp-c-brand-2: var(--lightblue);
-  --vp-c-brand-3: var(--orange);
+  /* MedVIC brand palette */
+  --medvic-navy:       #282264;
+  --medvic-navy-dark:  #1D184B;
+  --medvic-blue:       #3D80EA;
+  --medvic-blue-light: #6DA0F0;
+  --medvic-orange:     #CE6700;
+  --medvic-orange-light: #E88726;
+  /* Compatibility aliases for existing components. */
+  --medvic-teal:       var(--medvic-blue);
+  --medvic-teal-light: var(--medvic-blue-light);
+  --medvic-gold:       var(--medvic-orange);
+  --medvic-gold-light: var(--medvic-orange-light);
+  --medvic-light-bg:   #F4F7FB;
+  --medvic-border:     #D4DDE8;
+  --medvic-text:       #1C2B3A;
+  --medvic-muted:      #5A6E82;
 
-  --vp-c-text-1: #333;
+  /* VitePress theme overrides */
+  --vp-c-brand-1:       var(--medvic-navy);
+  --vp-c-brand-2:       var(--medvic-teal);
+  --vp-c-brand-3:       var(--medvic-gold);
+  --vp-c-brand-soft:    rgba(27, 58, 107, 0.08);
+  --vp-c-text-1:        var(--medvic-text);
+  --vp-c-text-2:        var(--medvic-muted);
 
-  --vp-nav-logo-height: 100px;
+  --vp-font-family-base: 'Source Sans 3', 'Source Sans Pro', system-ui, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --vp-nav-logo-height:  48px;
+  --vp-home-hero-name-color: var(--medvic-navy);
+  --vp-home-hero-tagline-color: var(--medvic-teal);
+
+  --vp-c-default-soft: var(--medvic-light-bg);
 }
 
-/********** Custom styles **********/
-
-/* NOTE:
-    - You can add your own custom styles here.
-    - It is recommended to use this file to override the default styles.
-
-    - **Often, !important is required to override the default styles.
-*/
-
-/* Header */
-.VPNavBarTitle .title {
-  font-size: 1.75em !important;
-  color: var(--vp-c-brand-1) !important;
+/* ── Site-wide Spline Background ─────────────────── */
+.medvic-site-shell {
+  min-height: 100vh;
+  position: relative;
 }
 
-.VPNavBarMenuLink {
-  font-size: 1.05em !important;
+.medvic-spline-background {
+  background:
+    radial-gradient(circle at 76% 18%, rgba(13, 110, 126, 0.3) 0%, rgba(13, 110, 126, 0.16) 22%, rgba(13, 110, 126, 0) 46%),
+    radial-gradient(circle at 54% 58%, rgba(27, 58, 107, 0.12) 0%, rgba(27, 58, 107, 0) 38%),
+    linear-gradient(112deg, #ffffff 0%, #f7fbfd 30%, #edf5f8 58%, #d7e9ee 78%, #bfdde5 100%);
+  background-attachment: fixed, fixed, fixed;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 0;
+}
+
+.medvic-spline-stage {
+  display: block;
+  filter: brightness(0.88) contrast(1.16);
+  height: 146vh;
+  opacity: 0.84;
+  position: fixed;
+  right: -27vw;
+  top: -8vh;
+  transform: scale(1.36);
+  width: min(190vw, 2480px);
+}
+
+.medvic-spline-tint-layer {
+  clip-path: url("#medvic-spline-tint-clip");
+  inset: 0;
+  opacity: 0.42;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  z-index: 2;
+}
+
+.medvic-spline-tint-layer .medvic-spline-stage {
+  filter: brightness(0) saturate(100%) invert(43%) sepia(74%) saturate(520%) hue-rotate(142deg) brightness(112%) contrast(84%);
+  opacity: 0.84;
+}
+
+.medvic-spline-tint-clip-svg {
+  height: 0;
+  pointer-events: none;
+  position: fixed;
+  width: 0;
+}
+
+.medvic-spline-canvas {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.medvic-spline-screen {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.91) 0%, rgba(255, 255, 255, 0.5) 38%, rgba(255, 255, 255, 0.04) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.38));
+  inset: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.Layout,
+.VPNav,
+.VPContent,
+.VPLocalNav,
+.VPFooter {
+  position: relative;
+  z-index: 1;
+}
+
+.Layout,
+.VPContent,
+.VPHome,
+.VPDoc {
+  background: transparent !important;
+}
+
+/* ── Typography ──────────────────────────────────── */
+body {
+  font-family: var(--vp-font-family-base);
+  color: var(--medvic-text);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', var(--vp-font-family-base);
 }
 
 body h1, body h2 {
-  color: var(--vp-c-brand-1) !important;
+  color: var(--medvic-navy) !important;
 }
 
 body h3 {
-  color: var(--vp-c-brand-2) !important;
+  color: var(--medvic-teal) !important;
 }
 
-/* Container widths */
-@media (min-width: 1440px) {
-  .VPDoc:not(.has-sidebar) .content {
-    max-width: 1200px !important;
+/* ── Navigation ──────────────────────────────────── */
+.VPNav {
+  border-bottom: 2px solid var(--medvic-border) !important;
+}
+
+.VPNavBarTitle .title {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  font-family: 'Inter', sans-serif !important;
+  color: var(--medvic-navy) !important;
+  letter-spacing: -0.01em;
+}
+
+.VPNavBarMenuLink {
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: var(--medvic-text) !important;
+  transition: color 0.2s;
+}
+
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active {
+  color: var(--medvic-teal) !important;
+}
+
+.medvic-nav-search {
+  align-items: center;
+  display: flex;
+  margin-left: 0.32rem;
+  order: 10;
+}
+
+.VPNavBar .social-links {
+  order: 20;
+}
+
+.VPNavBar .extra {
+  order: 30;
+}
+
+.VPNavBar .hamburger {
+  order: 40;
+}
+
+.medvic-nav-search-button {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.28);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(27, 58, 107, 0.12);
+  border-radius: 999px;
+  color: rgba(27, 58, 107, 0.62);
+  cursor: pointer;
+  display: inline-flex;
+  font: 500 0.82rem Inter, sans-serif;
+  gap: 0.38rem;
+  min-height: 32px;
+  padding: 0.33rem 0.42rem 0.33rem 0.68rem;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.medvic-nav-search-button:hover {
+  background: rgba(255, 255, 255, 0.46);
+  border-color: rgba(13, 110, 126, 0.24);
+  color: rgba(27, 58, 107, 0.82);
+}
+
+.medvic-nav-search-icon,
+.medvic-search-icon {
+  border: 2px solid currentColor;
+  border-radius: 999px;
+  box-sizing: border-box;
+  display: inline-block;
+  height: 0.82rem;
+  position: relative;
+  width: 0.82rem;
+}
+
+.medvic-nav-search-icon::after,
+.medvic-search-icon::after {
+  background: currentColor;
+  bottom: -0.25rem;
+  content: "";
+  height: 0.36rem;
+  position: absolute;
+  right: -0.2rem;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: 2px;
+}
+
+.medvic-nav-search-icon {
+  border-width: 1.5px;
+  height: 0.76rem;
+  opacity: 0.72;
+  width: 0.76rem;
+}
+
+.medvic-nav-search-icon::after {
+  height: 0.3rem;
+  width: 1.5px;
+}
+
+.medvic-nav-search-button kbd {
+  background: rgba(27, 58, 107, 0.035);
+  border: 1px solid rgba(27, 58, 107, 0.07);
+  border-radius: 999px;
+  color: rgba(27, 58, 107, 0.46);
+  font: 600 0.64rem Inter, sans-serif;
+  line-height: 1;
+  padding: 0.18rem 0.34rem;
+}
+
+.medvic-search-overlay {
+  align-items: flex-start;
+  background: rgba(8, 22, 44, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: min(11vh, 6rem) 1rem 1.5rem;
+  position: fixed;
+  z-index: 1000;
+}
+
+.medvic-search-dialog {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 251, 253, 0.88));
+  border: 1px solid rgba(27, 58, 107, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 24px 70px rgba(10, 30, 60, 0.25);
+  max-height: min(74vh, 720px);
+  overflow: hidden;
+  width: min(760px, 100%);
+}
+
+.medvic-search-input-wrap {
+  align-items: center;
+  border-bottom: 1px solid rgba(27, 58, 107, 0.14);
+  color: var(--medvic-teal);
+  display: flex;
+  gap: 0.9rem;
+  padding: 1rem 1.1rem;
+}
+
+.medvic-search-icon {
+  flex: 0 0 auto;
+  height: 1rem;
+  width: 1rem;
+}
+
+.medvic-search-input {
+  background: transparent;
+  border: 0;
+  color: var(--medvic-text);
+  flex: 1;
+  font: 600 1rem Inter, sans-serif;
+  min-width: 0;
+  outline: 0;
+}
+
+.medvic-search-input::placeholder {
+  color: rgba(90, 110, 130, 0.72);
+}
+
+.medvic-search-close {
+  background: rgba(27, 58, 107, 0.08);
+  border: 1px solid rgba(27, 58, 107, 0.12);
+  border-radius: 999px;
+  color: var(--medvic-muted);
+  cursor: pointer;
+  font: 700 0.72rem Inter, sans-serif;
+  padding: 0.28rem 0.5rem;
+}
+
+.medvic-search-results {
+  max-height: min(62vh, 610px);
+  overflow: auto;
+  padding: 0.7rem;
+}
+
+.medvic-search-group + .medvic-search-group {
+  margin-top: 0.55rem;
+}
+
+.medvic-search-group-title {
+  color: var(--medvic-muted);
+  font: 800 0.68rem Inter, sans-serif;
+  letter-spacing: 0.08em;
+  padding: 0.45rem 0.5rem 0.35rem;
+  text-transform: uppercase;
+}
+
+.medvic-search-result {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  display: grid;
+  gap: 0.16rem;
+  padding: 0.72rem 0.82rem;
+  text-align: left;
+  width: 100%;
+}
+
+.medvic-search-result.active,
+.medvic-search-result:hover {
+  background: rgba(13, 110, 126, 0.08);
+  border-color: rgba(13, 110, 126, 0.18);
+}
+
+.medvic-search-result-title {
+  color: var(--medvic-navy);
+  font: 750 0.94rem Inter, sans-serif;
+}
+
+.medvic-search-result-path {
+  color: var(--medvic-teal);
+  font: 700 0.72rem Inter, sans-serif;
+}
+
+.medvic-search-result-excerpt {
+  color: var(--medvic-muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.medvic-search-empty {
+  color: var(--medvic-muted);
+  font: 600 0.92rem Inter, sans-serif;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+@media (max-width: 1080px) {
+  .medvic-nav-search-label,
+  .medvic-nav-search-button kbd {
+    display: none;
   }
+
+  .medvic-nav-search-button {
+    min-width: 34px;
+    padding: 0.45rem;
+  }
+}
+
+/* ── Homepage Hero ───────────────────────────────── */
+.VPHome .VPHero {
+  min-height: 68vh;
+}
+
+.VPHome .VPHero .container {
+  max-width: 1180px !important;
+}
+
+.VPHome .VPHero .image {
+  display: none !important;
+}
+
+.VPHero .name {
+  background: url('/assets/images/medvic.png') left center / contain no-repeat;
+  display: block;
+  font-size: 0 !important;
+  height: clamp(190px, 28vw, 286px);
+  margin-bottom: 0.65rem;
+  max-width: 440px;
+  overflow: hidden;
+  padding: 0;
+  text-indent: -9999px;
+  width: min(100%, 440px);
+}
+
+.VPHero .name::after {
+  content: none;
+}
+
+.VPHero .tagline {
+  font-size: 1.15rem !important;
+  line-height: 1.65 !important;
+  color: var(--medvic-text) !important;
+  max-width: 680px;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+}
+
+@media (max-width: 900px) {
+  .medvic-spline-stage {
+    height: 124vh;
+    opacity: 0.58;
+    right: -86vw;
+    top: -3vh;
+    transform: scale(1.28);
+    width: 276vw;
+  }
+
+  .medvic-spline-screen {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.84) 0%, rgba(255, 255, 255, 0.74) 52%, rgba(255, 255, 255, 0.9) 100%);
+  }
+
+  .VPHome .VPHero {
+    min-height: 58vh;
+  }
+}
+
+.VPButton.medium.brand {
+  background: linear-gradient(135deg, var(--medvic-orange), var(--medvic-orange-light)) !important;
+  border-color: var(--medvic-orange) !important;
+  font-weight: 600 !important;
+}
+
+.VPButton.medium.brand:hover {
+  background: var(--medvic-navy) !important;
+  border-color: var(--medvic-navy) !important;
+}
+
+.VPButton.medium.alt {
+  border-color: var(--medvic-navy) !important;
+  color: var(--medvic-navy) !important;
+  font-weight: 600 !important;
+}
+
+.VPButton.medium.alt:hover {
+  background-color: rgba(61, 128, 234, 0.1) !important;
+  border-color: var(--medvic-blue) !important;
+  color: var(--medvic-blue) !important;
+}
+
+/* ── Impact Bar ──────────────────────────────────── */
+.medvic-impact-bar {
+  background:
+    linear-gradient(105deg, rgba(40, 34, 100, 0.9), rgba(61, 128, 234, 0.76));
+  background-blend-mode: normal;
+  backdrop-filter: blur(7px) saturate(1.08);
+  -webkit-backdrop-filter: blur(7px) saturate(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2.5rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.medvic-impact-stat {
+  flex: 0 0 16.666%;
+  min-width: 130px;
+  text-align: center;
+  padding: 1rem 0.75rem;
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+
+.medvic-impact-stat:last-child {
+  border-right: none;
+}
+
+.medvic-impact-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.medvic-impact-stat:nth-child(3n + 1) .medvic-impact-number {
+  color: #FFD6AD;
+}
+
+.medvic-impact-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.65);
+  margin-top: 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+  .medvic-impact-stat {
+    flex: 0 0 50%;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .medvic-impact-stat:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .medvic-impact-number { font-size: 2rem; }
+}
+
+/* ── Research Theme Cards ────────────────────────── */
+.medvic-theme-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.medvic-theme-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.68));
+  background-blend-mode: normal;
+  backdrop-filter: blur(7px) saturate(1.08);
+  -webkit-backdrop-filter: blur(7px) saturate(1.08);
+  border: 1px solid rgba(90, 110, 130, 0.3);
+  border-top: 4px solid var(--medvic-blue);
+  border-radius: 8px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  padding: 1.75rem 1.5rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+  text-decoration: none !important;
+  color: inherit !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.medvic-theme-card:nth-child(2) {
+  border-top-color: var(--medvic-orange);
+}
+
+.medvic-theme-card:nth-child(3) {
+  border-top-color: var(--medvic-navy);
+}
+
+.medvic-theme-card:hover {
+  box-shadow: 0 10px 28px rgba(27, 58, 107, 0.16);
+  transform: translateY(-2px);
+}
+
+.medvic-theme-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--medvic-navy) !important;
+  margin: 0 0 0.75rem;
+}
+
+.medvic-theme-card p {
+  font-size: 0.92rem;
+  color: var(--medvic-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin: 0 0 1rem;
+}
+
+.medvic-theme-card .card-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--medvic-blue);
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .medvic-theme-cards { grid-template-columns: 1fr; }
+}
+
+/* ── Tool Cards ──────────────────────────────────── */
+.medvic-tool-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.medvic-tool-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.68));
+  background-blend-mode: normal;
+  backdrop-filter: blur(7px) saturate(1.08);
+  -webkit-backdrop-filter: blur(7px) saturate(1.08);
+  border: 1px solid rgba(90, 110, 130, 0.32);
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-left: 4px solid var(--medvic-blue);
+}
+
+.medvic-tool-card:nth-child(even) {
+  border-left-color: var(--medvic-orange);
+}
+
+.medvic-tool-card h3 {
+  font-size: 1.3rem !important;
+  color: var(--medvic-navy) !important;
+  margin: 0 !important;
+}
+
+.medvic-tool-card .tool-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+
+.medvic-tool-stat-pill {
+  background: var(--medvic-navy);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.medvic-tool-stat-pill:nth-child(even) {
+  background: var(--medvic-blue);
+}
+
+.medvic-tool-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.medvic-tool-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: opacity 0.2s;
+}
+
+.medvic-tool-link.primary {
+  background: var(--medvic-orange);
+  color: #fff !important;
+}
+
+.medvic-tool-link.secondary {
+  background: transparent;
+  border: 1px solid var(--medvic-navy);
+  color: var(--medvic-navy) !important;
+}
+
+.medvic-tool-link:hover { opacity: 0.85; }
+
+@media (max-width: 768px) {
+  .medvic-tool-cards { grid-template-columns: 1fr; }
+}
+
+.medvic-software-visual {
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 420px;
+  min-width: 280px;
+}
+
+.medvic-software-image {
+  align-self: stretch;
+  background: #fff;
+  border: 1px solid rgba(27, 58, 107, 0.12);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(27, 58, 107, 0.08);
+  box-sizing: border-box;
+  display: block;
+  min-height: 210px;
+  object-fit: contain;
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.medvic-software-image-logo {
+  padding: 1rem;
+}
+
+@media (max-width: 768px) {
+  .medvic-software-visual {
+    flex-basis: 100%;
+  }
+}
+
+/* ── Publication Cards ───────────────────────────── */
+.medvic-pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.medvic-pub-card {
+  background: #fff;
+  border: 1px solid var(--medvic-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.medvic-pub-card:hover {
+  border-color: rgba(61, 128, 234, 0.45);
+  box-shadow: 0 8px 24px rgba(40, 34, 100, 0.13);
+}
+
+.medvic-pub-card-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  background: var(--medvic-light-bg);
+}
+
+.medvic-pub-card-placeholder {
+  align-items: center;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--medvic-light-bg), #fff);
+  border-bottom: 1px solid var(--medvic-border);
+  color: var(--medvic-muted);
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+}
+
+.medvic-pub-card-body {
+  padding: 1.1rem 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.medvic-pub-card-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--medvic-navy);
+  line-height: 1.4;
+  margin: 0 0 0.5rem;
+}
+
+.medvic-pub-card-authors {
+  font-size: 0.82rem;
+  color: var(--medvic-muted);
+  margin: 0 0 0.4rem;
+}
+
+.medvic-pub-card-venue {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--medvic-teal);
+  margin: 0 0 0.75rem;
+}
+
+.medvic-pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+.medvic-pub-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: var(--medvic-light-bg);
+  color: var(--medvic-navy);
+  border: 1px solid var(--medvic-border);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.medvic-pub-tag:hover,
+.medvic-pub-tag.active {
+  background: var(--medvic-blue);
+  color: #fff;
+  border-color: var(--medvic-blue);
+}
+
+/* Featured publication cards (larger) */
+.medvic-pub-card.featured {
+  border-top: 3px solid var(--medvic-gold);
+}
+
+.medvic-publication-section {
+  margin: 2rem 0 3rem;
+}
+
+.medvic-publication-search-section {
+  margin-bottom: 1.6rem;
+}
+
+.medvic-publication-search-section .medvic-publication-toolbar {
+  margin-bottom: 0;
+}
+
+.medvic-section-kicker {
+  color: var(--medvic-orange);
+  font-family: Inter, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.medvic-featured-grid {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.medvic-publication-toolbar {
+  align-items: end;
+  background: var(--medvic-light-bg);
+  border: 1px solid var(--medvic-border);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.25rem 0;
+  padding: 1rem;
+}
+
+.medvic-publication-search,
+.medvic-publication-sort {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.medvic-publication-search {
+  flex: 1 1 280px;
+}
+
+.medvic-publication-sort {
+  flex: 0 0 180px;
+}
+
+.medvic-publication-search span,
+.medvic-publication-sort span {
+  color: var(--medvic-muted);
+  font-family: Inter, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.medvic-publication-search input,
+.medvic-publication-sort select {
+  background: #fff;
+  border: 1px solid var(--medvic-border);
+  border-radius: 6px;
+  color: var(--medvic-text);
+  font: inherit;
+  min-height: 40px;
+  padding: 0.45rem 0.7rem;
+}
+
+.medvic-tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1rem 0;
+}
+
+.medvic-tag-filter-button {
+  background: #fff;
+  border: 1px solid var(--medvic-border);
+  border-radius: 999px;
+  color: var(--medvic-navy);
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.3rem 0.7rem;
+}
+
+.medvic-tag-filter-button.active,
+.medvic-tag-filter-button:hover {
+  background: var(--medvic-navy);
+  border-color: var(--medvic-navy);
+  color: #fff;
+}
+
+.medvic-tag-filter-button.clear {
+  background: var(--medvic-orange);
+  border-color: var(--medvic-orange);
+  color: #fff;
+}
+
+.medvic-results-count {
+  color: var(--medvic-muted);
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+/* ── News Feed ───────────────────────────────────── */
+.medvic-news-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--medvic-border);
+  align-items: flex-start;
+}
+
+.medvic-news-date {
+  flex: 0 0 90px;
+  font-size: 0.8rem;
+  color: var(--medvic-muted);
+  padding-top: 0.15rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.medvic-news-badge {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+}
+
+.badge-paper    { background: #EBF5FB; color: #1A5E8F; }
+.badge-award    { background: #FEF9E7; color: #9A6E00; }
+.badge-people   { background: #E9F7EF; color: #1E8449; }
+.badge-funding  { background: #EAF4FB; color: #1A5E8F; }
+.badge-service  { background: #F4ECF7; color: #7D3C98; }
+.badge-conference { background: #FDEDEC; color: #922B21; }
+.badge-software { background: #EDF7F4; color: #0D6E7E; }
+.badge-news     { background: #F2F4F7; color: #44546A; }
+
+.medvic-news-content h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--medvic-navy);
+  margin: 0 0 0.25rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.medvic-news-content p {
+  font-size: 0.88rem;
+  color: var(--medvic-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── People / Team Grid ──────────────────────────── */
+.medvic-people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.medvic-person-card {
+  background: #fff;
+  border: 1px solid var(--medvic-border);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.medvic-person-card:hover {
+  box-shadow: 0 6px 20px rgba(27,58,107,0.1);
+}
+
+.medvic-person-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  background: var(--medvic-light-bg);
+}
+
+.medvic-person-card-body {
+  padding: 1rem 0.75rem;
+}
+
+.medvic-person-card-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--medvic-navy);
+  margin: 0 0 0.2rem;
+}
+
+.medvic-person-card-role {
+  font-size: 0.82rem;
+  color: var(--medvic-muted);
+}
+
+/* ── Section Headers ─────────────────────────────── */
+.medvic-section-header {
+  text-align: center;
+  margin: 3rem 0 1.5rem;
+}
+
+.VPHome .vp-doc > h2 {
+  align-items: center;
+  display: flex;
+  gap: 0.65rem;
+}
+
+.VPHome .vp-doc > h2::before {
+  background: linear-gradient(180deg, var(--medvic-orange) 0 50%, var(--medvic-blue) 50% 100%);
+  border-radius: 999px;
+  content: "";
+  flex: 0 0 6px;
+  height: 1.5em;
+}
+
+.medvic-section-header h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--medvic-navy) !important;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.medvic-section-header p {
+  color: var(--medvic-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* ── CTA Strip ───────────────────────────────────── */
+.medvic-cta-strip {
+  background: transparent;
+  backdrop-filter: blur(7px) saturate(1.05);
+  -webkit-backdrop-filter: blur(7px) saturate(1.05);
+  border: 1px solid rgba(27, 58, 107, 0.28);
+  border-left: 4px solid var(--medvic-orange);
+  border-right: 4px solid var(--medvic-blue);
+  color: var(--medvic-text);
+  max-width: 820px;
+  text-align: center;
+  padding: 1.25rem 1.1rem;
+  margin: 2rem auto 0;
+  border-radius: 8px;
+}
+
+.medvic-cta-strip h2 {
+  border-top: 0 !important;
+  color: var(--medvic-navy) !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.medvic-cta-strip p {
+  color: var(--medvic-muted);
+  font-size: 0.92rem;
+  margin-bottom: 1rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.medvic-cta-btn {
+  display: inline-block;
+  margin: 0.3rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none !important;
+  transition: opacity 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.medvic-cta-btn.primary {
+  background: var(--medvic-orange);
+  border: 1px solid var(--medvic-orange);
+  color: #fff !important;
+}
+
+.medvic-cta-btn.secondary {
+  background: transparent;
+  border: 1px solid rgba(27, 58, 107, 0.36);
+  color: var(--medvic-navy) !important;
+}
+
+.medvic-cta-btn:hover { opacity: 0.85; }
+
+/* ── Filter Bar (Publications) ───────────────────── */
+.medvic-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--medvic-light-bg);
+  border-radius: 8px;
+  border: 1px solid var(--medvic-border);
+}
+
+.medvic-filter-bar input[type="search"] {
+  border: 1px solid var(--medvic-border);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  min-width: 200px;
+  outline: none;
+  font-family: inherit;
+}
+
+.medvic-filter-bar input[type="search"]:focus {
+  border-color: var(--medvic-teal);
+  box-shadow: 0 0 0 3px rgba(13,110,126,0.12);
+}
+
+/* ── Container widths ────────────────────────────── */
+@media (min-width: 1440px) {
+  .VPDoc:not(.has-sidebar) .content,
   .VPDoc:not(.has-sidebar) .container {
     max-width: 1200px !important;
   }
 }
 
-/* Publications page */
+/* ── Legacy publication styles ───────────────────── */
 .publication-info {
   color: var(--vp-c-text-1) !important;
   transition: color 0.2s ease-in-out;
 }
 
 .publication:hover {
-  background: #f5f5f5 !important;
+  background: var(--medvic-light-bg) !important;
 }
 
 .publication-info:hover {
-  color: var(--vp-c-brand-2) !important;
+  color: var(--medvic-teal) !important;
 }
 
-/* Team page */
-.VPTeamPage {
-  margin: 0 !important;
+/* ── People page ─────────────────────────────────── */
+.medvic-page-heading {
+  box-sizing: border-box;
+  margin: 0 auto 2.5rem;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  width: 100%;
 }
 
-vpi-social-website {
-  display: none !important;
+.medvic-page-heading h1 {
+  color: var(--medvic-navy) !important;
+  font-family: Inter, sans-serif;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.1;
+  margin: 0 0 0.7rem;
 }
 
-.vpi-social-linkedin {
-  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='M2 12h20M12 2a15 15 0 0 0 0 20a15 15 0 0 0 0-20'/%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3C/g%3E%3C/svg%3E") !important;
+.medvic-page-heading p {
+  color: var(--medvic-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 760px;
 }
 
-/* Sidebar */
+.medvic-people-section {
+  box-sizing: border-box;
+  margin: 0 auto 2.5rem;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.medvic-people-section h2 {
+  border-top: 1px solid var(--medvic-border) !important;
+  color: var(--medvic-navy) !important;
+  font-family: Inter, sans-serif;
+  font-size: 1.45rem !important;
+  letter-spacing: 0;
+  margin: 0 0 1rem !important;
+  padding-top: 1.4rem !important;
+}
+
+/* ── Sidebar ─────────────────────────────────────── */
 .publication-sidebar h2 {
-  color: var(--vp-c-brand-2) !important;
+  color: var(--medvic-teal) !important;
+}
+
+/* ── Contact page ────────────────────────────────── */
+.medvic-contact-table {
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin: 1.2rem 0 1.8rem;
+  width: 100%;
+}
+
+.medvic-contact-table th,
+.medvic-contact-table td {
+  border-bottom: 1px solid var(--medvic-border);
+  padding: 0.72rem 0.8rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.medvic-contact-table th {
+  color: var(--medvic-navy);
+  font-family: Inter, sans-serif;
+  font-weight: 750;
+  width: 170px;
+}
+
+.medvic-contact-table tr:first-child th,
+.medvic-contact-table tr:first-child td {
+  border-top: 1px solid var(--medvic-border);
+}
+
+.medvic-map-frame {
+  background: var(--medvic-light-bg);
+  border: 1px solid var(--medvic-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(27, 58, 107, 0.08);
+  display: block;
+  min-height: 360px;
+  width: 100%;
+}
+
+.medvic-map-link {
+  font-size: 0.9rem;
+  margin: 0.6rem 0 0;
+}
+
+/* ── Funding table ───────────────────────────────── */
+.medvic-funding-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.5rem 0;
+}
+
+.medvic-funding-table th {
+  background: var(--medvic-navy);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.medvic-funding-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--medvic-border);
+  vertical-align: top;
+}
+
+.medvic-funding-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Placeholder image blocks ────────────────────── */
+.medvic-placeholder-img {
+  width: 100%;
+  background: linear-gradient(135deg, var(--medvic-light-bg) 0%, #e8eff8 100%);
+  border: 2px dashed var(--medvic-border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: var(--medvic-muted);
+  font-size: 0.88rem;
+  font-style: italic;
+  min-height: 180px;
+}
+
+/* ── Stats bar on publications page ─────────────── */
+.medvic-stats-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: var(--medvic-light-bg);
+  border: 1px solid var(--medvic-border);
+  border-radius: 8px;
+  padding: 1.25rem 1.75rem;
+  margin: 1.5rem 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.medvic-stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.medvic-stat-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--medvic-navy);
+  line-height: 1;
+}
+
+.medvic-stat-item:nth-child(even) .medvic-stat-value {
+  color: var(--medvic-orange);
+}
+
+.medvic-stat-label {
+  font-size: 0.78rem;
+  color: var(--medvic-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+/* ── Research theme anchored sections ────────────── */
+.medvic-theme-section {
+  border-left: 4px solid var(--medvic-blue);
+  padding-left: 1.5rem;
+  margin: 2.5rem 0;
+}
+
+.medvic-cs-detail {
+  background: var(--medvic-light-bg);
+  border: 1px solid var(--medvic-border);
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--medvic-muted);
+}
+
+.medvic-cs-detail summary {
+  font-weight: 600;
+  color: var(--medvic-navy);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }

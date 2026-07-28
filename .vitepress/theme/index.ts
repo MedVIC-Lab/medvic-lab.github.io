@@ -4,6 +4,9 @@ import '@mdi/font/css/materialdesignicons.css'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { createVuetify } from 'vuetify'
+import { h } from 'vue'
+import SplineBackground from './SplineBackground'
+import SiteSearch from './SiteSearch.vue'
 import './custom.css'
 
 const vuetify = createVuetify({ components, directives })
@@ -12,7 +15,14 @@ const vuetify = createVuetify({ components, directives })
 const layouts = import.meta.glob('../../layouts/*.vue')
 
 export default {
-  Layout: DefaultTheme.Layout,
+  Layout() {
+    return h('div', { class: 'medvic-site-shell' }, [
+      h(SplineBackground),
+      h(DefaultTheme.Layout, null, {
+        'nav-bar-content-after': () => h(SiteSearch),
+      }),
+    ])
+  },
   extends: DefaultTheme,
   enhanceApp({ app }) {
     // Use Vuetify

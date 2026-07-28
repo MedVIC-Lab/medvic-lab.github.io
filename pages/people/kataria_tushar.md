@@ -4,7 +4,8 @@ name: "Tushar Kataria"
 role: "PhD Student" 
 title: "PhD Candidate" # e.g., "PhD Student", "MS Student", "Staff", "Researcher", "Alumni"
 org: "University of Utah, SCI Institute"
-avatar: "kataria_tushar.png" # Replace with the URL to your avatar image
+avatar: "tushar.kataria.jpg"
+name_in_pubs: "Tushar Kataria"
 links:
   - icon: "github"
     link: "https://github.com/tushaarkataria" # Replace with your GitHub profile link

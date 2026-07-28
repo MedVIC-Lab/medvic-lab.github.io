@@ -3,258 +3,203 @@ aside: false
 ---
 
 <script setup>
-import { ref, onMounted, computed, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
-const SORT_OPTIONS = {
-  sort: ["year", "author", "title", "conference"],
-  ascending: false  // boolean for ascending/descending order, true = ascending
-}
-
-const publications = ref([]);
-
-const sorting = ref({
-  sort: "author",
-  ascending: false
-})
-
-const previousSort = ref("author")
-
-const search = ref("")
-const searchOpen = ref(false)
-
-const selectedTags = ref(new Set([]));
-const tagsOpen = ref(false);
-
-// helper
-function sortByAuthor(a, b, order) {
-  const aFirstAuthor = a.authors.split(',')[0]
-  const bFirstAuthor = b.authors.split(',')[0]
-  const aLastName = aFirstAuthor.split(' ').pop()
-  const bLastName = bFirstAuthor.split(' ').pop()
-  return aLastName.localeCompare(bLastName) * order;
-}
-
-const tags = computed(() => {
-  const t = new Set([]);
-  // get every unique tag from publications.value
-  publications.value.forEach((p) => {
-    if (p.tags) {
-      // for every tag within the publication, add it to the Set object
-      p.tags.forEach((tag) => t.add(tag));
-    }
-  });
-
-  return t;
-});
-
-const sortedPublications = computed(() => {
-  // filter search string first
-  let filteredPubs = [...publications.value]
-  if (search.value !== "") {
-    filteredPubs = filteredPubs.filter((p) => p.title.toLowerCase().includes(search.value.toLowerCase()))
-  }
-
-  // filter by tags
-  if (selectedTags.value.length > 0) {
-    filteredPubs = filteredPubs.filter((p) => {
-      if (!p.tags) return false
-      return [...selectedTags.value].every(tag => p.tags.includes(tag))
-    });
-  }
-
-  return filteredPubs.sort((a, b) => {
-    const sortKey = sorting.value.sort
-    const order = sorting.value.ascending ? -1 : 1
-
-    if (sortKey === "year") {
-      if (a.year !== b.year) {
-        return (b.year - a.year) * order
-      }
-      return sortByAuthor(a, b, 1)
-    }
-
-    if (sortKey === "author") {
-      return sortByAuthor(a, b, order)
-    }
-
-    if (sortKey === "title") {
-      return a.title.localeCompare(b.title) * order
-    }
-
-    if (sortKey === "conference") {
-      return a.conference.localeCompare(b.conference) * order
-    }
-
-    return 0
-  })
-})
-
-function handleSortToggle(v) {
-  if (previousSort.value === v) {
-    sorting.value.ascending = !sorting.value.ascending
-  } else {
-    previousSort.value = v
-    sorting.value.ascending = false
-  }
-}
-
-function handleTagSelect(tag) {
-  if (selectedTags.value.has(tag)) {
-    selectedTags.value.delete(tag);
-  } else {
-    selectedTags.value.add(tag);
-  }
-}
-
-function openSearchBar() {
-  searchOpen.value = true;
-}
-
-function openTagsMenu() {
-  tagsOpen.value = true;
-}
+const publications = ref([])
+const search = ref('')
+const selectedTag = ref('')
+const sortBy = ref('year')
 
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
   publications.value = await response.json()
+
+  const params = new URLSearchParams(window.location.search)
+  selectedTag.value = params.get('tag') || ''
 })
+
+const tags = computed(() => {
+  const values = new Set()
+  publications.value.forEach((publication) => {
+    ;(publication.tags || []).forEach((tag) => values.add(tag))
+  })
+  return Array.from(values).sort()
+})
+
+const featuredPublications = computed(() =>
+  publications.value.filter((publication) => publication.featured === true)
+)
+
+const filteredPublications = computed(() => {
+  const query = search.value.trim().toLowerCase()
+
+  return publications.value
+    .filter((publication) => {
+      const searchable = [
+        publication.title,
+        publication.authors,
+        publication.conference,
+        publication.year,
+        ...(publication.tags || []),
+      ].join(' ').toLowerCase()
+
+      return !query || searchable.includes(query)
+    })
+    .filter((publication) => {
+      return !selectedTag.value || (publication.tags || []).includes(selectedTag.value)
+    })
+    .sort((a, b) => {
+      if (sortBy.value === 'title') return String(a.title).localeCompare(String(b.title))
+      if (sortBy.value === 'author') return firstAuthor(a).localeCompare(firstAuthor(b))
+      return Number(b.year || 0) - Number(a.year || 0)
+    })
+})
+
+function firstAuthor(publication) {
+  return String(publication.authors || '').split(',')[0].trim()
+}
+
+function setTag(tag) {
+  selectedTag.value = selectedTag.value === tag ? '' : tag
+
+  const url = new URL(window.location.href)
+  if (selectedTag.value) {
+    url.searchParams.set('tag', selectedTag.value)
+  } else {
+    url.searchParams.delete('tag')
+  }
+  window.history.replaceState({}, '', url)
+}
+
+function publicationImage(publication) {
+  return publication.image ? `/assets/images/publications/${publication.image}` : ''
+}
 </script>
-
-<style>
-.publication {
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 20px;
-  text-decoration: none !important;
-  border-radius: 10px;
-}
-
-.publication img {
-  max-width: 150px;
-  height: auto; /* Maintain aspect ratio */
-  margin-right: 20px;
-  object-fit: contain; /* Ensure the image fits within the container while maintaining aspect ratio */
-}
-
-.publication-info {
-  flex: 1;
-}
-
-@media (max-width: 768px) {
-  .publication {
-    flex-direction: column;
-  }
-
-  .publication img {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-}
-
-.v-icon-placeholder {
-  width: 16px; /* Width of the icon */
-  height: 16px; /* Height of the icon */
-  display: inline-block;
-}
-
-.tags {
-  padding: 5px;
-  max-width: 250px;
-}
-
-.tag {
-  width: fit-content;
-}
-
-.v-chip--selected {
-  background: var(--vp-c-brand-1);
-  color: white;
-}
-
-</style>
-<span></span>
-<v-row
-  justify="space-between"
-  class="mb-4"
->
 
 # Publications
 
-  <v-btn-toggle
-    v-model="sorting.sort"
-    mandatory
-    group
-  >
-    <v-btn value="year" @click="() => sorting.sort === 'year' && handleSortToggle('year')">
-      Year
-      <v-icon v-if="sorting.sort === 'year'" class="opacity-60">
-        {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
-      </v-icon>
-      <span v-else class="v-icon-placeholder"></span>
-    </v-btn>
-    <v-btn value="author" @click="handleSortToggle('author')">
-      Author
-      <v-icon v-if="sorting.sort === 'author'" class="opacity-60">
-        {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
-      </v-icon>
-      <span v-else class="v-icon-placeholder"></span>
-    </v-btn>
-    <v-btn value="title" @click="handleSortToggle('title')">
-      Title
-      <v-icon v-if="sorting.sort === 'title'" class="opacity-60">
-        {{ (sorting.ascending) ? "mdi-arrow-up" : "mdi-arrow-down" }}
-      </v-icon>
-      <span v-else class="v-icon-placeholder"></span>
-    </v-btn>
-    <v-menu 
-      :close-on-content-click="false"
-      location="bottom"
-    >
-      <template v-slot:activator="{ props }">
-        <v-btn v-bind="props" icon="mdi-tag-outline" @click="() => {
-          sorting.sort = previousSort  // reset sorting to previous to ignore the click action
-          openTagsMenu()
-        }">
-        </v-btn>
-      </template>
-      <v-card class="tags">
-      <v-chip-group v-model="selectedTags" column multiple>
-        <v-chip v-for="tag in tags" :key="tag" class="tag" :value="tag">
-          {{tag}}
-        </v-chip>
-      </v-chip-group>
-      </v-card>
-    </v-menu>
-    <v-menu 
-      :close-on-content-click="false"
-      location="bottom"
-    >
-      <template v-slot:activator="{ props }">
-        <v-btn v-bind="props" icon="mdi-magnify" @click="() => {
-          sorting.sort = previousSort  // reset sorting to previous to ignore the click action
-          openSearchBar()
-        }">
-        </v-btn>
-      </template>
-      <v-card min-width="300">
-        <v-text-field
-          v-model="search"
-          hide-details
-          label="Search"
-        >
-        </v-text-field>
-      </v-card>
-    </v-menu>
-  </v-btn-toggle>
-</v-row>
-
-<div class="container">
-  <a v-for="publication in sortedPublications" :key="publication.title" :href="publication.link" class="publication">
-    <img v-if="publication.image" :src="`../assets/images/publications/${publication.image.src}`" :alt="publication.image.alt">
-    <div class="publication-info">
-      <p>{{ publication.authors }}</p>
-      <p>{{ publication.title }}</p>
-      <p>{{ publication.conference }} ({{ publication.year }})</p>
-    </div>
-  </a>
+<div class="medvic-stats-bar">
+  <div class="medvic-stat-item">
+    <span class="medvic-stat-value">138+</span>
+    <span class="medvic-stat-label">Peer-reviewed publications</span>
+  </div>
+  <div class="medvic-stat-item">
+    <span class="medvic-stat-value">{{ publications.length }}</span>
+    <span class="medvic-stat-label">Unique records listed</span>
+  </div>
+  <div class="medvic-stat-item">
+    <span class="medvic-stat-value">2,510+</span>
+    <span class="medvic-stat-label">Google Scholar citations</span>
+  </div>
+  <div class="medvic-stat-item">
+    <span class="medvic-stat-value">h-21</span>
+    <span class="medvic-stat-label">h-index</span>
+  </div>
+  <div style="flex:0 0 auto;">
+    <a href="https://scholar.google.com/citations?user=SElhabian" target="_blank"
+       style="display:inline-block;padding:0.5rem 1rem;background:var(--medvic-navy);color:#fff;border-radius:6px;font-weight:600;font-size:0.85rem;text-decoration:none;">
+      Google Scholar
+    </a>
+  </div>
 </div>
+
+<section class="medvic-publication-section medvic-publication-search-section">
+  <div class="medvic-publication-toolbar">
+    <label class="medvic-publication-search">
+      <span>Search</span>
+      <input v-model="search" type="search" placeholder="Title, author, venue, tag" />
+    </label>
+    <label class="medvic-publication-sort">
+      <span>Sort</span>
+      <select v-model="sortBy">
+        <option value="year">Newest first</option>
+        <option value="author">First author</option>
+        <option value="title">Title</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<section v-if="featuredPublications.length" class="medvic-publication-section">
+  <h2>Highlighted Publications</h2>
+  <div class="medvic-pub-grid medvic-featured-grid">
+    <a
+      v-for="publication in featuredPublications"
+      :key="publication.link"
+      :href="publication.link"
+      class="medvic-pub-card featured"
+    >
+      <img
+        v-if="publicationImage(publication)"
+        :src="publicationImage(publication)"
+        :alt="publication.title"
+        class="medvic-pub-card-img"
+      />
+      <div v-else class="medvic-pub-card-placeholder">
+        {{ publication.conference || publication.year }}
+      </div>
+      <div class="medvic-pub-card-body">
+        <div class="medvic-pub-card-title">{{ publication.title }}</div>
+        <div class="medvic-pub-card-authors">{{ publication.authors }}</div>
+        <div class="medvic-pub-card-venue">{{ publication.conference }} ({{ publication.year }})</div>
+        <div class="medvic-pub-tags">
+          <span v-for="tag in publication.tags" :key="tag" class="medvic-pub-tag">{{ tag }}</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="medvic-publication-section">
+  <div class="medvic-tag-filter" aria-label="Publication tags">
+    <button
+      v-if="selectedTag"
+      class="medvic-tag-filter-button clear"
+      type="button"
+      @click="setTag('')"
+    >
+      Clear: {{ selectedTag }}
+    </button>
+    <button
+      v-for="tag in tags"
+      :key="tag"
+      class="medvic-tag-filter-button"
+      :class="{ active: selectedTag === tag }"
+      type="button"
+      @click="setTag(tag)"
+    >
+      {{ tag }}
+    </button>
+  </div>
+
+  <div class="medvic-results-count">
+    Showing {{ filteredPublications.length }} of {{ publications.length }} publication records.
+  </div>
+
+  <div class="medvic-pub-grid">
+    <a
+      v-for="publication in filteredPublications"
+      :key="publication.link"
+      :href="publication.link"
+      class="medvic-pub-card"
+    >
+      <img
+        v-if="publicationImage(publication)"
+        :src="publicationImage(publication)"
+        :alt="publication.title"
+        class="medvic-pub-card-img"
+      />
+      <div v-else class="medvic-pub-card-placeholder">
+        {{ publication.conference || publication.year }}
+      </div>
+      <div class="medvic-pub-card-body">
+        <div class="medvic-pub-card-title">{{ publication.title }}</div>
+        <div class="medvic-pub-card-authors">{{ publication.authors }}</div>
+        <div class="medvic-pub-card-venue">{{ publication.conference }} ({{ publication.year }})</div>
+        <div class="medvic-pub-tags">
+          <span v-for="tag in publication.tags" :key="tag" class="medvic-pub-tag">{{ tag }}</span>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

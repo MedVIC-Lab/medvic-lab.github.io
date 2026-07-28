@@ -28,7 +28,8 @@
 </template>
 
 <script setup>
-import { Content, useData } from 'vitepress';
+import { useData } from 'vitepress';
+import { Content } from 'vitepress/dist/client/app/components/Content.js';
 
 const { frontmatter } = useData();
 </script>

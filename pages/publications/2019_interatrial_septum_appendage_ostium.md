@@ -7,6 +7,7 @@ venue: "IEEE Computing in Cardiology (CinC)"
 tags: ["cardiac", "conference"]
 image:
   src: "2019_interatrial_septum_appendage_ostium.png"
+  generated: true
   alt: "Interatrial Septum and Appendage Ostium in Atrial Fibrillation Patients: A Population Study"
 
 bibtex_key: "Goparaju2019_InteratrialSeptum"

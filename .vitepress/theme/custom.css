@@ -409,20 +409,18 @@ body h3 {
 }
 
 .VPHero .name {
-  background: url('/assets/images/medvic.png') left center / contain no-repeat;
+  border-bottom: 1px solid rgba(27, 58, 107, 0.34);
   display: block;
-  font-size: 0 !important;
-  height: clamp(190px, 28vw, 286px);
+  font-size: clamp(2.75rem, 6vw, 4.6rem) !important;
+  font-weight: 600;
+  height: auto;
+  letter-spacing: -0.035em;
+  line-height: 1;
   margin-bottom: 0.65rem;
-  max-width: 440px;
-  overflow: hidden;
-  padding: 0;
-  text-indent: -9999px;
-  width: min(100%, 440px);
-}
-
-.VPHero .name::after {
-  content: none;
+  max-width: 560px;
+  padding: 0 0 0.65rem;
+  text-indent: 0;
+  width: min(100%, 560px);
 }
 
 .VPHero .tagline {
@@ -450,6 +448,28 @@ body h3 {
 
   .VPHome .VPHero {
     min-height: 58vh;
+  }
+}
+
+/* ── About Page Branding ─────────────────────────── */
+.medvic-about-logo {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(27, 58, 107, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 16px 42px rgba(27, 58, 107, 0.1);
+  box-sizing: border-box;
+  float: right;
+  margin: 0.15rem 0 1.5rem 2.25rem;
+  padding: 1rem;
+  width: clamp(300px, 40vw, 500px);
+}
+
+@media (max-width: 720px) {
+  .medvic-about-logo {
+    display: block;
+    float: none;
+    margin: 0.5rem auto 1.5rem;
+    width: min(100%, 440px);
   }
 }
 
@@ -754,6 +774,12 @@ body h3 {
   background: var(--medvic-light-bg);
 }
 
+.medvic-pub-card-img-generated {
+  filter: blur(1.25px) brightness(1.04) contrast(0.9);
+  opacity: 0.88;
+  transform: scale(1.012);
+}
+
 .medvic-pub-card-placeholder {
   align-items: center;
   aspect-ratio: 16/9;
@@ -834,11 +860,18 @@ body h3 {
 }
 
 .medvic-publication-search-section {
-  margin-bottom: 1.6rem;
+  background: var(--medvic-light-bg);
+  border: 1px solid var(--medvic-border);
+  border-radius: 8px;
+  margin: 1rem 0 1.5rem;
+  padding: 0.7rem;
 }
 
 .medvic-publication-search-section .medvic-publication-toolbar {
-  margin-bottom: 0;
+  background: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .medvic-section-kicker {
@@ -864,6 +897,16 @@ body h3 {
   gap: 1rem;
   margin: 1.25rem 0;
   padding: 1rem;
+}
+
+.medvic-publication-compact-meta {
+  align-items: center;
+  border-top: 1px solid rgba(27, 58, 107, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.75rem;
+  margin-top: 0.6rem;
+  padding-top: 0.55rem;
 }
 
 .medvic-publication-search,
@@ -903,9 +946,10 @@ body h3 {
 
 .medvic-tag-filter {
   display: flex;
+  flex: 1 1 620px;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 1rem 0;
+  gap: 0.3rem;
+  margin: 0;
 }
 
 .medvic-tag-filter-button {
@@ -915,9 +959,10 @@ body h3 {
   color: var(--medvic-navy);
   cursor: pointer;
   font-family: Inter, sans-serif;
-  font-size: 0.76rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.3rem 0.7rem;
+  line-height: 1.2;
+  padding: 0.2rem 0.52rem;
 }
 
 .medvic-tag-filter-button.active,
@@ -935,8 +980,11 @@ body h3 {
 
 .medvic-results-count {
   color: var(--medvic-muted);
-  font-size: 0.9rem;
-  margin: 0 0 1rem;
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  font-weight: 650;
+  margin: 0;
+  white-space: nowrap;
 }
 
 /* ── News Feed ───────────────────────────────────── */
@@ -1213,20 +1261,20 @@ body h3 {
 
 .medvic-people-section {
   box-sizing: border-box;
-  margin: 0 auto 2.5rem;
-  max-width: 1200px;
-  padding: 0 1.5rem;
-  width: 100%;
+  margin: 0 0 2rem;
+  max-width: none;
+  padding: 0;
+  width: auto;
 }
 
 .medvic-people-section h2 {
   border-top: 1px solid var(--medvic-border) !important;
   color: var(--medvic-navy) !important;
   font-family: Inter, sans-serif;
-  font-size: 1.45rem !important;
+  font-size: 1.35rem !important;
   letter-spacing: 0;
-  margin: 0 0 1rem !important;
-  padding-top: 1.4rem !important;
+  margin: 0 0 0.75rem !important;
+  padding-top: 1.15rem !important;
 }
 
 /* ── Sidebar ─────────────────────────────────────── */

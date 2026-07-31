@@ -7,6 +7,7 @@ venue: "5th International Symposium on Visual Computing (ISVC)"
 tags: ["conference", "reconstruction"]
 image:
   src: "2009_framework_long_distance_face.png"
+  generated: true
   alt: "A Framework for Long Distance Face Recognition Using Dense- and Sparse-Stereo Reconstruction"
 
 bibtex_key: "Rara2009_LongRangeFaceISVC"

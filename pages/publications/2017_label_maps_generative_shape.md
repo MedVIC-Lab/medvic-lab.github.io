@@ -7,6 +7,7 @@ venue: "International Conference on Information Processing in Medica"
 tags: ["conference", "modeling-patient-state", "probabilistic"]
 image:
   src: "2017_label_maps_generative_shape.png"
+  generated: true
   alt: "From Label Maps to Generative Shape Models: A Variational Bayesian Learning Approach"
 
 bibtex_key: "Elhabian2017_LabelMaps"

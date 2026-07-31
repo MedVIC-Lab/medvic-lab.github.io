@@ -7,6 +7,7 @@ venue: "IEEE Engineering in Medicine and Biology Society (EMBC)"
 tags: ["journal"]
 image:
   src: "2010_modeling_lung_nodules_detection.png"
+  generated: true
   alt: "Modeling of the Lung Nodules for Detection in LDCT Scans"
 
 bibtex_key: "Farag2010_LungNoduleLDCT"

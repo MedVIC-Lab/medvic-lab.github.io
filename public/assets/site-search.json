@@ -219,11 +219,18 @@
   },
   {
     "category": "People",
-    "excerpt": "{{$frontmatter.pageTitle}} {{$frontmatter.pageDescription}} {{ section.title }}",
-    "headings": [],
+    "excerpt": "Our Team Current members and alumni of the Medical Vision and Intelligent Computing Lab. Professors PhD Candidates/Students MS Students Undergrad Students Staff Alumni",
+    "headings": [
+      "Professors",
+      "PhD Candidates/Students",
+      "MS Students",
+      "Undergrad Students",
+      "Staff",
+      "Alumni"
+    ],
     "path": "/pages/people",
-    "text": "People Our Team Current members and alumni of the Medical Vision and Intelligent Computing Lab. {{$frontmatter.pageTitle}} {{$frontmatter.pageDescription}} {{ section.title }}",
-    "title": "People"
+    "text": "Our Team Professors PhD Candidates/Students MS Students Undergrad Students Staff Alumni true deep Our Team Current members and alumni of the Medical Vision and Intelligent Computing Lab. Professors PhD Candidates/Students MS Students Undergrad Students Staff Alumni",
+    "title": "Our Team"
   },
   {
     "category": "People",
@@ -1456,7 +1463,7 @@
     "excerpt": "Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Sort Newest first First author",
     "headings": [],
     "path": "/pages/publications",
-    "text": "Publications Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Sort Newest first First author Title Highlighted Publications {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }} Clear {{ selectedTag }} {{ tag }} Showing {{ filteredPublications.length }} of {{ publications.length }} publication records. {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }}",
+    "text": "Publications Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Sort Newest first First author Title Clear {{ selectedTag }} {{ tag }} Highlighted Publications {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }} {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }}",
     "title": "Publications"
   },
   {

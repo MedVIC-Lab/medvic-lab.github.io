@@ -7,6 +7,7 @@ venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal"]
 image:
   src: "2010_3d_face_recovery_intensities.png"
+  generated: true
   alt: "3D Face Recovery from Intensities of General and Unknown Lighting Using Partial Least Squares"
 
 bibtex_key: "Rara2010_3DFaceRecovery"

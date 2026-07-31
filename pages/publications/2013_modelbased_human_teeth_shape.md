@@ -7,6 +7,7 @@ venue: "Medical Computer Vision: Recognition Techniques and Applicat"
 tags: ["conference"]
 image:
   src: "2013_modelbased_human_teeth_shape.png"
+  generated: true
   alt: "Model-Based Human Teeth Shape Recovery from a Single Optical Image with Unknown Illumination"
 
 bibtex_key: "Farag2013_TeethMCV"

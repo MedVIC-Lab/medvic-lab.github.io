@@ -7,6 +7,7 @@ venue: "ASME Journal of Mechanical Design"
 tags: ["clinically-trustworthy", "journal"]
 image:
   src: "2020_sharedgaussian_process_learning_interpretable.png"
+  generated: true
   alt: "Shared-Gaussian Process: Learning Interpretable Shared Hidden Structure Across Data Spaces for Design Space Analysis and Exploration"
 links:
   doi: "https://doi.org/10.1115/1.4046074"

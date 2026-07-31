@@ -7,6 +7,7 @@ venue: "International Conference on Multimedia Technology (ICMT)"
 tags: ["conference"]
 image:
   src: "2011_probability_density_estimation_linear.png"
+  generated: true
   alt: "Probability Density Estimation by Linear Combinations of Gaussian Kernels Generalizations and Algorithmic Evaluation"
 
 bibtex_key: "Farag2011_ProbabilityDensityICMT"

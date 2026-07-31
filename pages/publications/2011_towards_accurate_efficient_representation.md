@@ -7,6 +7,7 @@ venue: "International Conference on Computer Vision (ICCV)"
 tags: ["conference", "foundation-models"]
 image:
   src: "2011_towards_accurate_efficient_representation.png"
+  generated: true
   alt: "Towards Accurate and Efficient Representation of Image Irradiance of Convex-Lambertian Objects under Unknown Near Lighting"
 
 bibtex_key: "Elhabian2011_ConvexLambertian"

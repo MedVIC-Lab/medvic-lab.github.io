@@ -7,6 +7,7 @@ venue: "arXiv"
 tags: ["cardiac", "modeling-patient-state", "preprint"]
 image:
   src: "2026_acmil_weakly_supervised_atrial.png"
+  generated: true
   alt: "AC-MIL: Weakly Supervised Atrial LGE-MRI Quality Assessment via Adversarial Concept Disentanglement"
 
 bibtex_key: "Sultan2026_ACMIL"

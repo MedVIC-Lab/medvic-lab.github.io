@@ -7,6 +7,7 @@ venue: "Statistical Shape and Deformation Analysis: Methods, Impleme"
 tags: ["journal", "modeling-patient-state", "shape-modeling", "shapeworks"]
 image:
   src: "2017_shapeworks_particlebased_shape_correspondence.png"
+  generated: true
   alt: "ShapeWorks: Particle-Based Shape Correspondence and Visualization Software"
 
 bibtex_key: "Cates2017_ShapeWorks_Chapter"

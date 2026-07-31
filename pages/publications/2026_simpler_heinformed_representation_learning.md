@@ -7,6 +7,7 @@ venue: "arXiv"
 tags: ["computational-pathology", "preprint", "virtual-staining"]
 image:
   src: "2026_simpler_heinformed_representation_learning.png"
+  generated: true
   alt: "SIMPLER: H&E-Informed Representation Learning for Structured Illumination Microscopy"
 
 bibtex_key: "Aziz2026_SIMPLER"

@@ -7,6 +7,7 @@ venue: "Egyptian Informatics Journal"
 tags: ["journal"]
 image:
   src: "2006_sperm_tracking_backward_projection.png"
+  generated: true
   alt: "Sperm Tracking Using Backward Projection"
 
 bibtex_key: "Elhabian2006_SpermTracking"

@@ -47,6 +47,7 @@
           :src="`../../assets/images/publications/${frontmatter.image.src}`"
           :alt="frontmatter.image?.alt || frontmatter.title"
           class="publication-image"
+          :class="{ 'publication-image-generated': frontmatter.image?.generated }"
         />
         <div v-else class="publication-image-placeholder">
           Graphical abstract image slot
@@ -247,6 +248,11 @@ async function copyCitation() {
   border-radius: 8px;
   margin-bottom: 1.5rem;
   max-width: 100%;
+}
+
+.publication-image-generated {
+  filter: blur(1.25px) brightness(1.04) contrast(0.9);
+  opacity: 0.88;
 }
 
 .publication-image-placeholder {

@@ -7,6 +7,7 @@ venue: "IEEE CVPR Biometrics Workshop"
 tags: ["reconstruction", "workshop"]
 image:
   src: "2009_face_recognition_distance_based.png"
+  generated: true
   alt: "Face Recognition at a Distance Based on Sparse-Stereo Reconstruction"
 
 bibtex_key: "Rara2009_FaceCVPRWorkshop"

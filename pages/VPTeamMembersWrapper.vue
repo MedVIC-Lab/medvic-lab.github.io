@@ -88,11 +88,11 @@ export default {
 
 <style scoped>
 .medvic-member-grid {
-  align-items: stretch;
+  align-items: start;
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  margin: 1rem 0 2.5rem;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  margin: 0.75rem 0 1.75rem;
 }
 
 .medvic-member-card {
@@ -100,11 +100,14 @@ export default {
   border: 1px solid var(--medvic-border, #d4dde8);
   border-radius: 8px;
   box-shadow: 0 8px 22px rgba(27, 58, 107, 0.08);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 320px;
-  padding: 1.15rem;
+  height: auto;
+  min-height: 0;
+  padding: 0.8rem;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  width: 100%;
 }
 
 .medvic-member-card:hover {
@@ -117,7 +120,7 @@ export default {
   align-items: center;
   color: inherit;
   display: flex;
-  flex: 1;
+  flex: 0 0 auto;
   flex-direction: column;
   min-height: 0;
   text-align: center;
@@ -128,8 +131,8 @@ export default {
 .medvic-member-avatar-placeholder {
   border-radius: 100%;
   flex: 0 0 auto;
-  height: 96px;
-  width: 96px;
+  height: 82px;
+  width: 82px;
 }
 
 .medvic-member-avatar {
@@ -143,7 +146,7 @@ export default {
   color: var(--medvic-navy, #1b3a6b);
   display: flex;
   font-family: Inter, sans-serif;
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   font-weight: 800;
   justify-content: center;
   letter-spacing: 0;
@@ -152,16 +155,16 @@ export default {
 .medvic-member-main h3 {
   color: var(--medvic-navy, #1b3a6b) !important;
   font-family: Inter, sans-serif;
-  font-size: 1rem !important;
+  font-size: 0.92rem !important;
   font-weight: 750;
   line-height: 1.25;
-  margin: 0.9rem 0 0.35rem;
+  margin: 0.6rem 0 0.15rem;
 }
 
 .medvic-member-main p {
   color: var(--medvic-muted, #5f6f82);
-  font-size: 0.86rem;
-  line-height: 1.35;
+  font-size: 0.79rem;
+  line-height: 1.25;
   margin: 0;
 }
 
@@ -170,10 +173,10 @@ export default {
   display: flex;
   flex: 0 0 auto;
   flex-wrap: wrap;
-  gap: 0.35rem;
+  gap: 0.28rem;
   justify-content: center;
-  min-height: 34px;
-  padding-top: 0.8rem;
+  min-height: 0;
+  padding-top: 0.45rem;
 }
 
 .medvic-member-social-link {
@@ -183,13 +186,13 @@ export default {
   border-radius: 999px;
   color: var(--medvic-teal, #0d6e7e);
   display: inline-flex;
-  flex: 0 0 32px;
-  height: 32px;
+  flex: 0 0 28px;
+  height: 28px;
   justify-content: center;
   overflow: hidden;
   text-decoration: none !important;
   transition: background-color 0.2s, color 0.2s;
-  width: 32px;
+  width: 28px;
 }
 
 .medvic-member-social-link:hover {
@@ -201,8 +204,8 @@ export default {
   background-color: currentColor;
   color: inherit;
   display: block;
-  height: 17px;
-  width: 17px;
+  height: 15px;
+  width: 15px;
 }
 
 .vpi-social-github,
@@ -240,7 +243,7 @@ export default {
 
   .medvic-member-card {
     height: auto;
-    min-height: 286px;
+    min-height: 0;
   }
 }
 </style>

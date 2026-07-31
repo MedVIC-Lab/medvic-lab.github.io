@@ -7,6 +7,7 @@ venue: "Frontiers in Bioengineering and Biotechnology"
 tags: ["journal", "modeling-patient-state", "shape-modeling"]
 image:
   src: "2023_learning_spatiotemporal_statistical_shape.png"
+  generated: true
   alt: "Learning Spatiotemporal Statistical Shape Models for Nonlinear Dynamic Anatomies"
 links:
   doi: "https://doi.org/10.3389/fbioe.2022.1086234"

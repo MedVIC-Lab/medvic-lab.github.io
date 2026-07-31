@@ -6,6 +6,7 @@ conference: "Proceedings of the SC'23 Workshops of The International Conference 
 year: "2023"
 image:
   src: "2023_REU_NSF.png"
+  generated: true
   alt: "Abstract diagram representing trustworthy and reproducible intelligent computation"
 links: 
   publisher: "https://dl.acm.org/doi/abs/10.1145/3624062.3624100"

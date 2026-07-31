@@ -7,6 +7,7 @@ venue: "arXiv"
 tags: ["modeling-patient-state", "preprint"]
 image:
   src: "2026_morphoflow_sparsesupervised_generative_shape.png"
+  generated: true
   alt: "MorphoFlow: Sparse-Supervised Generative Shape Modeling with Adaptive Latent Relevance"
 
 bibtex_key: "Karanam2026_MorphoFlow"

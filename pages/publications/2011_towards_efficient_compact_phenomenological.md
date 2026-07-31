@@ -7,6 +7,7 @@ venue: "British Machine Vision Conference (BMVC)"
 tags: ["conference"]
 image:
   src: "2011_towards_efficient_compact_phenomenological.png"
+  generated: true
   alt: "Towards Efficient and Compact Phenomenological Representation of Arbitrary Bidirectional Surface Reflectance"
 
 bibtex_key: "Elhabian2011_BMVC"

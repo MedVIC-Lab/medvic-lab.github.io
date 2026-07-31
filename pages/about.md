@@ -4,6 +4,12 @@ aside: false
 
 # About MedVIC Lab
 
+<img
+  src="/assets/images/medvic.png"
+  alt="MedVIC Lab — Medical Vision and Intelligent Computing"
+  class="medvic-about-logo"
+/>
+
 MedVIC — the Medical Vision and Intelligent Computing Lab — was founded around a single frustration: the gap between what AI can do in benchmark papers and what it does reliably in real medical settings is too wide, and the methods community wasn't taking that gap seriously enough.
 
 We work on methods that close that gap. Probabilistic, geometric, generative — we design AI systems in which structure is treated as a first-class object of modeling rather than an emergent byproduct of scale. In medical imaging, data are complex and heterogeneous, supervision is sparse, and reliability is not a nice-to-have. We believe you can't paper over those challenges with more data or bigger models. You have to address them in how you design representations, how you model uncertainty, and how you build the systems that clinicians and researchers will actually use.

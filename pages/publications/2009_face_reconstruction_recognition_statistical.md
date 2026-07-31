@@ -7,6 +7,7 @@ venue: "IEEE SOUTHEASTCON"
 tags: ["journal", "reconstruction"]
 image:
   src: "2009_face_reconstruction_recognition_statistical.png"
+  generated: true
   alt: "Face Reconstruction and Recognition Using a Statistical Model Combining Shape and Spherical Harmonics"
 
 bibtex_key: "Rara2009_FaceShapeSoutheastcon"

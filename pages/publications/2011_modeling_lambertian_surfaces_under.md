@@ -7,6 +7,7 @@ venue: "Canadian Conference on Computer and Robot Vision (CRV)"
 tags: ["conference", "foundation-models"]
 image:
   src: "2011_modeling_lambertian_surfaces_under.png"
+  generated: true
   alt: "Modeling Lambertian Surfaces under Unknown Distant Illumination Using Hemispherical Harmonics"
 
 bibtex_key: "Elhabian2011_LambertianCRV"

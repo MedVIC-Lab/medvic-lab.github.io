@@ -7,6 +7,7 @@ venue: "Cairo International Biomedical Engineering Conference (CIBEC"
 tags: ["conference", "reconstruction"]
 image:
   src: "2008_statistical_model_combining_shape.png"
+  generated: true
   alt: "A Statistical Model Combining Shape and Spherical Harmonics for Face Reconstruction and Recognition"
 
 bibtex_key: "Rara2008_FaceShapeHarmonics"

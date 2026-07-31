@@ -7,6 +7,7 @@ venue: "MICCAI Workshop on Shape in Medical Imaging (ShapeMI)"
 tags: ["modeling-patient-state", "probabilistic", "workshop"]
 image:
   src: "2020_uncertaindeepssm_images_probabilistic_shape.png"
+  generated: true
   alt: "Uncertain-DeepSSM: From Images to Probabilistic Shape Models"
 
 bibtex_key: "Adams2020_UncertainDeepSSM"

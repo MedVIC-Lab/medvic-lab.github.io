@@ -7,6 +7,7 @@ venue: "arXiv"
 tags: ["learning-under-constraints", "preprint"]
 image:
   src: "2026_pcmil_decoupling_feature_resolution.png"
+  generated: true
   alt: "PC-MIL: Decoupling Feature Resolution from Supervision Scale in Whole-Slide Learning"
 
 bibtex_key: "Ahmed2026_PCMIL"

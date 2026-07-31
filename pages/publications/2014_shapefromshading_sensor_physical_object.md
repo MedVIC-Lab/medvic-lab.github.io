@@ -7,6 +7,7 @@ venue: "IET Computer Vision"
 tags: ["journal", "reconstruction"]
 image:
   src: "2014_shapefromshading_sensor_physical_object.png"
+  generated: true
   alt: "Shape-from-Shading Using Sensor and Physical Object Characteristics Applied to Human Teeth Surface Reconstruction"
 links:
   doi: "https://doi.org/10.1049/iet-cvi.2012.0288"

@@ -118,6 +118,29 @@ function publicationImage(publication) {
       </select>
     </label>
   </div>
+
+  <div class="medvic-publication-compact-meta">
+    <div class="medvic-tag-filter" aria-label="Publication tags">
+      <button
+        v-if="selectedTag"
+        class="medvic-tag-filter-button clear"
+        type="button"
+        @click="setTag('')"
+      >
+        Clear: {{ selectedTag }}
+      </button>
+      <button
+        v-for="tag in tags"
+        :key="tag"
+        class="medvic-tag-filter-button"
+        :class="{ active: selectedTag === tag }"
+        type="button"
+        @click="setTag(tag)"
+      >
+        {{ tag }}
+      </button>
+    </div>
+  </div>
 </section>
 
 <section v-if="featuredPublications.length" class="medvic-publication-section">
@@ -134,6 +157,7 @@ function publicationImage(publication) {
         :src="publicationImage(publication)"
         :alt="publication.title"
         class="medvic-pub-card-img"
+        :class="{ 'medvic-pub-card-img-generated': publication.generated }"
       />
       <div v-else class="medvic-pub-card-placeholder">
         {{ publication.conference || publication.year }}
@@ -151,31 +175,6 @@ function publicationImage(publication) {
 </section>
 
 <section class="medvic-publication-section">
-  <div class="medvic-tag-filter" aria-label="Publication tags">
-    <button
-      v-if="selectedTag"
-      class="medvic-tag-filter-button clear"
-      type="button"
-      @click="setTag('')"
-    >
-      Clear: {{ selectedTag }}
-    </button>
-    <button
-      v-for="tag in tags"
-      :key="tag"
-      class="medvic-tag-filter-button"
-      :class="{ active: selectedTag === tag }"
-      type="button"
-      @click="setTag(tag)"
-    >
-      {{ tag }}
-    </button>
-  </div>
-
-  <div class="medvic-results-count">
-    Showing {{ filteredPublications.length }} of {{ publications.length }} publication records.
-  </div>
-
   <div class="medvic-pub-grid">
     <a
       v-for="publication in filteredPublications"
@@ -188,6 +187,7 @@ function publicationImage(publication) {
         :src="publicationImage(publication)"
         :alt="publication.title"
         class="medvic-pub-card-img"
+        :class="{ 'medvic-pub-card-img-generated': publication.generated }"
       />
       <div v-else class="medvic-pub-card-placeholder">
         {{ publication.conference || publication.year }}

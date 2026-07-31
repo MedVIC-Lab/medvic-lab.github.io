@@ -9,6 +9,7 @@ type Publication = {
   conference: string;  // venue name (journal / conference / workshop)
   year: string;
   image: string;
+  generated: boolean;
   link: string; // local file link
   featured: boolean;
   tags?: string[];
@@ -61,6 +62,7 @@ function mergePublications(existing: Publication, incoming: Publication): Public
     year: preferred.year || fallback.year,
     featured: existing.featured || incoming.featured,
     image: preferred.image || fallback.image,
+    generated: existing.generated || incoming.generated,
     tags: compactTags([...(existing.tags || []), ...(incoming.tags || [])]),
     links: {
       code: preferred.links.code || fallback.links.code || '',
@@ -124,6 +126,7 @@ const generatePublicationsPlugin = (): Plugin => {
             featured: attrs.featured === true,
             links,
             image: attrs.image?.src || attrs.image || '',
+            generated: attrs.image?.generated === true,
             tags: convertArrToLower(attrs.tags) || []
           };
 

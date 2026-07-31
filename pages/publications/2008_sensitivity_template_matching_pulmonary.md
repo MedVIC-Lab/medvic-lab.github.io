@@ -7,6 +7,7 @@ venue: "Cairo International Biomedical Engineering Conference (CIBEC"
 tags: ["conference", "deep-learning"]
 image:
   src: "2008_sensitivity_template_matching_pulmonary.png"
+  generated: true
   alt: "Sensitivity of Template Matching for Pulmonary Nodule Detection: A Case Study"
 
 bibtex_key: "Elhabian2008_NoduleTemplateCIBEC"

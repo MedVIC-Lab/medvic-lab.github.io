@@ -7,6 +7,7 @@ venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal", "reconstruction"]
 image:
   src: "2013_3d_reconstruction_human_jaw.png"
+  generated: true
   alt: "A 3D Reconstruction of the Human Jaw from a Single Image"
 
 bibtex_key: "Abdelrahim2013_3DJawReconstruction"

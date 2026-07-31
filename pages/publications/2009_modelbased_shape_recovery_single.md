@@ -7,6 +7,7 @@ venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal"]
 image:
   src: "2009_modelbased_shape_recovery_single.png"
+  generated: true
   alt: "Model-Based Shape Recovery from Single Images of General and Unknown Lighting"
 
 bibtex_key: "Rara2009_ShapeRecoveryICIP"

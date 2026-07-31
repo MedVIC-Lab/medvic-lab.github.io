@@ -7,6 +7,7 @@ venue: "Medical Image Computing and Computer-Assisted Intervention ("
 tags: ["conference", "modeling-patient-state", "shape-modeling"]
 image:
   src: "2023_mesh2ssm_surface_meshes_statistical.png"
+  generated: true
   alt: "Mesh2SSM: From Surface Meshes to Statistical Shape Models of Anatomy"
 links:
   arxiv: "https://arxiv.org/abs/2305.07805"

@@ -7,6 +7,7 @@ venue: "Egyptian Informatics Journal"
 tags: ["journal"]
 image:
   src: "2004_innovated_approach_automated_snakes.png"
+  generated: true
   alt: "Innovated Approach for Automated Snakes Initialization"
 
 bibtex_key: "Elhabian2004_SnakesInitialization"

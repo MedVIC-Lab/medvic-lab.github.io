@@ -7,6 +7,7 @@ venue: "IEEE International Symposium on Biomedical Imaging (ISBI)"
 tags: ["conference", "reconstruction"]
 image:
   src: "2013_clinical_crowns_shape_reconstruction.png"
+  generated: true
   alt: "Clinical Crowns Shape Reconstruction – an Image-Based Approach"
 
 bibtex_key: "Elhabian2013_ClinicalCrowns"

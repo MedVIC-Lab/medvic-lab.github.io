@@ -7,6 +7,7 @@ venue: "Recent Patents on Computer Science"
 tags: ["journal"]
 image:
   src: "2008_moving_object_detection_spatial.png"
+  generated: true
   alt: "Moving Object Detection in Spatial Domain Using Background Removal Techniques - State-of-Art"
 
 bibtex_key: "Elhabian2008_MovingObjectDetection"

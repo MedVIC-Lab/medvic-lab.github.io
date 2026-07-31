@@ -7,6 +7,7 @@ venue: "Canadian Conference on Computer and Robot Vision (CRV)"
 tags: ["conference", "modeling-patient-state", "shape-modeling"]
 image:
   src: "2011_illuminationinvariant_statistical_shape_recovery.png"
+  generated: true
   alt: "Illumination-Invariant Statistical Shape Recovery with Contiguous Occlusion"
 
 bibtex_key: "Elhabian2011_IlluminationInvariantCRV"

@@ -7,6 +7,7 @@ venue: "International Journal of Computer Assisted Radiology and Sur"
 tags: ["craniofacial", "journal", "registration", "segmentation"]
 image:
   src: "2019_medial_axis_segmentation_cranial.png"
+  generated: true
   alt: "Medial Axis Segmentation of Cranial Nerves Using Shape Statistics-Aware Discrete Deformable Models"
 links:
   doi: "https://doi.org/10.1007/s11548-019-02046-1"

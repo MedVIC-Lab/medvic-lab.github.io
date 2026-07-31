@@ -7,6 +7,7 @@ venue: "MICCAI Workshop on Shape in Medical Imaging (ShapeMI)"
 tags: ["modeling-patient-state", "shape-modeling", "workshop"]
 image:
   src: "2023_adassm_adversarial_data_augmentation.png"
+  generated: true
   alt: "ADASSM: Adversarial Data Augmentation in Statistical Shape Models From Images"
 links:
   arxiv: "https://arxiv.org/abs/2307.03273"

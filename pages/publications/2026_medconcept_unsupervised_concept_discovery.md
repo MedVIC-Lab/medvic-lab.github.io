@@ -7,6 +7,7 @@ venue: "arXiv"
 tags: ["clinically-trustworthy", "foundation-models", "preprint"]
 image:
   src: "2026_medconcept_unsupervised_concept_discovery.png"
+  generated: true
   alt: "MedConcept: Unsupervised Concept Discovery for Interpretability in Medical VLMs"
 
 bibtex_key: "Haque2026_MedConcept"

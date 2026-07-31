@@ -7,6 +7,7 @@ venue: "IEEE International Conference on Image Processing (ICIP)"
 tags: ["journal"]
 image:
   src: "2011_use_hemispherical_harmonics_modeling.png"
+  generated: true
   alt: "On the Use of Hemispherical Harmonics for Modeling Images of Object under Known Distant Illumination"
 
 bibtex_key: "Elhabian2011_HemisphericalHarmonicsICIP"

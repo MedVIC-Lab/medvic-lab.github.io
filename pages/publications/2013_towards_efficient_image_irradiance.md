@@ -7,6 +7,7 @@ venue: "IET Computer Vision"
 tags: ["foundation-models", "journal"]
 image:
   src: "2013_towards_efficient_image_irradiance.png"
+  generated: true
   alt: "Towards Efficient Image Irradiance Modelling of Convex Lambertian Surfaces Under Single Viewpoint and Frontal Illumination"
 links:
   doi: "https://doi.org/10.1049/iet-cvi.2012.0076"

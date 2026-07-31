@@ -7,6 +7,7 @@ venue: "Informatica"
 tags: ["journal"]
 image:
   src: "2016_helmholtz_hshbased_basis_compact.png"
+  generated: true
   alt: "Helmholtz HSH-Based Basis: A Compact Phenomenological Representation of Arbitrary Reflectance"
 links:
   doi: "https://doi.org/10.15388/Informatica.2016.100"

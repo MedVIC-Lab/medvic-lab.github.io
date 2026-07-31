@@ -7,6 +7,7 @@ venue: "Medical Image Computing and Computer-Assisted Intervention ("
 tags: ["conference", "modeling-patient-state", "shape-modeling"]
 image:
   src: "2023_can_point_cloud_networks.png"
+  generated: true
   alt: "Can Point Cloud Networks Learn Statistical Shape Models of Anatomies?"
 links:
   arxiv: "https://arxiv.org/abs/2305.05610"

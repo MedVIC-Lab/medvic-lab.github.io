@@ -7,6 +7,7 @@ venue: "IEEE International Symposium on Biomedical Imaging (ISBI)"
 tags: ["conference", "probabilistic"]
 image:
   src: "2015_bayesian_formulation_graphcut_surface.png"
+  generated: true
   alt: "A Bayesian Formulation of Graph-Cut Surface Estimation with Global Shape Priors"
 
 bibtex_key: "Veni2015_BayesianSurface"

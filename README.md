@@ -1,237 +1,131 @@
-# medvic-lab.github.io
+# MedVIC Lab Website
 
-MedVIC Lab website
+The website for the Medical Vision and Intelligent Computing Lab at the University of Utah. It is built with VitePress 1.4, Vue 3, TypeScript, and Markdown, and deploys to GitHub Pages from `main`.
 
-## Development
-
-Look at the official [VitePress documentation](https://vitepress.dev/) to learn more.
-
-### Setup
-
-Make sure to install the dependencies:
+## Local development
 
 ```bash
-# yarn
 yarn install
+yarn dev      # http://127.0.0.1:5173
+yarn build    # production validation
+yarn preview  # preview the production build
 ```
 
-### Development Server
+The Vite plugins in `scripts/` generate the people, publication, project, and search JSON files during `yarn dev` and `yarn build`. Edit the Markdown source files, not the generated JSON files in `public/assets/`.
 
-Start the development server on localhost:5173
+## Contribution workflow
+
+Create a branch, make the change, run `yarn build`, then push the branch and open a pull request into `main`.
 
 ```bash
-yarn dev
+git switch -c content/short-description
+git add <changed-files>
+git commit -m "content: describe the update"
+git push -u origin content/short-description
 ```
 
-### Production
+## Add or update a person
 
-Build the application for production:
+Create `pages/people/lastname_firstname.md` and place the square headshot in `public/assets/images/people/`.
 
-```bash
-yarn build
+Supported roles are `Faculty`, `Researcher`, `PhD Student`, `MS Student`, `Undergrad Student`, `Staff`, and `Alumni`.
+
+~~~md
+---
+layout: person
+name: "Full Name"
+role: "PhD Student"
+title: "PhD Student"
+avatar: "lastname_firstname.jpg"
+name_in_pubs: "Full Name"
+links:
+  - icon: "github"
+    link: "https://github.com/username"
+  - icon: "website"
+    link: "https://example.com"
+---
+
+# Full Name
+
+Short biography and research interests.
+~~~
+
+Use the same full name in `name_in_pubs` and publication author lists so publications can be connected to the correct person.
+
+## Add a publication
+
+Create `pages/publications/YYYY_short_title.md`. Add its graphical abstract to `public/assets/images/publications/` when available. Both `venue` and the older `conference` field are supported.
+
+~~~md
+---
+layout: publication
+title: "Paper Title"
+authors: "First Author, Second Author"
+venue: "Journal or Conference"
+year: "2026"
+featured: false
+links:
+  arxiv: "https://arxiv.org/abs/..."
+  code: "https://github.com/..."
+  publisher: "https://doi.org/..."
+  pdf: "https://example.com/paper.pdf"
+image:
+  src: "2026_short_title.png"
+  alt: "Description of the graphical abstract"
+tags: ["shape-modeling", "deep-learning", "journal"]
+---
+
+# Paper Title
+
+## Abstract
+
+Paper abstract.
+
+## Citation
+
+```bibtex
+@article{...}
+```
+~~~
+
+Set `featured: true` only for highlighted papers. If an image is intentionally AI-generated, add `generated: true` inside the `image` block so the site applies the consistent visual treatment.
+
+For bulk publication imports, update `medvic_publications.bib` and use `scripts/bib_to_md.py`; review generated files before committing.
+
+## Add a project
+
+Create `pages/projects/project_slug.md` and add its image to `public/assets/images/projects/`.
+
+```md
+---
+layout: project
+name: "Project Name"
+organizations:
+  - name: "University of Utah"
+    link: "https://www.utah.edu/"
+ongoing: true
+grantLink: "https://example.com/grant"
+image:
+  src: "project.png"
+  alt: "Project image description"
+---
+
+Project description and goals.
 ```
 
-Locally preview production build: (port 4173)
+## Add a news item
 
-```bash
-yarn preview
-```
+Create a Markdown file in `pages/news-items/` using the date-first naming pattern already present in that folder. Copy a recent item and update its frontmatter and content. The three newest items automatically appear on the homepage.
 
-## Contributing
+## Add a page or component
 
-You should make a branch on github for any changes. This should be merged into main using a pull request. If you are unfamiliar with this process, please reference the official [Github Documentation](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
+- General pages: `pages/*.md`
+- Custom layouts: `layouts/*.vue`
+- Theme components and global styles: `.vitepress/theme/`
+- Public images and downloadable assets: `public/assets/`
 
-### Add Yourself
+Update `.vitepress/config.mts` when a new top-level page should appear in navigation. See the [VitePress documentation](https://vitepress.dev/) for Markdown, Vue components, and theme APIs.
 
-To add yourself to the MedVIC Lab website, follow these steps:
+## Deployment
 
-1. **Create a Markdown file:**
-   - Navigate to the `pages/people` directory.
-   - Create a new Markdown file named after yourself, e.g., `doe_john.md`.
-     - Ensure that this is in the format: `lastname_firstname`.
-
-2. **Add frontmatter to your Markdown file:**
-   - Include the following frontmatter at the top of your file:
-
-     ```markdown
-     ---
-     layout: person
-     name: "Your Name"
-     role: "PhD Student", "MS Student", "Staff", "Researcher", "Alumni"
-     title: "Your Title"
-     bio: "A brief bio about yourself."
-     avatar: "lastname_firstname.png" # Replace with the URL to your avatar image
-     links:
-       - icon: "github"
-         link: "https://github.com/yourusername" # Replace with your GitHub profile link
-       - icon: "twitter"
-         link: "https://twitter.com/yourusername" # Replace with your Twitter profile link
-       - icon: "website"
-         link: "https://yourwebsite.com" # Replace with your personal website link
-     ---
-     ```
-
-     Note: images should be added to `/public/assets/images/people/`
-     Additional note: the image should be a SQUARE aspect ratio, or else it may appear warped.
-
-     Please use the format lastname_firstname.md when creating your markdown file.
-
-3. **Add content to your Markdown file:** (WORK IN PROGRESS)
-   - Below the frontmatter, add any additional information about yourself, such as your research interests, publications, and projects.
-
-     ```markdown
-     # About Your Name
-
-     Your research interests, publications, and projects.
-     ```
-
-4. **Commit and push your changes:**
-   - Commit your new Markdown file to the repository and push your changes.
-
-     ```bash
-     git add pages/people/your-file.md
-     git commit -m "Add profile for Your Name"
-     git push origin [branch name]
-     ```
-
-5. **Preview your changes:**
-   - Locally preview the production build to ensure your profile appears correctly. You can also use `yarn dev` for active development.
-
-     ```bash
-     yarn preview
-     ```
-
-### Add Publications
-
-To add a publication to the MedVIC Lab website, follow these steps:
-
-1. **Create a Markdown file:**
-   - Navigate to the `pages/publications` directory.
-   - Create a new Markdown file named after your publication, e.g., `example-publication.md`.
-
-2. **Add frontmatter to your Markdown file:**
-   - Include the following frontmatter at the top of your file:
-
-     ```markdown
-     ---
-     layout: publication
-     title: "Publication Title"
-     authors: "Author1, Author2"
-     conference: "Conference Name"
-     year: "Year"
-     links:
-      archive: "example.com" (optional)
-      code: "example.com" (optional)
-      publisher: "example.com" (optional)
-      pdf: "example.com" (optional)
-      video: "example.com" (optional)
-     image:
-       src: "example.png"
-       alt: "Example Alt Text"
-     tags: ['Tag1', 'Tag2']
-     ---
-     ```
-
-     Note: images should be added to `/public/assets/images/publications/`.
-     Additional note: Images should be *graphical abstracts* and should not contain captions.
-
-3. **Add content to your Markdown file:** (WORK IN PROGRESS)
-   - Below the frontmatter, add any additional information about the publication.
-
-    For example:
-     ```markdown
-     # Paper title
-
-     ## Abstract
-
-     Blah Blah this is the abstract.
-
-     ## Citation
-
-     Instructions/code block for citation
-
-     ## Acknowledgements
-
-     This work is funded by blah blah organization
-     ```
-
-4. **Commit and push your changes:**
-   - Commit your new Markdown file to the repository and push your changes.
-
-     ```bash
-     git add pages/publications/your-file.md
-     git commit -m "Add publication: Publication Title"
-     git push origin [branch name]
-     ```
-
-5. **Preview your changes:**
-   - Locally preview the production build to ensure your publication appears correctly. You can also use `yarn dev` for active development.
-
-     ```bash
-     yarn preview
-     ```
-
-### Add Projects (WORK IN PROGRESS)
-
-To add a project to the MedVIC Lab website, follow these steps:
-
-1. **Create a Markdown file:**
-   - Navigate to the `pages/projects` directory.
-   - Create a new Markdown file named after your project, e.g., `example-project.md`.
-
-2. **Add frontmatter to your Markdown file:**
-   - Include the following frontmatter at the top of your file:
-
-     ```markdown
-     ---
-     layout: Project
-     name: "Project Name"
-     organizations:
-       - name: "Organization1"
-         link: "https://example.com/organization1" # Optional: Replace with the URL to the organization
-       - name: "Organization2"
-         link: "https://example.com/organization2" # Optional: Replace with the URL to the organization
-     ongoing: true # Set to false if the project is not ongoing
-     grantLink: "https://example.com/grant" # Optional: Replace with the URL to the grant
-     image:
-       src: "example.png"
-       alt: "Example alt text"
-     ---
-     ```
-
-     Note: images should be added to `/public/assets/images/projects/`
-
-3. **Add content to your Markdown file:**
-   - Below the frontmatter, add any additional information about the project.
-
-     ```markdown
-     ## subheading1 (ex: Project Goals)
-
-     Lorem Ipsum blah blah...
-     ```
-
-     This supports (or should support) all markdown syntax.
-
-4. **Commit and push your changes:**
-   - Commit your new Markdown file to the repository and push your changes.
-
-     ```bash
-     git add pages/projects/your-file.md
-     git commit -m "Add project: Project Name"
-     git push origin [branch name]
-     ```
-
-5. **Preview your changes:**
-   - Locally preview the production build to ensure your project appears correctly. You can also use `yarn dev` for active development.
-
-     ```bash
-     yarn preview
-     ```
-
-### Adding new pages
-
-To add any page, simply put a markdown file in the `pages` directory. You can reference this as you would any other file. Reference the [VitePress documentation](https://vitepress.dev/) for specific details about layouts, styling, etc.
-
-### Adding custom components
-
-Reference the [official component documentation](https://vitepress.dev/guide/using-vue#using-components) for adding custom Vue components to the repository and files.
+`.github/workflows/gh-pages.yml` builds and deploys the site whenever `main` changes. Always run `yarn build` locally before pushing.

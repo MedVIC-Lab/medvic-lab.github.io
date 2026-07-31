@@ -12,12 +12,12 @@ const generateProjectsPlugin = (): Plugin => {
 
       const projects: Array<{ name: string; organizations: string; grantLink?: string; ongoing: boolean; link: string; image: string }> = [];
 
-      fs.readdirSync(projectsDir).forEach(file => {
+      fs.readdirSync(projectsDir).filter(file => file.endsWith('.md')).forEach(file => {
         const filePath = path.join(projectsDir, file);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const data = fm(fileContent);
 
-        const orgs = data.attributes.organizations.map((org: { name: string; link: string }) => ({
+        const orgs = (data.attributes.organizations || []).map((org: { name: string; link: string }) => ({
           name: org.name || '',
           link: org.link || ''
         }));

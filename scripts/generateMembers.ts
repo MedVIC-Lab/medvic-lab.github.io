@@ -16,7 +16,7 @@ const generateMembersPlugin = (): Plugin => {
 
       const members: Array<Member> = [];
 
-      fs.readdirSync(peopleDir).forEach(file => {
+      fs.readdirSync(peopleDir).filter(file => file.endsWith('.md')).forEach(file => {
         const filePath = path.join(peopleDir, file);
         const fileContent = fs.readFileSync(filePath, 'utf-8');
         const data = fm(fileContent);

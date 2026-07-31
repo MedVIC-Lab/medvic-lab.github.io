@@ -118,6 +118,10 @@ export async function loadPeopleJSON() {
       case 'ms student':
         tempMembers.msStudents.push(member)
         break
+      case 'undergrad student':
+      case 'undergraduate student':
+        tempMembers.undergradStudents.push(member)
+        break
       case 'staff':
         tempMembers.staff.push(member)
         break

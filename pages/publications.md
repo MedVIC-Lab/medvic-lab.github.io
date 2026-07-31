@@ -8,7 +8,8 @@ import { computed, onMounted, ref } from 'vue'
 const publications = ref([])
 const search = ref('')
 const selectedTag = ref('')
-const sortBy = ref('year')
+const sectionOrder = ref('newest')
+const sectionSort = ref({})
 
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
@@ -25,10 +26,6 @@ const tags = computed(() => {
   })
   return Array.from(values).sort()
 })
-
-const featuredPublications = computed(() =>
-  publications.value.filter((publication) => publication.featured === true)
-)
 
 const filteredPublications = computed(() => {
   const query = search.value.trim().toLowerCase()
@@ -48,15 +45,45 @@ const filteredPublications = computed(() => {
     .filter((publication) => {
       return !selectedTag.value || (publication.tags || []).includes(selectedTag.value)
     })
+})
+
+const featuredPublications = computed(() =>
+  filteredPublications.value.filter((publication) => publication.featured === true)
+)
+
+const publicationSections = computed(() => {
+  const grouped = new Map()
+
+  filteredPublications.value.forEach((publication) => {
+    const year = String(publication.year || 'Undated')
+    if (!grouped.has(year)) grouped.set(year, [])
+    grouped.get(year).push(publication)
+  })
+
+  return Array.from(grouped, ([year, items]) => ({ year, items }))
     .sort((a, b) => {
-      if (sortBy.value === 'title') return String(a.title).localeCompare(String(b.title))
-      if (sortBy.value === 'author') return firstAuthor(a).localeCompare(firstAuthor(b))
-      return Number(b.year || 0) - Number(a.year || 0)
+      const yearA = Number(a.year) || 0
+      const yearB = Number(b.year) || 0
+      return sectionOrder.value === 'oldest' ? yearA - yearB : yearB - yearA
     })
 })
 
 function firstAuthor(publication) {
   return String(publication.authors || '').split(',')[0].trim()
+}
+
+function sortedSectionPublications(section) {
+  const mode = sectionSort.value[section.year] || 'title'
+
+  return [...section.items].sort((a, b) => {
+    if (mode === 'author') return firstAuthor(a).localeCompare(firstAuthor(b))
+    if (mode === 'venue') return String(a.conference || '').localeCompare(String(b.conference || ''))
+    return String(a.title || '').localeCompare(String(b.title || ''))
+  })
+}
+
+function updateSectionSort(year, event) {
+  sectionSort.value = { ...sectionSort.value, [year]: event.target.value }
 }
 
 function setTag(tag) {
@@ -110,11 +137,10 @@ function publicationImage(publication) {
       <input v-model="search" type="search" placeholder="Title, author, venue, tag" />
     </label>
     <label class="medvic-publication-sort">
-      <span>Sort</span>
-      <select v-model="sortBy">
-        <option value="year">Newest first</option>
-        <option value="author">First author</option>
-        <option value="title">Title</option>
+      <span>Year sections</span>
+      <select v-model="sectionOrder">
+        <option value="newest">Newest first</option>
+        <option value="oldest">Oldest first</option>
       </select>
     </label>
   </div>
@@ -143,9 +169,13 @@ function publicationImage(publication) {
   </div>
 </section>
 
-<section v-if="featuredPublications.length" class="medvic-publication-section">
-  <h2>Highlighted Publications</h2>
-  <div class="medvic-pub-grid medvic-featured-grid">
+<details v-if="featuredPublications.length" class="medvic-publication-group medvic-publication-group-featured" open>
+  <summary class="medvic-publication-group-summary">
+    <span class="medvic-publication-group-title">Highlighted Publications</span>
+    <span class="medvic-publication-group-count">{{ featuredPublications.length }} papers</span>
+  </summary>
+  <div class="medvic-publication-group-content">
+    <div class="medvic-pub-grid medvic-featured-grid">
     <a
       v-for="publication in featuredPublications"
       :key="publication.link"
@@ -171,35 +201,62 @@ function publicationImage(publication) {
         </div>
       </div>
     </a>
+    </div>
   </div>
-</section>
+</details>
 
-<section class="medvic-publication-section">
-  <div class="medvic-pub-grid">
-    <a
-      v-for="publication in filteredPublications"
-      :key="publication.link"
-      :href="publication.link"
-      class="medvic-pub-card"
-    >
-      <img
-        v-if="publicationImage(publication)"
-        :src="publicationImage(publication)"
-        :alt="publication.title"
-        class="medvic-pub-card-img"
-        :class="{ 'medvic-pub-card-img-generated': publication.generated }"
-      />
-      <div v-else class="medvic-pub-card-placeholder">
-        {{ publication.conference || publication.year }}
+<section class="medvic-publication-groups" aria-label="Publications by year">
+  <details
+    v-for="(section, index) in publicationSections"
+    :key="section.year"
+    class="medvic-publication-group"
+    :open="index === 0"
+  >
+    <summary class="medvic-publication-group-summary">
+      <span class="medvic-publication-group-title">{{ section.year }}</span>
+      <span class="medvic-publication-group-count">{{ section.items.length }} papers</span>
+    </summary>
+    <div class="medvic-publication-group-content">
+      <div class="medvic-publication-section-sort">
+        <label>
+          <span>Sort within {{ section.year }}</span>
+          <select
+            :value="sectionSort[section.year] || 'title'"
+            @change="updateSectionSort(section.year, $event)"
+          >
+            <option value="title">Title</option>
+            <option value="author">First author</option>
+            <option value="venue">Venue</option>
+          </select>
+        </label>
       </div>
-      <div class="medvic-pub-card-body">
-        <div class="medvic-pub-card-title">{{ publication.title }}</div>
-        <div class="medvic-pub-card-authors">{{ publication.authors }}</div>
-        <div class="medvic-pub-card-venue">{{ publication.conference }} ({{ publication.year }})</div>
-        <div class="medvic-pub-tags">
-          <span v-for="tag in publication.tags" :key="tag" class="medvic-pub-tag">{{ tag }}</span>
-        </div>
+      <div class="medvic-pub-grid">
+        <a
+          v-for="publication in sortedSectionPublications(section)"
+          :key="publication.link"
+          :href="publication.link"
+          class="medvic-pub-card"
+        >
+          <img
+            v-if="publicationImage(publication)"
+            :src="publicationImage(publication)"
+            :alt="publication.title"
+            class="medvic-pub-card-img"
+            :class="{ 'medvic-pub-card-img-generated': publication.generated }"
+          />
+          <div v-else class="medvic-pub-card-placeholder">
+            {{ publication.conference || publication.year }}
+          </div>
+          <div class="medvic-pub-card-body">
+            <div class="medvic-pub-card-title">{{ publication.title }}</div>
+            <div class="medvic-pub-card-authors">{{ publication.authors }}</div>
+            <div class="medvic-pub-card-venue">{{ publication.conference }} ({{ publication.year }})</div>
+            <div class="medvic-pub-tags">
+              <span v-for="tag in publication.tags" :key="tag" class="medvic-pub-tag">{{ tag }}</span>
+            </div>
+          </div>
+        </a>
       </div>
-    </a>
-  </div>
+    </div>
+  </details>
 </section>

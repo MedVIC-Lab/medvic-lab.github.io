@@ -1460,10 +1460,10 @@
   },
   {
     "category": "Publications",
-    "excerpt": "Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Sort Newest first First author",
+    "excerpt": "Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Year sections Newest first Old",
     "headings": [],
     "path": "/pages/publications",
-    "text": "Publications Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Sort Newest first First author Title Clear {{ selectedTag }} {{ tag }} Highlighted Publications {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }} {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }}",
+    "text": "Publications Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Year sections Newest first Oldest first Clear {{ selectedTag }} {{ tag }} Highlighted Publications {{ featuredPublications.length }} papers {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }} {{ section.year }} {{ section.items.length }} papers Sort within {{ section.year }} Title First author Venue {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }}",
     "title": "Publications"
   },
   {

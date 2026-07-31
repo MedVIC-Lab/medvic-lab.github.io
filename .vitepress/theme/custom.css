@@ -131,6 +131,10 @@
 }
 
 /* ── Typography ──────────────────────────────────── */
+html {
+  font-size: 17px;
+}
+
 body {
   font-family: var(--vp-font-family-base);
   color: var(--medvic-text);
@@ -872,6 +876,135 @@ body h3 {
   border: 0;
   margin: 0;
   padding: 0;
+}
+
+.medvic-publication-groups {
+  display: grid;
+  gap: 0.9rem;
+  margin: 1.25rem 0 3rem;
+}
+
+.medvic-publication-group {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid var(--medvic-border);
+  border-radius: 10px;
+  box-shadow: 0 7px 20px rgba(27, 58, 107, 0.07);
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.medvic-publication-groups .medvic-publication-group {
+  margin: 0;
+}
+
+.medvic-publication-group-featured {
+  border-top: 3px solid var(--medvic-orange);
+  margin-top: 1.5rem;
+}
+
+.medvic-publication-group-summary {
+  align-items: center;
+  color: var(--medvic-navy);
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0.9rem 1.1rem;
+  user-select: none;
+}
+
+.medvic-publication-group-summary::-webkit-details-marker {
+  display: none;
+}
+
+.medvic-publication-group-summary::after {
+  color: var(--medvic-orange);
+  content: '+';
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1;
+  margin-left: auto;
+}
+
+.medvic-publication-group[open] > .medvic-publication-group-summary::after {
+  content: '−';
+}
+
+.medvic-publication-group-summary:hover {
+  background: rgba(61, 128, 234, 0.06);
+}
+
+.medvic-publication-group-title {
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+
+.medvic-publication-group-count {
+  background: var(--medvic-light-bg);
+  border: 1px solid var(--medvic-border);
+  border-radius: 999px;
+  color: var(--medvic-muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+}
+
+.medvic-publication-group-content {
+  border-top: 1px solid var(--medvic-border);
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.medvic-publication-group-content .medvic-pub-grid {
+  margin: 0.75rem 0 0;
+}
+
+.medvic-publication-section-sort {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.medvic-publication-section-sort label {
+  align-items: center;
+  color: var(--medvic-muted);
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 750;
+  gap: 0.5rem;
+}
+
+.medvic-publication-section-sort select {
+  background: #fff;
+  border: 1px solid var(--medvic-border);
+  border-radius: 6px;
+  color: var(--medvic-text);
+  font: inherit;
+  min-height: 34px;
+  padding: 0.3rem 1.8rem 0.3rem 0.55rem;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 16.5px;
+  }
+
+  .medvic-publication-group-summary {
+    padding: 0.8rem;
+  }
+
+  .medvic-publication-group-content {
+    padding: 0.75rem;
+  }
+
+  .medvic-publication-section-sort {
+    justify-content: stretch;
+  }
+
+  .medvic-publication-section-sort label,
+  .medvic-publication-section-sort select {
+    width: 100%;
+  }
 }
 
 .medvic-section-kicker {

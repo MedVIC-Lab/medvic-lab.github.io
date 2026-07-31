@@ -90,6 +90,8 @@ Paper abstract.
 
 Set `featured: true` only for highlighted papers. If an image is intentionally AI-generated, add `generated: true` inside the `image` block so the site applies the consistent visual treatment.
 
+The publications index assigns each paper to a research-area section from its tags and title. Use the most specific applicable tags—such as `cardiac`, `computational-pathology`, `virtual-staining`, `orthopedics`, `craniofacial`, `neuroscience`, `shape-modeling`, `segmentation`, `registration`, `reconstruction`, `clinically-trustworthy`, `probabilistic`, `foundation-models`, or `generative`—to place new work accurately.
+
 For bulk publication imports, update `medvic_publications.bib` and use `scripts/bib_to_md.py`; review generated files before committing.
 
 ## Add a project

@@ -8,8 +8,80 @@ import { computed, onMounted, ref } from 'vue'
 const publications = ref([])
 const search = ref('')
 const selectedTag = ref('')
-const sectionOrder = ref('newest')
 const sectionSort = ref({})
+
+const researchAreas = [
+  {
+    id: 'pathology',
+    title: 'Computational Pathology & Microscopy',
+    description: 'Whole-slide imaging, virtual staining, histology, and microscopy.',
+    tags: ['computational-pathology', 'virtual-staining'],
+    keywords: /patholog|histolog|stain|whole[ -]slide|microscop|h&e|tissue/i,
+  },
+  {
+    id: 'cardiovascular',
+    title: 'Cardiovascular Imaging',
+    description: 'Cardiac anatomy, function, MRI, and patient-specific heart modeling.',
+    tags: ['cardiac'],
+    keywords: /cardiac|cardiovascular|heart|atrial|ventric|myocard|aortic|lge[ -]?mri/i,
+  },
+  {
+    id: 'musculoskeletal',
+    title: 'Musculoskeletal, Orthopedic & Craniofacial Health',
+    description: 'Bones, joints, craniofacial anatomy, and clinical musculoskeletal assessment.',
+    tags: ['orthopedics', 'craniofacial', 'craniorate'],
+    keywords: /orthop|cranio|femur|hip|knee|bone|skeletal|musculoskelet|shoulder|pelvi|teeth|tooth/i,
+  },
+  {
+    id: 'neuroscience',
+    title: 'Neuroimaging & Neuroscience',
+    description: 'Brain anatomy, neural structures, and neurological imaging.',
+    tags: ['neuroscience'],
+    keywords: /neuro|brain|cerebr|cortical|hippocamp|corpus callosum/i,
+  },
+  {
+    id: 'pulmonary',
+    title: 'Pulmonary & Thoracic Imaging',
+    description: 'Lung anatomy, pulmonary nodules, and thoracic image analysis.',
+    tags: [],
+    keywords: /pulmonary|lung|thoracic|nodule/i,
+  },
+  {
+    id: 'shape',
+    title: 'Anatomy, Shape Modeling & Population Analysis',
+    description: 'Statistical shape models, anatomical correspondence, and population-level analysis.',
+    tags: ['shape-modeling', 'ssm', 'deepssm', 'shapeworks', 'anatomy'],
+    keywords: /shape model|statistical shape|medical shapes|anatomical shape|correspondence points|deepssm|shapeworks|point2ssm|morphoflow/i,
+  },
+  {
+    id: 'image-analysis',
+    title: 'Segmentation, Registration & Reconstruction',
+    description: 'Core medical-image analysis methods for delineation, alignment, and recovery.',
+    tags: ['registration', 'image registration', 'reconstruction', 'segmentation', 'image processing'],
+    keywords: /registration|reconstruction|segment|super[ -]?resolution|image processing|snakes initialization/i,
+  },
+  {
+    id: 'trustworthy-ai',
+    title: 'Trustworthy, Probabilistic & Data-Efficient AI',
+    description: 'Interpretability, uncertainty, domain adaptation, and learning under constraints.',
+    tags: ['clinically-trustworthy', 'learning-under-constraints', 'probabilistic', 'domain-adaptation'],
+    keywords: /trust|uncertain|probabili|constraint|interpretab|explainab|domain adapt|concept discovery/i,
+  },
+  {
+    id: 'foundation-ai',
+    title: 'Foundation, Generative & Deep Learning Methods',
+    description: 'Foundation models, generative methods, representation learning, and modern neural architectures.',
+    tags: ['foundation-models', 'generative', 'deep-learning', 'deep learning'],
+    keywords: /foundation model|vision[ -]language|generative|deep learning|neural network|self[ -]?supervised|representation learning/i,
+  },
+  {
+    id: 'general',
+    title: 'General Computer Vision & Biomedical Imaging',
+    description: 'Cross-cutting imaging, vision, and biomedical-computing research.',
+    tags: [],
+    keywords: null,
+  },
+]
 
 onMounted(async () => {
   const response = await fetch('/assets/publications.json')
@@ -52,20 +124,24 @@ const featuredPublications = computed(() =>
 )
 
 const publicationSections = computed(() => {
-  const grouped = new Map()
+  const grouped = new Map(researchAreas.map((area) => [area.id, []]))
 
   filteredPublications.value.forEach((publication) => {
-    const year = String(publication.year || 'Undated')
-    if (!grouped.has(year)) grouped.set(year, [])
-    grouped.get(year).push(publication)
+    const tags = (publication.tags || []).map((tag) => String(tag).toLowerCase())
+    const searchable = `${publication.title || ''} ${publication.conference || ''}`
+    const area = researchAreas.find((candidate) =>
+      candidate.id !== 'general' && (
+        candidate.tags.some((tag) => tags.includes(tag)) ||
+        candidate.keywords?.test(searchable)
+      )
+    ) || researchAreas[researchAreas.length - 1]
+
+    grouped.get(area.id).push(publication)
   })
 
-  return Array.from(grouped, ([year, items]) => ({ year, items }))
-    .sort((a, b) => {
-      const yearA = Number(a.year) || 0
-      const yearB = Number(b.year) || 0
-      return sectionOrder.value === 'oldest' ? yearA - yearB : yearB - yearA
-    })
+  return researchAreas
+    .map((area) => ({ ...area, items: grouped.get(area.id) }))
+    .filter((area) => area.items.length)
 })
 
 function firstAuthor(publication) {
@@ -73,17 +149,19 @@ function firstAuthor(publication) {
 }
 
 function sortedSectionPublications(section) {
-  const mode = sectionSort.value[section.year] || 'title'
+  const mode = sectionSort.value[section.id] || 'newest'
 
   return [...section.items].sort((a, b) => {
     if (mode === 'author') return firstAuthor(a).localeCompare(firstAuthor(b))
     if (mode === 'venue') return String(a.conference || '').localeCompare(String(b.conference || ''))
+    if (mode === 'oldest') return Number(a.year || 0) - Number(b.year || 0)
+    if (mode === 'newest') return Number(b.year || 0) - Number(a.year || 0)
     return String(a.title || '').localeCompare(String(b.title || ''))
   })
 }
 
-function updateSectionSort(year, event) {
-  sectionSort.value = { ...sectionSort.value, [year]: event.target.value }
+function updateSectionSort(sectionId, event) {
+  sectionSort.value = { ...sectionSort.value, [sectionId]: event.target.value }
 }
 
 function setTag(tag) {
@@ -135,13 +213,6 @@ function publicationImage(publication) {
     <label class="medvic-publication-search">
       <span>Search</span>
       <input v-model="search" type="search" placeholder="Title, author, venue, tag" />
-    </label>
-    <label class="medvic-publication-sort">
-      <span>Year sections</span>
-      <select v-model="sectionOrder">
-        <option value="newest">Newest first</option>
-        <option value="oldest">Oldest first</option>
-      </select>
     </label>
   </div>
 
@@ -205,25 +276,31 @@ function publicationImage(publication) {
   </div>
 </details>
 
-<section class="medvic-publication-groups" aria-label="Publications by year">
+<section class="medvic-publication-groups" aria-label="Publications by research area">
   <details
     v-for="(section, index) in publicationSections"
-    :key="section.year"
+    :key="section.id"
     class="medvic-publication-group"
     :open="index === 0"
   >
     <summary class="medvic-publication-group-summary">
-      <span class="medvic-publication-group-title">{{ section.year }}</span>
+      <span class="medvic-publication-group-heading">
+        <span class="medvic-publication-group-title">{{ section.title }}</span>
+        <span class="medvic-publication-group-description">{{ section.description }}</span>
+      </span>
       <span class="medvic-publication-group-count">{{ section.items.length }} papers</span>
     </summary>
     <div class="medvic-publication-group-content">
       <div class="medvic-publication-section-sort">
-        <label>
-          <span>Sort within {{ section.year }}</span>
+        <label class="medvic-sort-control">
+          <span>Sort</span>
           <select
-            :value="sectionSort[section.year] || 'title'"
-            @change="updateSectionSort(section.year, $event)"
+            :value="sectionSort[section.id] || 'newest'"
+            :aria-label="`Sort ${section.title}`"
+            @change="updateSectionSort(section.id, $event)"
           >
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
             <option value="title">Title</option>
             <option value="author">First author</option>
             <option value="venue">Venue</option>

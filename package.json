@@ -12,6 +12,7 @@
     "preview": "vitepress build && vitepress preview"
   },
   "dependencies": {
+    "@splinetool/runtime": "^1.12.98",
     "front-matter": "^4.0.2",
     "vuetify": "^3.7.6"
   }

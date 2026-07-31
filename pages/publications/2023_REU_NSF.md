@@ -4,6 +4,10 @@ title: "An NSF REU Site Based on Trust and Reproducibility of Intelligent Comput
 authors: "Mary Hall, Ganesh Gopalakrishnan, Eric Eide, Johanna Cohoon, Jeff Phillips, Mu Zhang, Shireen Elhabian, Aditya Bhaskara, Harvey Dam, Artem Yadrov, Tushar Kataria, Amir Mohammad Tavakkoli, Sameeran Joshi, Mokshagna Sai Teja Karanam"
 conference: "Proceedings of the SC'23 Workshops of The International Conference on High Performance Computing, Network, Storage, and Analysis"
 year: "2023"
+image:
+  src: "2023_REU_NSF.png"
+  generated: true
+  alt: "Abstract diagram representing trustworthy and reproducible intelligent computation"
 links: 
   publisher: "https://dl.acm.org/doi/abs/10.1145/3624062.3624100"
 ---

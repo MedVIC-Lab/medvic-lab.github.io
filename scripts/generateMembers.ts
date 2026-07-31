@@ -38,8 +38,12 @@ const generateMembersPlugin = (): Plugin => {
           return retVal;
         });
 
+        const avatar = data.attributes.avatar
+          ? `../assets/images/people/${data.attributes.avatar}`
+          : '';
+
         members.push({
-          avatar: `../assets/images/people/${data.attributes.avatar}` || '',
+          avatar,
           name: data.attributes.name || '',
           title: data.attributes.title || '',
           bio: data.attributes.bio || '',

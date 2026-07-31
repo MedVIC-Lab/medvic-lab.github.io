@@ -4,7 +4,8 @@ name: "Wenzheng Tao"
 role: "PhD Student"
 title: "PhD Candidate"
 bio: "Wenzheng Tao is a Ph.D. candidate in Computer Science at the University of Utah, advised by Dr. Ross Whitaker and Dr. Sarang Joshi. His research centers on probabilistic machine learning, with a particular emphasis on large-scale data analysis for real-world applications. Wenzheng is a graduate of Shanghai Jiao Tong University."
-avatar: "tao_wenzheng.png" # Replace with the URL to your avatar image
+avatar: "tao_wenzheng.png"
+name_in_pubs: "Wenzheng Tao"
 links:
   - icon: "github"
     link: "https://github.com/WeeenZh" # Replace with your GitHub profile link

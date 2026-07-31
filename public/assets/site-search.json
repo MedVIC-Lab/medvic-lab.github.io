@@ -1460,10 +1460,10 @@
   },
   {
     "category": "Publications",
-    "excerpt": "Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Clear {{ selectedTag }} {{ tag",
+    "excerpt": "Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Clear all ({{ selectedTags.len",
     "headings": [],
     "path": "/pages/publications",
-    "text": "Publications Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Clear {{ selectedTag }} {{ tag }} Highlighted Publications {{ featuredPublications.length }} papers {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }} {{ section.title }} {{ section.description }} {{ section.items.length }} papers Sort Newest Oldest Title First author Venue {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }}",
+    "text": "Publications Publications 138+ Peer reviewed publications {{ publications.length }} Unique records listed 2,510+ Google Scholar citations h 21 h index Google Scholar Search Clear all ({{ selectedTags.length }}) {{ tag }} Highlighted Publications {{ featuredPublications.length }} papers {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }} {{ section.title }} {{ section.description }} {{ section.items.length }} papers Sort Newest Oldest Title First author Venue {{ publication.conference publication.year }} {{ publication.title }} {{ publication.authors }} {{ publication.conference }} ({{ publication.year }}) {{ tag }}",
     "title": "Publications"
   },
   {

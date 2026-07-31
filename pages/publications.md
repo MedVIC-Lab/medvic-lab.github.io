@@ -7,7 +7,7 @@ import { computed, onMounted, ref } from 'vue'
 
 const publications = ref([])
 const search = ref('')
-const selectedTag = ref('')
+const selectedTags = ref([])
 const sectionSort = ref({})
 
 const researchAreas = [
@@ -88,7 +88,9 @@ onMounted(async () => {
   publications.value = await response.json()
 
   const params = new URLSearchParams(window.location.search)
-  selectedTag.value = params.get('tag') || ''
+  selectedTags.value = Array.from(new Set(
+    params.getAll('tag').flatMap((value) => value.split(',')).filter(Boolean)
+  ))
 })
 
 const tags = computed(() => {
@@ -115,7 +117,8 @@ const filteredPublications = computed(() => {
       return !query || searchable.includes(query)
     })
     .filter((publication) => {
-      return !selectedTag.value || (publication.tags || []).includes(selectedTag.value)
+      const publicationTags = publication.tags || []
+      return selectedTags.value.every((tag) => publicationTags.includes(tag))
     })
 })
 
@@ -165,14 +168,22 @@ function updateSectionSort(sectionId, event) {
 }
 
 function setTag(tag) {
-  selectedTag.value = selectedTag.value === tag ? '' : tag
+  selectedTags.value = selectedTags.value.includes(tag)
+    ? selectedTags.value.filter((selected) => selected !== tag)
+    : [...selectedTags.value, tag]
 
+  updateTagParams()
+}
+
+function clearTags() {
+  selectedTags.value = []
+  updateTagParams()
+}
+
+function updateTagParams() {
   const url = new URL(window.location.href)
-  if (selectedTag.value) {
-    url.searchParams.set('tag', selectedTag.value)
-  } else {
-    url.searchParams.delete('tag')
-  }
+  url.searchParams.delete('tag')
+  selectedTags.value.forEach((tag) => url.searchParams.append('tag', tag))
   window.history.replaceState({}, '', url)
 }
 
@@ -219,18 +230,19 @@ function publicationImage(publication) {
   <div class="medvic-publication-compact-meta">
     <div class="medvic-tag-filter" aria-label="Publication tags">
       <button
-        v-if="selectedTag"
+        v-if="selectedTags.length"
         class="medvic-tag-filter-button clear"
         type="button"
-        @click="setTag('')"
+        @click="clearTags"
       >
-        Clear: {{ selectedTag }}
+        Clear all ({{ selectedTags.length }})
       </button>
       <button
         v-for="tag in tags"
         :key="tag"
         class="medvic-tag-filter-button"
-        :class="{ active: selectedTag === tag }"
+        :class="{ active: selectedTags.includes(tag) }"
+        :aria-pressed="selectedTags.includes(tag)"
         type="button"
         @click="setTag(tag)"
       >

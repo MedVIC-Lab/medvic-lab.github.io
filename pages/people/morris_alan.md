@@ -3,6 +3,7 @@ layout: person
 name: "Alan Morris"
 role: "Staff"
 title: "Senior Research Software Engineer"
+order: 1
 org: "University of Utah, SCI Institute"
 avatar: "alan_morris.jpg"
 name_in_pubs: "Alan Morris"

@@ -49,8 +49,19 @@ const generateMembersPlugin = (): Plugin => {
           bio: data.attributes.bio || '',
           role: data.attributes.role || '',
           links,
-          link: `/pages/people/${file.replace('.md', '')}`
+          link: `/pages/people/${file.replace('.md', '')}`,
+          order: Number.isFinite(Number(data.attributes.order))
+            ? Number(data.attributes.order)
+            : undefined,
         });
+      });
+
+      members.sort((a, b) => {
+        const roleComparison = a.role.localeCompare(b.role);
+        if (roleComparison !== 0) return roleComparison;
+
+        const orderComparison = (a.order ?? Number.MAX_SAFE_INTEGER) - (b.order ?? Number.MAX_SAFE_INTEGER);
+        return orderComparison !== 0 ? orderComparison : a.name.localeCompare(b.name);
       });
 
       fs.writeFileSync(outputFilePath, JSON.stringify(members, null, 2));

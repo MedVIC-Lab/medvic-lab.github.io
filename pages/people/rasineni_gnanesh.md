@@ -3,6 +3,7 @@ layout: person
 name: "Gnanesh Rasineni"
 role: "Staff"
 title: "Research Software Engineer"
+order: 3
 org: "University of Utah, SCI Institute"
 avatar: ""
 name_in_pubs: "Gnanesh Rasineni"

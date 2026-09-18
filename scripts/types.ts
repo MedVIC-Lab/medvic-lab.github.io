@@ -6,6 +6,7 @@ export type Member = {
   bio: string;
   role: string;
   link: string;
+  order?: number;
 };
 
 export type Members = {

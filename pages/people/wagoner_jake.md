@@ -1,7 +1,7 @@
 ---
 layout: person
 name: "Jake Wagoner"
-role: "Staff"
+role: "Alumni"
 title: "Software Developer/MS Student"
 org: "University of Utah, SCI Institute"
 avatar: "wagoner_jake.jpg"

@@ -18,10 +18,12 @@ links:
 
 Luke is a full-stack software engineer at the University of Utah's Scientific Computing and Imaging Institute, where he turns biomedical research into software that clinicians and researchers can use. His work spans **precision medicine**, **AI-assisted diagnosis**, **scientific visualization**, and the practical work of bringing research software into hospitals.
 
-## Selected impact
+## Impact
 
 - **Intelvia:** Luke led MVP design for the Ascender Grant-winning precision-medicine startup, whose platform is projected to save the University of Utah health system **$2.5 million annually**. He led product demonstrations and technical implementation work with hospital partners that resulted in a **$250,000 contract with Cerus Corporation**.
-- **Biomedical research software:** Alongside Intelvia, Luke develops two NIH-funded projects: **CranioRate**, an AI-assisted craniofacial assessment platform, and cancer-cell analysis software used by Huntsman Cancer Institute.
+- **Biomedical research software:** Alongside Intelvia, Luke develops two NIH-funded projects:
+  - **[CranioRate](https://craniorate.org/):** An AI-assisted craniofacial assessment platform.
+  - **[Loon](https://vdl.sci.utah.edu/loonar/):** Interactive cancer-cell analysis software used by Huntsman Cancer Institute.
 - **Research recognition:** Luke joined SCI through a competitive **Software Engineering Research Fellowship** and later moved into a full-time engineering role. As a core developer on cancer-analysis software, he contributed to work recognized with a **Best Paper Award at IEEE VIS 2024**, selected among 557 papers.
 
 ## Background
